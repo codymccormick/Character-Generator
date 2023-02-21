@@ -1,128 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Character Generator</h1>
     <button id="generate-character-button">Generate Character</button>
-    <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Race</th>
-            <th>Class</th>
-            <th>Strength</th>
-            <th>Dexterity</th>
-            <th>Constitution</th>
-            <th>Intelligence</th>
-            <th>Wisdom</th>
-            <th>Charisma</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Aldric</td>
-            <td>Dwarf</td>
-            <td>Barbarian</td>
-            <td>14</td>
-            <td>8</td>
-            <td>16</td>
-            <td>6</td>
-            <td>10</td>
-            <td>6</td>
-          </tr>
-          <!-- Add more rows for other characters -->
-        </tbody>
-      </table>
-</body>
-<script>
-
-const generateCharacterButton = document.getElementById("generate-character-button");
-generateCharacterButton.addEventListener("click", generateCharacter);
-  
-  // Define races and their stat modifiers
-  const NAMES = ["Aldric", "Briar", "Cassius", "Darian", "Elden", "Finnian", "Galen", "Hadrian", "Isen", "Jareth", "Kael", "Lirien", "Marius", "Niamh", "Orion", "Pryderi", "Quinlan", "Riven", "Sebastian", "Taliesin", "Urien", "Valerian", "Wren", "Xander", "Yorick", "Zephyr"];
-  const RACE_MODIFIERS = {
-      Dwarf: { str: 2, dex: 0, con: 2, int: -2, wis: 0, cha: -2 },
-      Elf: { str: 0, dex: 2, con: -2, int: 2, wis: 0, cha: 0 },
-      Halfling: { str: -2, dex: 2, con: 2, int: 0, wis: 0, cha: 0 },
-      Human: { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
-      Dragonborn: { str: 2, dex: 0, con: 0, int: 0, wis: 0, cha: -2 },
-      Gnome: { str: -2, dex: 0, con: 2, int: 2, wis: 0, cha: 0 },
-      "Half-Elf": { str: 0, dex: 0, con: 0, int: 0, wis: 0, cha: 0 },
-      "Half-Orc": { str: 2, dex: 0, con: 0, int: -2, wis: 0, cha: -2 },
-      Tiefling: { str: -2, dex: 0, con: 0, int: 2, wis: 0, cha: 2 },
-    };
-    const CLASSES = [
-      { name: "Barbarian", hitDie: 12, str: 2, dex: 0, con: 2, int: -2, wis: 0, cha: -2 },
-      { name: "Bard", hitDie: 8, str: 0, dex: 2, con: 0, int: 2, wis: 0, cha: 2 },
-      { name: "Cleric", hitDie: 8, str: 0, dex: 0, con: 2, int: 0, wis: 2, cha: 0 },
-      { name: "Druid", hitDie: 8, str: 0, dex: 0, con: 0, int: 0, wis: 2, cha: 0 },
-      { name: "Fighter", hitDie: 10, str: 2, dex: 0, con: 2, int: 0, wis: 0, cha: 0 },
-      { name: "Monk", hitDie: 8, str: 0, dex: 2, con: 0, int: 0, wis: 2, cha: 0 },
-      { name: "Paladin", hitDie: 10, str: 2, dex: 0, con: 2, int: 0, wis: 0, cha: 2 },
-      { name: "Ranger", hitDie: 10, str: 2, dex: 2, con: 0, int: 0, wis: 0, cha: 0 },
-      { name: "Rogue", hitDie: 8, str: 0, dex: 2, con: 0, int: 0, wis: 0, cha: 2 },
-      { name: "Sorcerer", hitDie: 6, str: -2, dex: 0, con: 0, int: 2, wis: 0, cha: 2 },
-      { name: "Warlock", hitDie: 8, str: 0, dex: 0, con: 0, int: 2, wis: 0, cha: 2 },
-      { name: "Wizard", hitDie: 6, str: -2, dex: 0, con: 0, int: 2, wis: 0, cha: 0 }
-    ];
-  
-    function getRandomItem(items) {
-      const randomIndex = Math.floor(Math.random() * items.length);
-      return items[randomIndex];
-  }
-    
-    // Define a function to generate a random integer in a given range
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-    
-    // Define a function to generate a character
-    function generateCharacter() {
-  // generate random values for the character's attributes and properties
-  let name = NAMES[Math.floor(Math.random() * NAMES.length)];
-  let race = Object.keys(RACE_MODIFIERS)[Math.floor(Math.random() * Object.keys(RACE_MODIFIERS).length)];
-  let characterClass = CLASSES[Math.floor(Math.random() * CLASSES.length)];
-  let strength = Math.floor(Math.random() * 20) + 1;
-  let dexterity = Math.floor(Math.random() * 20) + 1;
-  let constitution = Math.floor(Math.random() * 20) + 1;
-  let intelligence = Math.floor(Math.random() * 20) + 1;
-  let wisdom = Math.floor(Math.random() * 20) + 1;
-  let charisma = Math.floor(Math.random() * 20) + 1;
-  
-  // apply modifiers based on race and class
-  strength += RACE_MODIFIERS[race].str + characterClass.str;
-  dexterity += RACE_MODIFIERS[race].dex + characterClass.dex;
-  constitution += RACE_MODIFIERS[race].con + characterClass.con;
-  intelligence += RACE_MODIFIERS[race].int + characterClass.int;
-  wisdom += RACE_MODIFIERS[race].wis + characterClass.wis;
-  charisma += RACE_MODIFIERS[race].cha + characterClass.cha;
-
-  // display the generated character in the table
-  let table = document.querySelector('table');
-  let newRow = table.insertRow(-1);
-  let nameCell = newRow.insertCell(0);
-  let raceCell = newRow.insertCell(1);
-  let classCell = newRow.insertCell(2);
-  let strengthCell = newRow.insertCell(3);
-  let dexterityCell = newRow.insertCell(4);
-  let constitutionCell = newRow.insertCell(5);
-  let intelligenceCell = newRow.insertCell(6);
-  let wisdomCell = newRow.insertCell(7);
-  let charismaCell = newRow.insertCell(8);
-  nameCell.innerHTML = name;
-  raceCell.innerHTML = race;
-  classCell.innerHTML = characterClass.name;
-  strengthCell.innerHTML = strength;
-  dexterityCell.innerHTML = dexterity;
-  constitutionCell.innerHTML = constitution;
-  intelligenceCell.innerHTML = intelligence;
-  wisdomCell.innerHTML = wisdom;
-  charismaCell.innerHTML = charisma;
-}
-</script>
+    <table class="character" id="character">
+      <tr>
+          <th>Name</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Race</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Class</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Strength</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Dexterity</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Constitution</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Intelligence</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Wisdom</th>
+          <td></td>
+      </tr>
+      <tr>
+          <th>Charisma</th>
+          <td></td>
+      </tr>
+  </table>
+    <script src="script.js"></script>
+  </body>
 </html>
