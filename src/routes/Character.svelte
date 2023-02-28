@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	</head>
+	<head />
 	<body>
 		<button id="generate-character-button">Generate Character</button>
 
@@ -113,15 +112,40 @@
 			];
 
 			function generateAlignment() {
-  				const alignments = ['Lawful Good', 'Neutral Good', 'Chaotic Good', 'Lawful Neutral', 'True Neutral', 'Chaotic Neutral', 'Lawful Evil', 'Neutral Evil', 'Chaotic Evil'];
-  				const randomIndex = getRandomInt(0, alignments.length - 1);
-				return alignments[randomIndex];
+				const alignments = [
+					'Lawful Good',
+					'Neutral Good',
+					'Chaotic Good',
+					'Lawful Neutral',
+					'True Neutral',
+					'Chaotic Neutral',
+					'Lawful Evil',
+					'Neutral Evil',
+					'Chaotic Evil'
+				];
+				return alignments[Math.floor(Math.random() * alignments.length)];
 			}
 
-			// Define a function to generate a random integer in a given range
+			/* // Define a function to generate a random integer in a given range
 			function getRandomInt(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
+
+			function rollAbilityScores() {
+  				const rolls = [];
+  				for (let i = 0; i < 6; i++) {
+   				 const diceRolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+    			const lowestRoll = Math.min(...diceRolls);
+    			const abilityScore = diceRolls.reduce((total, roll) => total + roll, 0) - lowestRoll;
+    			rolls.push(abilityScore);
+  				}
+  				return rolls;
+			}
+
+			function getRandomItemFromArray(array) {
+  				const randomIndex = Math.floor(Math.random() * array.length);
+  				return array[randomIndex];
+			} */
 
 			// Define a function to generate a character
 			function generateCharacter() {
@@ -129,7 +153,6 @@
 				const race = RACES[Math.floor(Math.random() * Object.keys(RACES).length)];
 				const characterClass = CLASSES[Math.floor(Math.random() * CLASSES.length)];
 				const alignment = generateAlignment();
-				console.log(alignment)
 
 				const attributes = ['str', 'dex', 'con', 'int', 'wis', 'cha'].map((attr) => {
 					const rolls = [...new Array(4)].map(() => Math.floor(Math.random() * 6) + 1);
@@ -148,7 +171,7 @@
 					.getElementsByTagName('td');
 				const temp = [name, alignment, race.name, characterClass.name, ...attributes];
 				nameCell.textContent = temp[0];
-				alignmentCell.textContent = temp[1]
+				alignmentCell.textContent = temp[1];
 				raceCell.textContent = temp[2];
 				classCell.textContent = temp[3];
 				for (let i = 0; i < statCells.length; i++) {
@@ -168,10 +191,12 @@
 				margin-right: auto;
 				margin-top: 20px;
 			}
-			
-			table, th, td {
-  				border: 1px solid;
-				width:25%;
+
+			table,
+			th,
+			td {
+				border: 1px solid;
+				width: 25%;
 			}
 		</style>
 	</body>
