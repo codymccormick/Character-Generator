@@ -1,1 +1,0 @@
-//Write login to generate character occupation

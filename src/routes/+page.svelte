@@ -1,8 +1,6 @@
 <script>
-	import Character from "./Character.svelte";
+    import CharacterGenerator from "./CharacterGenerator.svelte";
     import Header from "./Header.svelte";
 </script>
-
 <Header/>
-
-<Character/>
+<CharacterGenerator/>
