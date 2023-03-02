@@ -1,10 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
-	import { names, races, classes, alignments, occupations } from './data';
+	import { names, genders, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
 
 	let npc = {
 		name: '',
+        gender: '',
 		race: '',
 		class: '',
 		alignment: '',
@@ -20,6 +21,7 @@
 		npc = {
 			name: getRandomItemFromArray(names),
 			race: getRandomItemFromArray(races),
+            gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
@@ -42,7 +44,7 @@
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
 	>
 		<div class="name">{npc.name}</div>
-		<div class="description">Medium {npc.race}, {npc.alignment}</div>
+		<div class="description">Medium {npc.gender} {npc.race}, {npc.alignment}</div>
 
 		<div class="gradient"/>
 

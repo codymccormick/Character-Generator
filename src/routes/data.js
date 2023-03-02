@@ -36,6 +36,11 @@ export const names = [
 	'Xanaphia'
 ];
 
+export const genders = [
+	'Male',
+	'Female'
+];
+
 export const races = [
 	'Human',
 	'Elf',
@@ -86,15 +91,15 @@ export const occupations = [
 	'Fletcher',
 	'Cobbler',
 	'Alchemist',
-	'Brewer',
-	'Carpenter',
-	'Cook',
-	'Farmer',
-	'Fisherman',
-	'Hunter',
-	'Jeweler',
-	'Merchant',
-	'Miner',
-	'Sailor',
-	'Tailor'
+  'Brewer',
+  'Carpenter',
+  'Cook',
+  'Farmer',
+  'Fisherman',
+  'Hunter',
+  'Jeweler',
+  'Merchant',
+  'Miner',
+  'Sailor',
+  'Tailor'
 ];
