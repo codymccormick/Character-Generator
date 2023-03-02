@@ -13,7 +13,7 @@
 	};
 
 	onMount(() => {
-		generateNPC()
+		generateNPC();
 	});
 
 	function generateNPC() {
@@ -36,7 +36,7 @@
 </script>
 
 <main>
-	<div 
+	<div
 		id="statBlock"
 		contenteditable="true"
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
@@ -44,7 +44,7 @@
 		<div class="name">{npc.name}</div>
 		<div class="description">Medium {npc.race}, {npc.alignment}</div>
 
-		<div class="gradient" />
+		<div class="gradient"/>
 
 		<div class="red">
 			<div><span class="bold red">Armor Class: </span><span> 11 (hide armor)</span></div>
@@ -52,7 +52,7 @@
 			<div><span class="bold red">Speed: </span><span> 40 ft.</span></div>
 		</div>
 
-		<div class="gradient" />
+		<div class="gradient"/>
 
 		<table>
 			<tr>
@@ -63,6 +63,7 @@
 				<th>WIS</th>
 				<th>CHA</th>
 			</tr>
+			<!-- The Attribute modifiers still need a function to calculate -->
 			<tr>
 				<td>{npc.stats.strength} (+4)</td>
 				<td>{npc.stats.dexterity} (-1)</td>
@@ -81,27 +82,28 @@
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
-		<div class="gradient" />
+		<div class="gradient"/>
 
 		<div class="actions red">Actions</div>
 
-		<div class="hr" />
+		<div class="hr"/>
 
 		<div class="attack">
-			<span class="attackname">Greatclub.</span><span class="description">
-				Melee Weapon Attack:</span
-			><span>+6 to hit, reach 5 ft., one target.</span><span class="description">Hit:</span><span
-				>13 (2d8+4) bludgeoning damage.</span
-			>
+			<span class="attackname">Greatclub.</span>
+			<span class="description">Melee Weapon Attack:</span>
+			<span>+6 to hit, reach 5 ft., one target.</span>
+			<span class="description">Hit:</span>
+			<span>13 (2d8+4) bludgeoning damage.</span>
 		</div>
+
 		<div class="attack">
-			<span class="attackname">Javelin.</span><span class="description">
-				Melee or Ranged Weapon Attack:</span
-			><span>+6 to hit, reach 5 ft. or 30ft./120, one target.</span><span class="description"
-				>Hit:</span
-			><span>11 (2d6+4) piercing damage.</span>
+			<span class="attackname">Javelin.</span>
+			<span class="description"> Melee or Ranged Weapon Attack:</span>
+			<span>+6 to hit, reach 5 ft. or 30ft./120, one target.</span>
+			<span class="description">Hit:</span>
+			<span>11 (2d6+4) piercing damage.</span>
 		</div>
-	</div>	
+	</div>
 </main>
 
 <div id="button">
