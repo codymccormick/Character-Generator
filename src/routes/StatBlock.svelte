@@ -1,50 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import { genders, races, classes, alignments, occupations } from './data';
+	import { names, genders, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
 
 	let npc = {};
 
 	onMount(() => generateNPC());
-
-    const names = [
-	'Aldric',
-	'Briar',
-	'Cassius',
-	'Elden',
-	'Kael',
-	'Marius',
-	'Orion',
-	'Riven',
-	'Sebastian',
-	'Zephyr',
-	'Aerin',
-	'Alyndra',
-	'Bryn',
-	'Cordelia',
-	'Drogathar',
-	'Erevan',
-	'Fenris',
-	'Gorstag',
-	'Hatharal',
-	'Iliyanbruen',
-	'Jandar',
-	'Kethryllia',
-	'Larethar',
-	'Mellifleur',
-	'Nimblefinger',
-	'Ophala',
-	'Paelias',
-	'Quarion',
-	'Rolen',
-	'Soveliss',
-	'Thia',
-	'Uma',
-	'Valindra',
-	'Wulfgar',
-	'Xanaphia'
-];
-
+    
 	function generateNPC() {
 		npc = {
 			name: getRandomItemFromArray(names),
