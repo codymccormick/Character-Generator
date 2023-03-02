@@ -1,6 +1,6 @@
 <header>
 	<div id="title">
-		<h1>Character Generator</h1>
+		<h1>D&D Character Generator</h1>
 	</div>
 </header>
 

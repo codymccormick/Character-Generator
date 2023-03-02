@@ -1,15 +1,16 @@
 <script>
 	import { onMount } from 'svelte';
-	import { firstNames, lastNames, genders, races, classes, alignments, occupations } from './data';
+	import { genders, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
+	import faker from 'faker';
 
-	let npc = {};
+	let character = {};
 
-	onMount(() => generateNPC());
+	onMount(() => generateCharacter());
     
-	function generateNPC() {
-		npc = {
-			name: getRandomItemFromArray(firstNames) + " " + getRandomItemFromArray(lastNames),
+	function generateCharacter() {
+		character = {
+			name: faker.name.findName() ,
 			race: getRandomItemFromArray(races),
 			gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
@@ -31,8 +32,8 @@
 		contenteditable="true"
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
 	>
-		<div class="name">{npc.name}</div>
-		<div class="description">Medium {npc.gender} {npc.race}, {npc.alignment}</div>
+		<div class="name">{character.name}</div>
+		<div class="description">Medium {character.gender} {character.race}, {character.alignment}</div>
 
 		<div class="gradient" />
 
@@ -54,17 +55,18 @@
 				<th>CHA</th>
 			</tr>
 			<tr>
-				<td>{npc.strength} (+4)</td>
-				<td>{npc.dexterity} (-1)</td>
-				<td>{npc.constitution} (+3)</td>
-				<td>{npc.intelligence} (-3)</td>
-				<td>{npc.wisdom} (-2)</td>
-				<td>{npc.charisma} (-2)</td>
+				<td>{character.strength} (+4)</td>
+				<td>{character.dexterity} (-1)</td>
+				<td>{character.constitution} (+3)</td>
+				<td>{character.intelligence} (-3)</td>
+				<td>{character.wisdom} (-2)</td>
+				<td>{character.charisma} (-2)</td>
 			</tr>
 		</table>
 
 		<div class="gradient" />
 
+		<div><span class="bold">Occupation: </span><span> {character.occupation}</span></div>
 		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
@@ -94,7 +96,7 @@
 </main>
 
 <div id="button">
-	<button on:click={generateNPC}>Generate NPC</button>
+	<button on:click={generateCharacter}>Generate Character</button>
 </div>
 
 <style>
