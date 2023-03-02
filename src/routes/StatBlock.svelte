@@ -10,9 +10,9 @@
     
 	function generateCharacter() {
 		character = {
-			name: faker.name.findName() ,
+			name: faker.name.findName(),
 			race: getRandomItemFromArray(races),
-			gender: getRandomItemFromArray(genders),
+			gender: faker.name.gender(),
 			class: getRandomItemFromArray(classes),
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
