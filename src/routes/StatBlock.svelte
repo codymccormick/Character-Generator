@@ -1,38 +1,64 @@
 <script>
 	import { onMount } from 'svelte';
-	import { names, genders, races, classes, alignments, occupations } from './data';
+	import { genders, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
 
-	let npc = {
-		name: '',
-        gender: '',
-		race: '',
-		class: '',
-		alignment: '',
-		occupation: '',
-		stats: {}
-	};
+	let npc = {};
 
-	onMount(() => {
-		generateNPC();
-	});
+	onMount(() => generateNPC());
+
+    const names = [
+	'Aldric',
+	'Briar',
+	'Cassius',
+	'Elden',
+	'Kael',
+	'Marius',
+	'Orion',
+	'Riven',
+	'Sebastian',
+	'Zephyr',
+	'Aerin',
+	'Alyndra',
+	'Bryn',
+	'Cordelia',
+	'Drogathar',
+	'Erevan',
+	'Fenris',
+	'Gorstag',
+	'Hatharal',
+	'Iliyanbruen',
+	'Jandar',
+	'Kethryllia',
+	'Larethar',
+	'Mellifleur',
+	'Nimblefinger',
+	'Ophala',
+	'Paelias',
+	'Quarion',
+	'Rolen',
+	'Soveliss',
+	'Thia',
+	'Uma',
+	'Valindra',
+	'Wulfgar',
+	'Xanaphia'
+];
 
 	function generateNPC() {
 		npc = {
 			name: getRandomItemFromArray(names),
 			race: getRandomItemFromArray(races),
-            gender: getRandomItemFromArray(genders),
+			gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
-			stats: {
-				strength: rollStat(),
-				dexterity: rollStat(),
-				constitution: rollStat(),
-				intelligence: rollStat(),
-				wisdom: rollStat(),
-				charisma: rollStat()
-			}
+			strength: rollStat(),
+			dexterity: rollStat(),
+			constitution: rollStat(),
+			intelligence: rollStat(),
+			wisdom: rollStat(),
+			charisma: rollStat()
 		};
 	}
 </script>
@@ -46,7 +72,7 @@
 		<div class="name">{npc.name}</div>
 		<div class="description">Medium {npc.gender} {npc.race}, {npc.alignment}</div>
 
-		<div class="gradient"/>
+		<div class="gradient" />
 
 		<div class="red">
 			<div><span class="bold red">Armor Class: </span><span> 11 (hide armor)</span></div>
@@ -54,7 +80,7 @@
 			<div><span class="bold red">Speed: </span><span> 40 ft.</span></div>
 		</div>
 
-		<div class="gradient"/>
+		<div class="gradient" />
 
 		<table>
 			<tr>
@@ -67,12 +93,12 @@
 			</tr>
 			<!-- The Attribute modifiers still need a function to calculate -->
 			<tr>
-				<td>{npc.stats.strength} (+4)</td>
-				<td>{npc.stats.dexterity} (-1)</td>
-				<td>{npc.stats.constitution} (+3)</td>
-				<td>{npc.stats.intelligence} (-3)</td>
-				<td>{npc.stats.wisdom} (-2)</td>
-				<td>{npc.stats.charisma} (-2)</td>
+				<td>{npc.strength} (+4)</td>
+				<td>{npc.dexterity} (-1)</td>
+				<td>{npc.constitution} (+3)</td>
+				<td>{npc.intelligence} (-3)</td>
+				<td>{npc.wisdom} (-2)</td>
+				<td>{npc.charisma} (-2)</td>
 			</tr>
 		</table>
 
@@ -84,11 +110,11 @@
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
-		<div class="gradient"/>
+		<div class="gradient" />
 
 		<div class="actions red">Actions</div>
 
-		<div class="hr"/>
+		<div class="hr" />
 
 		<div class="attack">
 			<span class="attackname">Greatclub.</span>
