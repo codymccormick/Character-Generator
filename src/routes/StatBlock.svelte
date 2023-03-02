@@ -13,21 +13,7 @@
 	};
 
 	onMount(() => {
-		npc = {
-			name: getRandomItemFromArray(names),
-			race: getRandomItemFromArray(races),
-			class: getRandomItemFromArray(classes),
-			alignment: getRandomItemFromArray(alignments),
-			occupation: getRandomItemFromArray(occupations),
-			stats: {
-				strength: rollStat(),
-				dexterity: rollStat(),
-				constitution: rollStat(),
-				intelligence: rollStat(),
-				wisdom: rollStat(),
-				charisma: rollStat()
-			}
-		};
+		generateNPC()
 	});
 
 	function generateNPC() {
