@@ -115,13 +115,12 @@
 				>Hit:</span
 			><span>11 (2d6+4) piercing damage.</span>
 		</div>
-	</div>
-	
-	<div id="button">
-		<button on:click={generateNPC}>Generate NPC</button>
-	</div>
-	
+	</div>	
 </main>
+
+<div id="button">
+	<button on:click={generateNPC}>Generate NPC</button>
+</div>
 
 <style>
 	main {
@@ -132,6 +131,7 @@
 	#button {
 		display: flex;
 		justify-content: center;
+		margin-top: 20px;
 	}
 
 	#statBlock {
