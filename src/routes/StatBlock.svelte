@@ -1,46 +1,62 @@
 <script>
+	import { onMount } from 'svelte';
 	import { names, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
 
-	// Define variables for NPC generation
-	let npcName = '';
-	let npcRace = '';
-	let npcClass = '';
-	let npcAlignment = '';
-	let npcOccupation = '';
-	let npcStrength = '';
-	let npcDexterity = '';
-	let npcConstitution = '';
-	let npcIntelligence = '';
-	let npcWisdom = '';
-	let npcCharisma = '';
+	let npc = {
+		name: '',
+		race: '',
+		class: '',
+		alignment: '',
+		occupation: '',
+		stats: {}
+	};
 
-	// Function to generate random NPC
+	onMount(() => {
+		npc = {
+			name: getRandomItemFromArray(names),
+			race: getRandomItemFromArray(races),
+			class: getRandomItemFromArray(classes),
+			alignment: getRandomItemFromArray(alignments),
+			occupation: getRandomItemFromArray(occupations),
+			stats: {
+				strength: rollStat(),
+				dexterity: rollStat(),
+				constitution: rollStat(),
+				intelligence: rollStat(),
+				wisdom: rollStat(),
+				charisma: rollStat()
+			}
+		};
+	});
+
 	function generateNPC() {
-		npcName = getRandomItemFromArray(names);
-		npcRace = getRandomItemFromArray(races);
-		npcClass = getRandomItemFromArray(classes);
-		npcAlignment = getRandomItemFromArray(alignments);
-		npcOccupation = getRandomItemFromArray(occupations);
-
-		npcStrength = rollStat();
-		npcDexterity = rollStat();
-		npcConstitution = rollStat();
-		npcIntelligence = rollStat();
-		npcWisdom = rollStat();
-		npcCharisma = rollStat();
+		npc = {
+			name: getRandomItemFromArray(names),
+			race: getRandomItemFromArray(races),
+			class: getRandomItemFromArray(classes),
+			alignment: getRandomItemFromArray(alignments),
+			occupation: getRandomItemFromArray(occupations),
+			stats: {
+				strength: rollStat(),
+				dexterity: rollStat(),
+				constitution: rollStat(),
+				intelligence: rollStat(),
+				wisdom: rollStat(),
+				charisma: rollStat()
+			}
+		};
 	}
 </script>
 
 <main>
-	<button on:click={generateNPC}>Generate NPC</button>
-
-	<div
+	<div 
+		id="statBlock"
 		contenteditable="true"
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
 	>
-		<div class="name">{npcName}</div>
-		<div class="description">Average {npcRace}, {npcAlignment}</div>
+		<div class="name">{npc.name}</div>
+		<div class="description">Medium {npc.race}, {npc.alignment}</div>
 
 		<div class="gradient" />
 
@@ -54,26 +70,28 @@
 
 		<table>
 			<tr>
-                <th>STR </th>
-                <th>DEX </th>
-                <th>CON </th>
-                <th>INT </th>
-                <th>WIS </th>
-                <th>CHA </th>
-            </tr>
+				<th>STR</th>
+				<th>DEX</th>
+				<th>CON</th>
+				<th>INT</th>
+				<th>WIS</th>
+				<th>CHA</th>
+			</tr>
 			<tr>
-				<td>{npcStrength} (+4)</td>
-				<td>{npcDexterity} (-1)</td>
-				<td>{npcConstitution} (+3)</td>
-				<td>{npcIntelligence} (-3)</td>
-				<td>{npcWisdom} (-2)</td>
-				<td>{npcCharisma} (-2)</td>
-            </tr>
+				<td>{npc.stats.strength} (+4)</td>
+				<td>{npc.stats.dexterity} (-1)</td>
+				<td>{npc.stats.constitution} (+3)</td>
+				<td>{npc.stats.intelligence} (-3)</td>
+				<td>{npc.stats.wisdom} (-2)</td>
+				<td>{npc.stats.charisma} (-2)</td>
+			</tr>
 		</table>
 
 		<div class="gradient" />
 
-		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
+		<div>
+			<span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span>
+		</div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
@@ -98,10 +116,27 @@
 			><span>11 (2d6+4) piercing damage.</span>
 		</div>
 	</div>
-	<br /><br /><br />
+	
+	<div id="button">
+		<button on:click={generateNPC}>Generate NPC</button>
+	</div>
+	
 </main>
 
 <style>
+	main {
+		display: flex;
+		justify-content: center;
+	}
+
+	#button {
+		display: flex;
+		justify-content: center;
+	}
+
+	#statBlock {
+		border: 1px solid black;
+	}
 	.gradient {
 		background: linear-gradient(10deg, #a73335, white);
 		height: 5px;
