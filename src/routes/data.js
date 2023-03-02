@@ -1,4 +1,4 @@
-export const names = [
+export const firstNames = [
 	'Aldric',
 	'Briar',
 	'Cassius',
@@ -35,6 +35,24 @@ export const names = [
 	'Wulfgar',
 	'Xanaphia'
 ];
+
+export const lastNames = [
+	"Blackthorn",
+	"Dragonforge",
+	"Fireheart",
+	"Goldmane",
+	"Ironfist",
+	"Jadeblade",
+	"Moonwhisper",
+	"Nightshade",
+	"Ravenwing",
+	"Shadowhunter",
+	"Silverhand",
+	"Stargazer",
+	"Stormborn",
+	"Thornblade",
+	"Windrider",
+  ];
 
 export const genders = [
 	'Male',

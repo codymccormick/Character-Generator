@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { names, genders, races, classes, alignments, occupations } from './data';
+	import { firstNames, lastNames, genders, races, classes, alignments, occupations } from './data';
 	import { getRandomItemFromArray, rollStat } from './helper';
 
 	let npc = {};
@@ -9,7 +9,7 @@
     
 	function generateNPC() {
 		npc = {
-			name: getRandomItemFromArray(names),
+			name: getRandomItemFromArray(firstNames) + " " + getRandomItemFromArray(lastNames),
 			race: getRandomItemFromArray(races),
 			gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
@@ -53,7 +53,6 @@
 				<th>WIS</th>
 				<th>CHA</th>
 			</tr>
-			<!-- The Attribute modifiers still need a function to calculate -->
 			<tr>
 				<td>{npc.strength} (+4)</td>
 				<td>{npc.dexterity} (-1)</td>
@@ -66,9 +65,7 @@
 
 		<div class="gradient" />
 
-		<div>
-			<span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span>
-		</div>
+		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
