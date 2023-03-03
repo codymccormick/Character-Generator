@@ -12,7 +12,7 @@
 		character = {
 			name: faker.name.findName(),
 			race: getRandomItemFromArray(races),
-			gender: faker.name.gender(),
+			gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
