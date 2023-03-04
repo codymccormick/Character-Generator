@@ -15,20 +15,20 @@ export function rollStat() {
   }
 
   export function generateAge() {
-    let age;
-    const ageBounds = [
-      { min: 10, max: 20 },
-      { min: 21, max: 30 },
-      { min: 31, max: 40 },
-      { min: 41, max: 50 },
-      { min: 51, max: 60 },
-      { min: 61, max: 100 }
-    ];
-    
-    const roll = Math.floor(Math.random() * 91) + 10;
-    const ageRange = ageBounds.find(({ max }) => roll <= max);
-    if (ageRange) {
-      age = randomInRange(ageRange.min, ageRange.max);
-    }
-    return age;
+  const ageRanges = [
+    { rollRange: [1, 20], ageRange: { min: 10, max: 20 } },
+    { rollRange: [21, 59], ageRange: { min: 21, max: 30 } },
+    { rollRange: [60, 69], ageRange: { min: 31, max: 40 } },
+    { rollRange: [70, 89], ageRange: { min: 41, max: 50 } },
+    { rollRange: [90, 99], ageRange: { min: 51, max: 60 } },
+    { rollRange: [100], ageRange: { min: 61, max: 100 } },
+  ];
+
+  let age;
+  while (!age) {
+    const roll = Math.floor(Math.random() * 100) + 1;
+    const ageRange = ageRanges.find(({ rollRange }) => rollRange.includes(roll));
+    age = ageRange && randomInRange(ageRange.ageRange.min, ageRange.ageRange.max);
   }
+  return age;
+}

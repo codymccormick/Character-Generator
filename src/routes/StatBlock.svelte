@@ -6,8 +6,8 @@
 
 	let character = {};
 
-	onMount(() => generateCharacter());
-    
+	onMount(generateCharacter());
+
 	function generateCharacter() {
 		character = {
 			name: faker.name.findName(),
@@ -18,15 +18,17 @@
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
 			background: getRandomItemFromArray(backgrounds),
-			strength: rollStat(),
-			dexterity: rollStat(),
-			constitution: rollStat(),
-			intelligence: rollStat(),
-			wisdom: rollStat(),
-			charisma: rollStat()
+			attributes: {
+				strength: rollStat(),
+				dexterity: rollStat(),
+				constitution: rollStat(),
+				intelligence: rollStat(),
+				wisdom: rollStat(),
+				charisma: rollStat()
+			}
 		};
-
-
+		console.clear();
+		console.log(character);
 	}
 </script>
 
@@ -37,7 +39,10 @@
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
 	>
 		<div class="name">{character.name}</div>
-		<div class="description">Medium {character.age} year old {character.gender} {character.race}, {character.alignment}</div>
+		<div class="description">
+			Medium {character.age} year old {character.gender}
+			{character.race}, {character.alignment}
+		</div>
 
 		<div class="gradient" />
 
@@ -59,12 +64,12 @@
 				<th>CHA</th>
 			</tr>
 			<tr>
-				<td>{character.strength} (+4)</td>
-				<td>{character.dexterity} (-1)</td>
-				<td>{character.constitution} (+3)</td>
-				<td>{character.intelligence} (-3)</td>
-				<td>{character.wisdom} (-2)</td>
-				<td>{character.charisma} (-2)</td>
+				<td>{character.attributes.strength} (+4)</td>
+				<td>{character.attributes.dexterity} (-1)</td>
+				<td>{character.attributes.constitution} (+3)</td>
+				<td>{character.attributes.intelligence} (-3)</td>
+				<td>{character.attributes.wisdom} (-2)</td>
+				<td>{character.attributes.charisma} (-2)</td>
 			</tr>
 		</table>
 
@@ -72,7 +77,9 @@
 
 		<div><span class="bold">Background: </span><span> {character.background}</span></div>
 		<div><span class="bold">Occupation: </span><span> {character.occupation}</span></div>
-		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
+		<div>
+			<span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span>
+		</div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
