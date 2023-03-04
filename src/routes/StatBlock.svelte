@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	import { genders, races, classes, alignments, occupations } from './data';
-	import { getRandomItemFromArray, rollStat } from './helper';
+	import { genders, races, classes, alignments, occupations, backgrounds } from './data';
+	import { getRandomItemFromArray, rollStat, generateAge } from './helper';
 	import faker from 'faker';
 
 	let character = {};
@@ -11,11 +11,13 @@
 	function generateCharacter() {
 		character = {
 			name: faker.name.findName(),
+			age: generateAge(),
 			race: getRandomItemFromArray(races),
 			gender: getRandomItemFromArray(genders),
 			class: getRandomItemFromArray(classes),
 			alignment: getRandomItemFromArray(alignments),
 			occupation: getRandomItemFromArray(occupations),
+			background: getRandomItemFromArray(backgrounds),
 			strength: rollStat(),
 			dexterity: rollStat(),
 			constitution: rollStat(),
@@ -23,6 +25,8 @@
 			wisdom: rollStat(),
 			charisma: rollStat()
 		};
+
+
 	}
 </script>
 
@@ -33,7 +37,7 @@
 		style="width:310px; font-family:Arial,Helvetica,sans-serif;font-size:11px;"
 	>
 		<div class="name">{character.name}</div>
-		<div class="description">Medium {character.gender} {character.race}, {character.alignment}</div>
+		<div class="description">Medium {character.age} year old {character.gender} {character.race}, {character.alignment}</div>
 
 		<div class="gradient" />
 
@@ -66,6 +70,7 @@
 
 		<div class="gradient" />
 
+		<div><span class="bold">Background: </span><span> {character.background}</span></div>
 		<div><span class="bold">Occupation: </span><span> {character.occupation}</span></div>
 		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
