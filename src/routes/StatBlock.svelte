@@ -1,35 +1,12 @@
 <script>
 	import { onMount } from 'svelte';
-	import { genders, races, classes, alignments, occupations, backgrounds } from './data';
-	import { getRandomItemFromArray, rollStat, generateAge } from './helper';
-	import faker from 'faker';
+	import { generateCharacter } from './generateCharacter.js';
 
 	let character = {};
 
-	onMount(generateCharacter());
-
-	function generateCharacter() {
-		character = {
-			name: faker.name.findName(),
-			age: generateAge(),
-			race: getRandomItemFromArray(races),
-			gender: getRandomItemFromArray(genders),
-			class: getRandomItemFromArray(classes),
-			alignment: getRandomItemFromArray(alignments),
-			occupation: getRandomItemFromArray(occupations),
-			background: getRandomItemFromArray(backgrounds),
-			attributes: {
-				strength: rollStat(),
-				dexterity: rollStat(),
-				constitution: rollStat(),
-				intelligence: rollStat(),
-				wisdom: rollStat(),
-				charisma: rollStat()
-			}
-		};
-		console.clear();
-		console.log(character);
-	}
+	onMount(() => {
+		character = generateCharacter();
+	});
 </script>
 
 <main>
@@ -40,8 +17,7 @@
 	>
 		<div class="name">{character.name}</div>
 		<div class="description">
-			Medium {character.age} year old {character.gender}
-			{character.race}, {character.alignment}
+			Medium {character.age} year old {character.gender} {character.race}, {character.alignment}
 		</div>
 
 		<div class="gradient" />
@@ -64,12 +40,12 @@
 				<th>CHA</th>
 			</tr>
 			<tr>
-				<td>{character.attributes.strength} (+4)</td>
-				<td>{character.attributes.dexterity} (-1)</td>
-				<td>{character.attributes.constitution} (+3)</td>
-				<td>{character.attributes.intelligence} (-3)</td>
-				<td>{character.attributes.wisdom} (-2)</td>
-				<td>{character.attributes.charisma} (-2)</td>
+				<td>{character.strength} (+4)</td>
+				<td>{character.dexterity} (-1)</td>
+				<td>{character.constitution} (+3)</td>
+				<td>{character.intelligence} (-3)</td>
+				<td>{character.wisdom} (-2)</td>
+				<td>{character.charisma} (-2)</td>
 			</tr>
 		</table>
 
@@ -108,7 +84,13 @@
 </main>
 
 <div id="button">
-	<button on:click={generateCharacter}>Generate Character</button>
+	<button
+		on:click={() => {
+			character = generateCharacter();
+		}}
+	>
+		Generate Character
+	</button>
 </div>
 
 <style>
