@@ -1,8 +1,17 @@
-import { genders, races, classes, alignments, occupations, backgrounds } from './data';
-import { getRandomItemFromArray, rollStat, generateAge } from './helper';
+import { genders, races, classes, alignments } from './data';
+import {
+	getRandomItemFromArray,
+	rollStat,
+	generateAge,
+	generateBackground,
+	generateOccupation
+} from './helper';
 import faker from 'faker';
 
 export function generateCharacter() {
+	const { background, backgroundReason } = generateBackground();
+	const { occupation, occupationReason } = generateOccupation();
+	
 	let character = {
 		name: faker.name.findName(),
 		age: generateAge(),
@@ -10,8 +19,10 @@ export function generateCharacter() {
 		gender: getRandomItemFromArray(genders),
 		class: getRandomItemFromArray(classes),
 		alignment: getRandomItemFromArray(alignments),
-		occupation: getRandomItemFromArray(occupations),
-		background: getRandomItemFromArray(backgrounds),
+		occupation,
+		occupationReason,
+		background,
+		backgroundReason,
 		strength: rollStat(),
 		dexterity: rollStat(),
 		constitution: rollStat(),
