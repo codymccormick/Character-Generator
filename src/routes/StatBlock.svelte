@@ -52,6 +52,8 @@
 		<div class="gradient" />
 
 		<div><span class="bold">Background: </span><span> {character.background}</span></div>
+		<!-- <div><span class="bold">Reason: </span><span> {character.backgroundReason}</span></div> -->
+
 		<div><span class="bold">Occupation: </span><span> {character.occupation}</span></div>
 		<div>
 			<span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span>
