@@ -1,4 +1,4 @@
-import { backgrounds } from "./data";
+import { backgrounds, occupations } from './data';
 
 export const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -36,12 +36,23 @@ export function generateAge() {
 }
 
 export function generateBackground() {
-  const backgroundKeys = Object.keys(backgrounds);
-  const randomBackground = getRandomItemFromArray(backgroundKeys);
-  const backgroundReasons = backgrounds[randomBackground];
-  const randomReason = getRandomItemFromArray(backgroundReasons);
-  return {
-      background: randomBackground,
-      backgroundReason: randomReason
-  };
+	const backgroundKeys = Object.keys(backgrounds);
+	const randomBackground = getRandomItemFromArray(backgroundKeys);
+	const backgroundReasons = backgrounds[randomBackground];
+	const randomReason = getRandomItemFromArray(backgroundReasons);
+	return {
+		background: randomBackground,
+		backgroundReason: randomReason
+	};
+}
+
+export function generateOccupation() {
+	const occupationKeys = Object.keys(occupations);
+	const randomOccupation = getRandomItemFromArray(occupationKeys);
+	const occupationReasons = occupations[randomOccupation];
+	const randomReason = getRandomItemFromArray(occupationReasons);
+	return {
+		occupation: randomOccupation,
+		occupationReason: randomReason
+	};
 }
