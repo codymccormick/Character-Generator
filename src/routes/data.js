@@ -24,7 +24,7 @@ export const classes = [
 	'Rogue',
 	'Sorcerer',
 	'Warlock',
-	'Wizard',
+	'Wizard'
 ];
 
 export const alignments = [
@@ -34,7 +34,7 @@ export const alignments = [
 	'Neutral',
 	'Neutral Good',
 	'Lawful Good',
-	'Chaotic Good',
+	'Chaotic Good'
 ];
 
 export const occupations = [
@@ -60,7 +60,7 @@ export const occupations = [
 	'Bureaucrat',
 	'Priest',
 	'Sailor',
-	'Soldier',
+	'Soldier'
 ];
 
 export const backgrounds = [
@@ -76,5 +76,5 @@ export const backgrounds = [
 	'Sage',
 	'Sailor',
 	'Soldier',
-	'Urchin',
+	'Urchin'
 ];
