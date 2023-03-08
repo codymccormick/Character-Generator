@@ -9,7 +9,23 @@
 	});
 </script>
 
+<div id="button">
+	<button
+		on:click={() => {
+			character = generateCharacter();
+		}}
+	>
+		Generate Character
+	</button>
+</div>
+
 <main>
+	<div class="characterDescription">
+		<p>{character.name} is a {character.age} year old {character.alignment} {character.gender} {character.race}</p>
+		<p>They grew up a {character.background} because {character.backgroundReason}</p>
+		<p>They currently are a {character.occupation}. They became a {character.occupation} because {character.occupationReason}</p>
+	</div>
+
 	<div
 		id="statBlock"
 		contenteditable="true"
@@ -85,30 +101,28 @@
 	</div>
 </main>
 
-<div id="button">
-	<button
-		on:click={() => {
-			character = generateCharacter();
-		}}
-	>
-		Generate Character
-	</button>
-</div>
-
 <style>
 	main {
 		display: flex;
 		justify-content: center;
+		width: 95%;
+		margin: auto
 	}
 
 	#button {
 		display: flex;
 		justify-content: center;
 		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 
 	#statBlock {
-		border: 1px solid black;
+    border: 1px solid black;
+    margin-left: auto;
+  }
+
+	.characterDescription {
+		justify-content: flex-start;
 	}
 	.gradient {
 		background: linear-gradient(10deg, #a73335, white);
