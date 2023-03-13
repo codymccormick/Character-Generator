@@ -1,13 +1,13 @@
-import { genders, races, classes, alignments } from './data';
+import { genders, races, classes, alignments } from '../scripts/data';
 import {
 	getRandomItemFromArray,
 	rollStat,
 	generateAge,
 	generateBackground,
 	generateOccupation
-} from './helper';
+} from '../scripts/helper';
 import faker from 'faker';
-import { characterStore } from './store.js';
+import { characterStore } from '../../routes/store';
 
 export function generateCharacter() {
 	const { background, backgroundReason } = generateBackground();

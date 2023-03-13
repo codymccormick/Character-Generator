@@ -1,23 +1,50 @@
 <script>
-	import Header from './Header.svelte';
-	import StatBlock from './StatBlock.svelte';
-	import Description from './Description.svelte';
-	import Button from './Button.svelte';
-  </script>
-  
-  <div>
-	<Header />
-  </div>
+	import Header from '../lib/componants/Header.svelte';
+	import StatBlock from '../lib/componants/StatBlock.svelte';
+	import Description from '../lib/componants/Description.svelte';
+	import Button from '../lib/componants/Button.svelte';
+	import { onMount } from 'svelte';
+	import { generateCharacter } from '../lib/scripts/generateCharacter';
 
-  <div style="text-align: center;">
+	onMount(() => {
+		generateCharacter();
+	});
+
+</script>
+
+<div>
+	<Header />
+</div>
+
+<div style="display: flex; justify-content: center;">
 	<Button />
-  </div>
-  
-  <main style="display: flex;">
-	<div style="flex: 1;">
-	  <Description />
+</div>
+
+<main class="container">
+	<div class="center">
+		<div>
+			<Description />
+		</div>
 	</div>
-	<div style="flex: 1;">
-	  <StatBlock />
+	<div class="right">
+		<StatBlock />
 	</div>
-  </main>
+</main>
+
+<style>
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: auto;
+		margin-right: -20rem;
+	}
+	.right {
+		margin-left: auto;
+	}
+</style>

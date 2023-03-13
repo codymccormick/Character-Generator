@@ -1,5 +1,5 @@
 <script>
-    import { characterStore } from './store.js';
+  import { characterStore } from '../../routes/store';
   
     $: character = $characterStore;
   </script>

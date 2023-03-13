@@ -1,18 +1,7 @@
 <script>
-	import { onMount } from 'svelte';
-	import { characterStore } from './store.js';
-
-	let character = {};
-
-	onMount(() => {
-		// set the initial value of character to the store's value
-		character = $characterStore;
-
-		// subscribe to changes to update the character variable
-		characterStore.subscribe((value) => {
-			character = value;
-		});
-	});
+  import { characterStore } from '../../routes/store';
+  
+    $: character = $characterStore;
 </script>
 
 <main>

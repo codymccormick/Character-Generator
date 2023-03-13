@@ -1,6 +1,6 @@
 <script>
-  import { generateCharacter } from './generateCharacter.js';
-  import { characterStore } from './store.js';
+  import { generateCharacter } from '../scripts/generateCharacter';
+  import { characterStore } from '../../routes/store';
 
   function handleClick() {
     const character = generateCharacter();

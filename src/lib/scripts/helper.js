@@ -1,4 +1,4 @@
-import { backgrounds, occupations } from './data';
+import { backgrounds, occupations } from '../scripts/data';
 
 export const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
