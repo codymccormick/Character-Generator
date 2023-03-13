@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { generateCharacter } from './generateCharacter.js';
 	import { characterStore } from './store.js';
 
 	let character = {};
@@ -15,16 +14,6 @@
 		});
 	});
 </script>
-
-<div id="button">
-	<button
-		on:click={() => {
-			character = generateCharacter();
-		}}
-	>
-		Generate Character
-	</button>
-</div>
 
 <main>
 	<div
@@ -104,14 +93,6 @@
 		display: flex;
 		margin: auto;
 	}
-
-	#button {
-		display: flex;
-		justify-content: center;
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-
 	#statBlock {
 		border: 3px solid black;
 		margin-left: auto;
