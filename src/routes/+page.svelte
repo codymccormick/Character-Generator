@@ -9,29 +9,33 @@
 	onMount(() => {
 		generateCharacter();
 	});
-
 </script>
 
-<div>
-	<Header />
-</div>
+<body>
+	<div>
+		<Header />
+	</div>
 
-<div style="display: flex; justify-content: center;">
-	<Button />
-</div>
+	<div style="display: flex; justify-content: center;">
+		<Button />
+	</div>
 
-<main class="container">
-	<div class="center">
-		<div>
-			<Description />
+	<main class="container">
+		<div class="center">
+			<div>
+				<Description />
+			</div>
 		</div>
-	</div>
-	<div class="right">
-		<StatBlock />
-	</div>
-</main>
+		<div class="right">
+			<StatBlock />
+		</div>
+	</main>
+</body>
 
 <style>
+	body {
+		background-image: url(../lib/pictures/parchmnt.jpg);
+	}
 	.container {
 		display: flex;
 		justify-content: space-between;
