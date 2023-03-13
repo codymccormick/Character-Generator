@@ -102,8 +102,6 @@
 <style>
 	main {
 		display: flex;
-		justify-content: center;
-		width: 95%;
 		margin: auto;
 	}
 
@@ -115,7 +113,7 @@
 	}
 
 	#statBlock {
-		border: 1px solid black;
+		border: 3px solid black;
 		margin-left: auto;
 	}
 	.gradient {
