@@ -7,6 +7,7 @@ import {
 	generateOccupation
 } from './helper';
 import faker from 'faker';
+import { characterStore } from './store.js';
 
 export function generateCharacter() {
 	const { background, backgroundReason } = generateBackground();
@@ -30,6 +31,7 @@ export function generateCharacter() {
 		wisdom: rollStat(),
 		charisma: rollStat()
 	};
+	characterStore.set(character);
 	console.log(character);
 	return character;
 }

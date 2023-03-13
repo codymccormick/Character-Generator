@@ -1,11 +1,18 @@
 <script>
 	import { onMount } from 'svelte';
 	import { generateCharacter } from './generateCharacter.js';
+	import { characterStore } from './store.js';
 
 	let character = {};
 
 	onMount(() => {
-		character = generateCharacter();
+		// set the initial value of character to the store's value
+		character = $characterStore;
+
+		// subscribe to changes to update the character variable
+		characterStore.subscribe((value) => {
+			character = value;
+		});
 	});
 </script>
 
@@ -20,12 +27,6 @@
 </div>
 
 <main>
-	<div class="characterDescription">
-		<p>{character.name} is a {character.age} year old {character.alignment} {character.gender} {character.race}</p>
-		<p>They grew up a {character.background} because {character.backgroundReason}</p>
-		<p>They currently are a {character.occupation}. They became a {character.occupation} because {character.occupationReason}</p>
-	</div>
-
 	<div
 		id="statBlock"
 		contenteditable="true"
@@ -33,7 +34,8 @@
 	>
 		<div class="name">{character.name}</div>
 		<div class="description">
-			Medium {character.age} year old {character.gender} {character.race}, {character.alignment}
+			Medium {character.age} year old {character.gender}
+			{character.race}, {character.alignment}
 		</div>
 
 		<div class="gradient" />
@@ -68,12 +70,8 @@
 		<div class="gradient" />
 
 		<div><span class="bold">Background: </span><span> {character.background}</span></div>
-		<!-- <div><span class="bold">Reason: </span><span> {character.backgroundReason}</span></div> -->
-
 		<div><span class="bold">Occupation: </span><span> {character.occupation}</span></div>
-		<div>
-			<span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span>
-		</div>
+		<div><span class="bold">Senses: </span><span> darkvision 60ft., passive Perception 8</span></div>
 		<div><span class="bold">Languages: </span><span> Common, Giant</span></div>
 		<div><span class="bold">Challenge: </span><span> 2 (450 XP)</span></div>
 
@@ -106,7 +104,7 @@
 		display: flex;
 		justify-content: center;
 		width: 95%;
-		margin: auto
+		margin: auto;
 	}
 
 	#button {
@@ -117,12 +115,8 @@
 	}
 
 	#statBlock {
-    border: 1px solid black;
-    margin-left: auto;
-  }
-
-	.characterDescription {
-		justify-content: flex-start;
+		border: 1px solid black;
+		margin-left: auto;
 	}
 	.gradient {
 		background: linear-gradient(10deg, #a73335, white);
