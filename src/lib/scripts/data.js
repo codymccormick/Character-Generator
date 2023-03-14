@@ -226,7 +226,6 @@ export const backgrounds = {
 export const birthplaces = {
 	'Out in the wilderness': [
 		'You were born outside the confines of civilization',
-		'You were born outside the confines of civilization'
 	],
 	'A Rural Hamlet/Village': [
 		'A few houses, isolated from any one kingdom. Not on the map'
@@ -263,3 +262,53 @@ export const birthplaces = {
 	],
 		
 };
+
+
+export const childhoodEnvironments = {
+	'No Adult Supervision': [
+		'No one was around a majority of the time, or at all, to supervise. No real structure.',
+	],
+	'Abusive': [
+		'Caretakers provided significant physical and/or mental abuse'
+	],
+	'Sheltered': [
+		'Constant supervision by adults or others, kept you confined to "safe" areas.'
+	],
+	'Supportive': [
+		'You were provided guidance and care and allowed room to grow and explore'
+	],
+	'Gang' : [
+		'You were raised by a gang, band or other group'
+	],
+	'Strict': [
+		'Most of your care was left up to monks, military schools or other strict institutions'
+	],
+	'Owned': [	
+		'Put to work from early or outright owned, very little care given'
+	],
+	'Apprenticed': [	
+		'Given over to a Master to be apprenticed from an early age'
+	],		
+};
+
+export const caretakersOrigins = {
+	'Original Parents': [
+		'Raised by the ones that gave birth to you',
+	],
+	'Close Family': [
+		'Raised by family members, not your parents (aunt/uncle, grandfather/mother, etc)'
+	],
+	'Adopted': [
+		'Never knew original parents. Raised by a couple not related to you.'
+	],
+	'Institution': [
+		'Raised at an institution, be it an orphanage, monastery or other.' //Skip to Significant Times in Your Life
+	],
+	'Master' : [
+		'Sold or given or kidnapped at an early age and raised as property.' //Skip to Significant Times in Your Life
+	],
+	'On Your Own': [
+		'Have had to rely on yourself for as long as you can remember. ' //Skip to Significant Times in Your Life
+	],		
+};
+

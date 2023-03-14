@@ -1,5 +1,3 @@
-import { backgrounds, birthplaces, occupations } from '../scripts/data';
-
 export const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 export function getRandomItemFromArray(array) {
@@ -35,35 +33,13 @@ export function generateAge() {
 	return age;
 }
 
-export function generateBackground() {
-	const backgroundKeys = Object.keys(backgrounds);
-	const randomBackground = getRandomItemFromArray(backgroundKeys);
-	const backgroundReasons = backgrounds[randomBackground];
-	const randomReason = getRandomItemFromArray(backgroundReasons);
+export function generateRandomItemFromObject(object, itemName, reasonName) {
+	const keys = Object.keys(object);
+	const randomKey = getRandomItemFromArray(keys);
+	const reasons = object[randomKey];
+	const randomReason = getRandomItemFromArray(reasons);
 	return {
-		background: randomBackground,
-		backgroundReason: randomReason
-	};
-}
-
-export function generateOccupation() {
-	const occupationKeys = Object.keys(occupations);
-	const randomOccupation = getRandomItemFromArray(occupationKeys);
-	const occupationReasons = occupations[randomOccupation];
-	const randomReason = getRandomItemFromArray(occupationReasons);
-	return {
-		occupation: randomOccupation,
-		occupationReason: randomReason
-	};
-}
-
-export function generatebirthplace() {
-	const birthplaceKeys = Object.keys(birthplaces);
-	const randomBirthplace = getRandomItemFromArray(birthplaceKeys);
-	const birthplaceReasons = birthplaces[randomBirthplace];
-	const randomReason = getRandomItemFromArray(birthplaceReasons);
-	return {
-		birthplace: randomBirthplace,
-		birthplaceReason: randomReason
+		[itemName]: randomKey,
+		[reasonName]: randomReason
 	};
 }
