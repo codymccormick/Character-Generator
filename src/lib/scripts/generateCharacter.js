@@ -4,7 +4,8 @@ import {
 	rollStat,
 	generateAge,
 	generateBackground,
-	generateOccupation
+	generateOccupation,
+	generatebirthplace,
 } from '../scripts/helper';
 import faker from 'faker';
 import { characterStore } from '../../routes/store';
@@ -12,6 +13,7 @@ import { characterStore } from '../../routes/store';
 export function generateCharacter() {
 	const { background, backgroundReason } = generateBackground();
 	const { occupation, occupationReason } = generateOccupation();
+	const { birthplace, birthplaceReason } = generatebirthplace();
 	
 	let character = {
 		name: faker.name.findName(),
@@ -20,6 +22,8 @@ export function generateCharacter() {
 		gender: getRandomItemFromArray(genders),
 		class: getRandomItemFromArray(classes),
 		alignment: getRandomItemFromArray(alignments),
+		birthplace,
+		birthplaceReason,
 		occupation,
 		occupationReason,
 		background,

@@ -1,4 +1,4 @@
-import { backgrounds, occupations } from '../scripts/data';
+import { backgrounds, birthplaces, occupations } from '../scripts/data';
 
 export const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -54,5 +54,16 @@ export function generateOccupation() {
 	return {
 		occupation: randomOccupation,
 		occupationReason: randomReason
+	};
+}
+
+export function generatebirthplace() {
+	const birthplaceKeys = Object.keys(birthplaces);
+	const randomBirthplace = getRandomItemFromArray(birthplaceKeys);
+	const birthplaceReasons = birthplaces[randomBirthplace];
+	const randomReason = getRandomItemFromArray(birthplaceReasons);
+	return {
+		birthplace: randomBirthplace,
+		birthplaceReason: randomReason
 	};
 }
