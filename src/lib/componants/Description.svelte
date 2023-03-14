@@ -15,9 +15,10 @@
 
   <style>
     .characterDescription {
-        border: 3px solid black;
+        border: 3px solid #a73335;
         width: 750px;
         height: 250px;
+        padding: 5px;
     }
   </style>
   

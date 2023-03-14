@@ -83,8 +83,9 @@
 		margin: auto;
 	}
 	#statBlock {
-		border: 3px solid black;
+		border: 3px solid #a73335;
 		margin-left: auto;
+		padding: 5px;
 	}
 	.gradient {
 		background: linear-gradient(10deg, #a73335, white);
