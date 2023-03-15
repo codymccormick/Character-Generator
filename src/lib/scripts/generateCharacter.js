@@ -3,7 +3,8 @@ import {
 	getRandomItemFromArray,
 	rollStat,
 	generateAge,
-	generateRandomItemFromObject
+	generateRandomItemFromObject,
+	generateSiblings
 } from '../scripts/helper';
 import faker from 'faker';
 import { characterStore } from '../../routes/store';
@@ -29,6 +30,7 @@ export function generateCharacter() {
 		childhoodEnvironmentReason,
 		caretakersOrigin,
 		caretakersOriginReason,
+		siblings: generateSiblings(),
 		occupation,
 		occupationReason,
 		background,
@@ -43,4 +45,4 @@ export function generateCharacter() {
 	characterStore.set(character);
 	console.log(character);
 	return character;
-}
+};
