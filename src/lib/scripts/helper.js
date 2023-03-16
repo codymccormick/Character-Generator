@@ -5,6 +5,17 @@ export function getRandomItemFromArray(array) {
 	return array[randomIndex];
 }
 
+export function generateRandomItemFromObject(object, itemName, reasonName) {
+	const keys = Object.keys(object);
+	const randomKey = getRandomItemFromArray(keys);
+	const reasons = object[randomKey];
+	const randomReason = getRandomItemFromArray(reasons);
+	return {
+		[itemName]: randomKey,
+		[reasonName]: randomReason
+	};
+}
+
 export function rollStat() {
 	const rolls = [];
 	for (let i = 0; i < 4; i++) {
@@ -33,16 +44,6 @@ export function generateAge() {
 	return age;
 }
 
-export function generateRandomItemFromObject(object, itemName, reasonName) {
-	const keys = Object.keys(object);
-	const randomKey = getRandomItemFromArray(keys);
-	const reasons = object[randomKey];
-	const randomReason = getRandomItemFromArray(reasons);
-	return {
-		[itemName]: randomKey,
-		[reasonName]: randomReason
-	};
-}
 
 export function generateSiblings() {
 	const hasSiblings = Math.floor(Math.random() * 6) + 1 !== 6;
@@ -54,7 +55,7 @@ export function generateSiblings() {
 			const age = Math.floor(Math.random() * 12) + 1;
 			const gender = age % 2 ? 'brother' : 'sister';
 			const birthOrder = age <= 6 ? 'younger' : 'older';
-			const fate = rollSiblingFate();
+			const fate = rollFate();
 			siblings.push({ birthOrder, gender, fate });
 		}
 	} else {
@@ -64,7 +65,7 @@ export function generateSiblings() {
 	return siblings;
 }
 
-function rollSiblingFate() {
+function rollFate() {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -86,7 +87,7 @@ function rollSiblingFate() {
 		case 5:
 		case 6:
 			result = { fate: 'Misfortune', description: 'This sibling has had bad luck in life.' };
-			result.misfortune = rollMisfortuneTable();
+			result.misfortune = rollMisfortune();
 			break;
 		case 7:
 		case 8:
@@ -105,14 +106,14 @@ function rollSiblingFate() {
 		case 11:
 		case 12:
 			result = { fate: 'Dead', description: 'This sibling has died.' };
-			result.death = rollDeathTable();
+			result.death = rollDeath();
 			break;
 	}
 
 	return result;
 }
 
-function rollMisfortuneTable() {
+function rollMisfortune() {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -169,7 +170,7 @@ function rollMisfortuneTable() {
 	return result;
 }
 
-function rollDeathTable() {
+function rollDeath() {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -211,6 +212,34 @@ function rollDeathTable() {
 				death: 'Murdered by You',
 				description: 'You did the killing '
 			};
+	}
+
+	return result;
+}
+
+export function rollCaretakerStatus() {
+	const roll = Math.floor(Math.random() * 12) + 1;
+	let result;
+
+	switch (roll) {
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		case 5:
+		case 6:
+			result = { status: 'Alive and well', description: 'Your parents or guardians are both doing well' };
+			break;
+		case 7:
+		case 9:
+		case 11:
+			result = { status: 'Misfortune', description: 'On an even roll, only one is affected. On an odd, both. Roll on the Misfortune Table' };
+			break;
+		case 8:
+		case 10:
+		case 12:
+			result = { status: 'Death', description: 'On an even roll, only one is affected. On an odd, both. Roll on the The Death Table' };
+			break;
 	}
 
 	return result;

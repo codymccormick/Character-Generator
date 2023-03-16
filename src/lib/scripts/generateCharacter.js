@@ -4,7 +4,8 @@ import {
 	rollStat,
 	generateAge,
 	generateRandomItemFromObject,
-	generateSiblings
+	generateSiblings,
+	rollCaretakerStatus,
 } from '../scripts/helper';
 import faker from 'faker';
 import { characterStore } from '../../routes/store';
@@ -30,6 +31,7 @@ export function generateCharacter() {
 		childhoodEnvironmentReason,
 		caretakersOrigin,
 		caretakersOriginReason,
+		caretakerStatus: rollCaretakerStatus(),
 		siblings: generateSiblings(),
 		occupation,
 		occupationReason,
