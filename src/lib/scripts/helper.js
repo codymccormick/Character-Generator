@@ -6,10 +6,8 @@ export function getRandomItemFromArray(array) {
 }
 
 export function generateRandomItemFromObject(object, itemName, reasonName) {
-	const keys = Object.keys(object);
-	const randomKey = getRandomItemFromArray(keys);
-	const reasons = object[randomKey];
-	const randomReason = getRandomItemFromArray(reasons);
+	const randomKey = getRandomItemFromArray(Object.keys(object));
+	const randomReason = getRandomItemFromArray(object[randomKey]);
 	return {
 		[itemName]: randomKey,
 		[reasonName]: randomReason
@@ -17,12 +15,9 @@ export function generateRandomItemFromObject(object, itemName, reasonName) {
 }
 
 export function rollStat() {
-	const rolls = [];
-	for (let i = 0; i < 4; i++) {
-		rolls.push(Math.floor(Math.random() * 6) + 1);
-	}
+	const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
 	rolls.sort((a, b) => a - b);
-	return rolls[1] + rolls[2] + rolls[3];
+	return rolls.slice(1).reduce((a, b) => a + b);
 }
 
 export function generateAge() {
@@ -43,7 +38,6 @@ export function generateAge() {
 	}
 	return age;
 }
-
 
 export function generateSiblings() {
 	const hasSiblings = Math.floor(Math.random() * 6) + 1 !== 6;
@@ -189,29 +183,35 @@ function rollDeath() {
 				death: 'Disease ',
 				description: 'Anything from a simple cold to a Pox caused death'
 			};
+			break;
 		case 6:
 		case 7:
 			result = {
 				death: 'Accident',
 				description: 'Any number of random events, from a mule kicking at the wrong time to a fire'
 			};
+			break;
 		case 8:
 		case 9:
 			result = {
 				death: 'Murdered',
-				description: 'From the random pick pocket to a planned assasination. Roll 1d12 - on a 10+, you know who did it'
+				description:
+					'From the random pick pocket to a planned assasination. Roll 1d12 - on a 10+, you know who did it'
 			};
+			break;
 		case 10:
 		case 11:
 			result = {
 				death: 'Unknown',
 				description: 'Found dead under mysterious circumstances'
 			};
+			break;
 		case 12:
 			result = {
 				death: 'Murdered by You',
 				description: 'You did the killing '
 			};
+			break;
 	}
 
 	return result;
@@ -219,27 +219,49 @@ function rollDeath() {
 
 export function rollCaretakerStatus() {
 	const roll = Math.floor(Math.random() * 12) + 1;
-	let result;
+	const result = {};
 
-	switch (roll) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-		case 6:
-			result = { status: 'Alive and well', description: 'Your parents or guardians are both doing well' };
-			break;
-		case 7:
-		case 9:
-		case 11:
-			result = { status: 'Misfortune', description: 'On an even roll, only one is affected. On an odd, both. Roll on the Misfortune Table' };
-			break;
-		case 8:
-		case 10:
-		case 12:
-			result = { status: 'Death', description: 'On an even roll, only one is affected. On an odd, both. Roll on the The Death Table' };
-			break;
+	if (roll <= 6) {
+		result.status = 'Alive and well';
+		result.description = 'Your parents or guardians are both doing well';
+	} else if (roll >= 7 && roll <= 10) {
+		const misfortuneRoll = Math.floor(Math.random() * 6) + 1;
+		const isEven = misfortuneRoll % 2 === 0;
+		result.status = 'Misfortune';
+		if (isEven) {
+			const misfortuneResult = rollMisfortune();
+			result.misfortuneDescription = `Both parents or guardians are affected: ${misfortuneResult.description}`;
+			result.misfortune = [misfortuneResult.misfortune, misfortuneResult.misfortune];
+		} else {
+			const affectedParent = Math.floor(Math.random() * 2) + 1;
+			const misfortuneResult = rollMisfortune();
+			result.misfortuneDescription = `Only one parent or guardian is affected: ${
+				affectedParent === 1 ? 'dad' : 'mom'
+			}: ${misfortuneResult.description}`;
+			result.misfortune = [
+				affectedParent === 1 ? misfortuneResult.misfortune : null,
+				affectedParent === 2 ? misfortuneResult.misfortune : null
+			];
+		}
+	} else {
+		const deathRoll = Math.floor(Math.random() * 6) + 1;
+		const isEven = deathRoll % 2 === 0;
+		result.status = 'Death';
+		if (isEven) {
+			const deathResult = rollDeath();
+			result.deathDescription = `Both parents or guardians are affected: ${deathResult.description}`;
+			result.death = [deathResult.death, deathResult.death];
+		} else {
+			const affectedParent = Math.floor(Math.random() * 2) + 1;
+			const deathResult = rollDeath();
+			result.deathDescription = `Only one parent or guardian is affected: ${
+				affectedParent === 1 ? 'dad' : 'mom'
+			}: ${deathResult.description}`;
+			result.death = [
+				affectedParent === 1 ? deathResult.death : null,
+				affectedParent === 2 ? deathResult.death : null
+			];
+		}
 	}
 
 	return result;

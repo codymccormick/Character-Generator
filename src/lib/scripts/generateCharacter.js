@@ -1,4 +1,4 @@
-import { genders, races, classes, alignments, occupations, backgrounds, birthplaces, childhoodEnvironments, caretakersOrigins } from '../scripts/data';
+import { genders, races, classes, alignments, occupations, backgrounds, birthplaces, childhoodEnvironments, caretakersOrigins, familyBackgrounds } from '../scripts/data';
 import {
 	getRandomItemFromArray,
 	rollStat,
@@ -17,6 +17,7 @@ export function generateCharacter() {
 	const { birthplace, birthplaceReason } = generateRandomItemFromObject(birthplaces, 'birthplace', 'birthplaceReason');
 	const { childhoodEnvironment, childhoodEnvironmentReason } = generateRandomItemFromObject(childhoodEnvironments, 'childhoodEnvironment', 'childhoodEnvironmentReason');
 	const { caretakersOrigin, caretakersOriginReason } = generateRandomItemFromObject(caretakersOrigins, 'caretakersOrigin', 'caretakersOriginReason');
+	const { familyBackground, familyBackgroundReason } = generateRandomItemFromObject(familyBackgrounds, 'familyBackground', 'familyBackgroundReason');
 	
 	let character = {
 		name: faker.name.findName(),
@@ -32,6 +33,8 @@ export function generateCharacter() {
 		caretakersOrigin,
 		caretakersOriginReason,
 		caretakerStatus: rollCaretakerStatus(),
+		familyBackground,
+		familyBackgroundReason,
 		siblings: generateSiblings(),
 		occupation,
 		occupationReason,

@@ -14,16 +14,23 @@
 		<h2><u>Life Plan</u></h2>
 
 		<h3>Birth & Childhood</h3>
-		<p><b>Birthplace:</b> {character.birthplace}</p>
+		<p><b>Birth Location:</b> {character.birthplace}</p>
 		<p><b>Description:</b> {character.birthplaceReason}</p>
 		<p><b>Childhood Environment:</b> {character.childhoodEnvironment}</p>
 		<p><b>Description:</b> {character.childhoodEnvironmentReason}</p>
 
-		<h3>Caretaker's Origin</h3>
-		<p><b>Birthplace:</b> {character.caretakersOrigin}</p>
+		<h3>Origin</h3>
+		<p><b>Caretakers :</b> {character.caretakersOrigin}</p>
 		<p><b>Description:</b> {character.caretakersOriginReason}</p>
-		<p><b>Status:</b> {character.caretakerStatus.status}</p>
-		<p>{character.caretakerStatus.description}</p>
+		<p><b>Family Background</b> {character.familyBackground}</p>
+		<p><b>Decription</b> {character.familyBackgroundReason}</p>
+		{#if character.caretakerStatus.status === 'Misfortune'}
+			<p><b>Caretakers misfortune:</b> {character.caretakerStatus.misfortuneDescription}</p>
+		{:else if character.caretakerStatus.status === 'Death'}
+			<p><b>Caretakers Death:</b> {character.caretakerStatus.deathDescription}</p>
+		{:else}
+			<p>{character.caretakerStatus.description}</p>
+		{/if}
 
 		<p><b>Siblings:</b></p>
 		<ul>
