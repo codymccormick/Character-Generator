@@ -15,7 +15,7 @@ export function generateRandomItemFromObject(object, itemName, reasonName) {
 }
 
 export function rollStat() {
-	const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+	const rolls = Array.from({ length: 4 }, () => randomInRange(1, 6));
 	rolls.sort((a, b) => a - b);
 	return rolls.slice(1).reduce((a, b) => a + b);
 }
@@ -32,32 +32,36 @@ export function generateAge() {
 
 	let age;
 	while (!age) {
-		const roll = Math.floor(Math.random() * 100) + 1;
+		const roll = randomInRange(1, 100);
 		const ageRange = ageRanges.find(({ rollRange }) => rollRange.includes(roll));
 		age = ageRange && randomInRange(ageRange.ageRange.min, ageRange.ageRange.max);
 	}
 	return age;
 }
 
-export function generateSiblings() {
-	const hasSiblings = Math.floor(Math.random() * 6) + 1 !== 6;
+export function generateSibling() {
+	const age = randomInRange(1, 12);
+	const gender = age % 2 ? 'brother' : 'sister';
+	const birthOrder = age <= 6 ? 'younger' : 'older';
+	const fate = rollFate();
+	return { birthOrder, gender, fate };
+  }
+
+  export function generateSiblings() {
+	const hasSiblings = randomInRange(1, 6) !== 6;
 	const siblings = [];
-
+  
 	if (hasSiblings) {
-		const numSiblings = Math.floor(Math.random() * 12) + 1;
-		for (let i = 0; i < numSiblings; i++) {
-			const age = Math.floor(Math.random() * 12) + 1;
-			const gender = age % 2 ? 'brother' : 'sister';
-			const birthOrder = age <= 6 ? 'younger' : 'older';
-			const fate = rollFate();
-			siblings.push({ birthOrder, gender, fate });
-		}
+	  const numSiblings = randomInRange(1, 12);
+	  for (let i = 0; i < numSiblings; i++) {
+		siblings.push(generateSibling());
+	  }
 	} else {
-		siblings.push({ gender: null, birthOrder: null, fate: null });
+	  siblings.push({ gender: null, birthOrder: null, fate: null });
 	}
-
+  
 	return siblings;
-}
+  }
 
 function rollFate() {
 	const roll = Math.floor(Math.random() * 12) + 1;
