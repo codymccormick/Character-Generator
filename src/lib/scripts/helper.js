@@ -230,57 +230,37 @@ export function rollCaretakerStatus() {
 	  result.description = 'Your parents or guardians are both doing well';
 	} else if (roll <= 10) {
 	  result.status = 'Misfortune';
-	  result.misfortune = rollParentMisfortune();
+	  result.misfortune = rollParentEvent('misfortune');
 	} else {
 	  result.status = 'Death';
-	  result.death = rollParentDeath();
+	  result.death = rollParentEvent('death');
 	}
   
 	return result;
   }
   
-  function rollParentMisfortune() {
-	const misfortuneRoll = randomInRange(1, 6);
-	const isEven = misfortuneRoll % 2 === 0;
-	const misfortune = Array.from({ length: 2 }, (_, i) => {
-	  if (isEven || i === misfortuneRoll % 2 - 1) {
-		const misfortuneResult = rollMisfortune();
-		return misfortuneResult.misfortune;
+  function rollParentEvent(eventType) {
+	const eventRoll = randomInRange(1, 6);
+	const isEven = eventRoll % 2 === 0;
+	const events = Array.from({ length: 2 }, (_, i) => {
+	  if (isEven || i === eventRoll % 2 - 1) {
+		const eventResult =
+		  eventType === 'misfortune' ? rollMisfortune() : rollDeath();
+		return eventResult[eventType];
 	  } else {
 		return null;
 	  }
 	});
   
-	const misfortuneDescription = generateParentMisfortuneDescription(misfortune);
-	return { misfortune, misfortuneDescription };
+	const eventDescription = generateParentEventDescription(events, eventType);
+	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
   }
   
-  function generateParentMisfortuneDescription(misfortune) {
-	const affectedParents = misfortune.map((m, i) => (m ? (i === 0 ? 'dad' : 'mom') : null)).filter(p => p);
+  function generateParentEventDescription(events, eventType) {
+	const affectedParents = events
+	  .map((e, i) => (e ? (i === 0 ? 'dad' : 'mom') : null))
+	  .filter(p => p);
 	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
-	const description = misfortune.find(m => m).description;
-	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${affectedParents.length > 1 ? 's are' : ' is'} affected: ${description}`;
-  }
-  
-  function rollParentDeath() {
-	const deathRoll = randomInRange(1, 6);
-	const isEven = deathRoll % 2 === 0;
-	const death = Array.from({ length: 2 }, (_, i) => {
-	  if (isEven || i === deathRoll % 2 - 1) {
-		const deathResult = rollDeath();
-		return deathResult.death;
-	  } else {
-		return null;
-	  }
-	});
-  
-	const deathDescription = generateParentDeathDescription(death);
-	return { death, deathDescription };
-  }
-  
-  function generateParentDeathDescription(death) {
-	const affectedParents = death.map((d, i) => (d ? (i === 0 ? 'dad' : 'mom') : null)).filter(p => p);
-	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
-	const description = death.find(d => d).description;
+	const description = events.find(e => e).description;
 	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${affectedParents.length > 1 ? 's are' : ' is'} affected: ${description}`;
   }
