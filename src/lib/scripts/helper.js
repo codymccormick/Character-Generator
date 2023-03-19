@@ -222,51 +222,65 @@ function rollDeath() {
 }
 
 export function rollCaretakerStatus() {
-	const roll = Math.floor(Math.random() * 12) + 1;
+	const roll = randomInRange(1, 12);
 	const result = {};
-
+  
 	if (roll <= 6) {
-		result.status = 'Alive and well';
-		result.description = 'Your parents or guardians are both doing well';
-	} else if (roll >= 7 && roll <= 10) {
-		const misfortuneRoll = Math.floor(Math.random() * 6) + 1;
-		const isEven = misfortuneRoll % 2 === 0;
-		result.status = 'Misfortune';
-		if (isEven) {
-			const misfortuneResult = rollMisfortune();
-			result.misfortuneDescription = `Both parents or guardians are affected: ${misfortuneResult.description}`;
-			result.misfortune = [misfortuneResult.misfortune, misfortuneResult.misfortune];
-		} else {
-			const affectedParent = Math.floor(Math.random() * 2) + 1;
-			const misfortuneResult = rollMisfortune();
-			result.misfortuneDescription = `Only one parent or guardian is affected: ${
-				affectedParent === 1 ? 'dad' : 'mom'
-			}: ${misfortuneResult.description}`;
-			result.misfortune = [
-				affectedParent === 1 ? misfortuneResult.misfortune : null,
-				affectedParent === 2 ? misfortuneResult.misfortune : null
-			];
-		}
+	  result.status = 'Alive and well';
+	  result.description = 'Your parents or guardians are both doing well';
+	} else if (roll <= 10) {
+	  result.status = 'Misfortune';
+	  result.misfortune = rollParentMisfortune();
 	} else {
-		const deathRoll = Math.floor(Math.random() * 6) + 1;
-		const isEven = deathRoll % 2 === 0;
-		result.status = 'Death';
-		if (isEven) {
-			const deathResult = rollDeath();
-			result.deathDescription = `Both parents or guardians are affected: ${deathResult.description}`;
-			result.death = [deathResult.death, deathResult.death];
-		} else {
-			const affectedParent = Math.floor(Math.random() * 2) + 1;
-			const deathResult = rollDeath();
-			result.deathDescription = `Only one parent or guardian is affected: ${
-				affectedParent === 1 ? 'dad' : 'mom'
-			}: ${deathResult.description}`;
-			result.death = [
-				affectedParent === 1 ? deathResult.death : null,
-				affectedParent === 2 ? deathResult.death : null
-			];
-		}
+	  result.status = 'Death';
+	  result.death = rollParentDeath();
 	}
-
+  
 	return result;
-}
+  }
+  
+  function rollParentMisfortune() {
+	const misfortuneRoll = randomInRange(1, 6);
+	const isEven = misfortuneRoll % 2 === 0;
+	const misfortune = Array.from({ length: 2 }, (_, i) => {
+	  if (isEven || i === misfortuneRoll % 2 - 1) {
+		const misfortuneResult = rollMisfortune();
+		return misfortuneResult.misfortune;
+	  } else {
+		return null;
+	  }
+	});
+  
+	const misfortuneDescription = generateParentMisfortuneDescription(misfortune);
+	return { misfortune, misfortuneDescription };
+  }
+  
+  function generateParentMisfortuneDescription(misfortune) {
+	const affectedParents = misfortune.map((m, i) => (m ? (i === 0 ? 'dad' : 'mom') : null)).filter(p => p);
+	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
+	const description = misfortune.find(m => m).description;
+	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${affectedParents.length > 1 ? 's are' : ' is'} affected: ${description}`;
+  }
+  
+  function rollParentDeath() {
+	const deathRoll = randomInRange(1, 6);
+	const isEven = deathRoll % 2 === 0;
+	const death = Array.from({ length: 2 }, (_, i) => {
+	  if (isEven || i === deathRoll % 2 - 1) {
+		const deathResult = rollDeath();
+		return deathResult.death;
+	  } else {
+		return null;
+	  }
+	});
+  
+	const deathDescription = generateParentDeathDescription(death);
+	return { death, deathDescription };
+  }
+  
+  function generateParentDeathDescription(death) {
+	const affectedParents = death.map((d, i) => (d ? (i === 0 ? 'dad' : 'mom') : null)).filter(p => p);
+	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
+	const description = death.find(d => d).description;
+	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${affectedParents.length > 1 ? 's are' : ' is'} affected: ${description}`;
+  }
