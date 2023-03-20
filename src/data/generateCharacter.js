@@ -1,12 +1,4 @@
-import {
-	genders,
-	classes,
-	alignments,
-	occupations,
-	backgrounds,
-	caretakersOrigins,
-	familyBackgrounds
-} from './characterGeneration/data';
+import { genders, classes, alignments, occupations, backgrounds } from './characterGeneration/data';
 import { rollStat, generateAge } from '../helpers/helper';
 import faker from 'faker';
 import { characterStore } from './store';
@@ -15,7 +7,12 @@ import {
 	generateBirthplace,
 	generateChildhoodEnvironment
 } from './characterGeneration/origin';
-import { generateSiblings, rollCaretakerStatus } from './characterGeneration/family';
+import {
+	generateSiblings,
+	rollCaretakerStatus,
+	generateFamilyBackground,
+	generateCaretakerOrigin
+} from './characterGeneration/family';
 import { generateRandomItemFromObject, getRandomItemFromArray } from '../helpers/random';
 
 export const generateCharacter = () => {
@@ -29,16 +26,6 @@ export const generateCharacter = () => {
 		'occupation',
 		'occupationReason'
 	);
-	const { caretakersOrigin, caretakersOriginReason } = generateRandomItemFromObject(
-		caretakersOrigins,
-		'caretakersOrigin',
-		'caretakersOriginReason'
-	);
-	const { familyBackground, familyBackgroundReason } = generateRandomItemFromObject(
-		familyBackgrounds,
-		'familyBackground',
-		'familyBackgroundReason'
-	);
 
 	let character = {
 		name: faker.name.findName(),
@@ -49,11 +36,9 @@ export const generateCharacter = () => {
 		alignment: getRandomItemFromArray(alignments),
 		...generateBirthplace(),
 		...generateChildhoodEnvironment(),
-		caretakersOrigin,
-		caretakersOriginReason,
+		...generateCaretakerOrigin(),
 		caretakerStatus: rollCaretakerStatus(),
-		familyBackground,
-		familyBackgroundReason,
+		...generateFamilyBackground(),
 		siblings: generateSiblings(),
 		occupation,
 		occupationReason,
@@ -69,4 +54,4 @@ export const generateCharacter = () => {
 	characterStore.set(character);
 	console.log(character);
 	return character;
-}
+};

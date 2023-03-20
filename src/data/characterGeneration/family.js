@@ -1,5 +1,6 @@
-import { rollFate, rollMisfortune, rollDeath, } from "../../helpers/helper"
-import { randomInRange } from "../../helpers/random"
+import { rollFate, rollMisfortune, rollDeath } from '../../helpers/helper';
+import { randomInRange, generateRandomItemFromObject } from '../../helpers/random';
+import { caretakersOrigins, familyBackgrounds } from './data';
 
 export const generateSibling = () => {
 	const age = randomInRange(1, 12);
@@ -7,7 +8,7 @@ export const generateSibling = () => {
 	const birthOrder = age <= 6 ? 'younger' : 'older';
 	const fate = rollFate();
 	return { birthOrder, gender, fate };
-}
+};
 
 export const generateSiblings = () => {
 	const hasSiblings = randomInRange(1, 6) !== 6;
@@ -23,7 +24,7 @@ export const generateSiblings = () => {
 	}
 
 	return siblings;
-}
+};
 
 export const rollCaretakerStatus = () => {
 	const roll = randomInRange(1, 12);
@@ -41,7 +42,7 @@ export const rollCaretakerStatus = () => {
 	}
 
 	return result;
-}
+};
 
 export const rollParentEvent = (eventType) => {
 	const eventRoll = randomInRange(1, 6);
@@ -61,7 +62,7 @@ export const rollParentEvent = (eventType) => {
 
 	const eventDescription = generateParentEventDescription(events, affectedParents, eventType);
 	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
-}
+};
 
 export const generateParentEventDescription = (events, affectedParents, eventType) => {
 	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
@@ -69,4 +70,28 @@ export const generateParentEventDescription = (events, affectedParents, eventTyp
 	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${
 		affectedParents.length > 1 ? 's are' : ' is'
 	} affected: ${description}`;
-}
+};
+
+export const generateCaretakerOrigin = () => {
+	return generateRandomItemFromObject(
+		caretakersOrigins,
+		'caretakersOrigin',
+		'caretakersOriginReason'
+	);
+};
+
+export const generateFamilyBackground = () => {
+	return generateRandomItemFromObject(
+		familyBackgrounds,
+		'familyBackground',
+		'familyBackgroundReason'
+	);
+};
+
+export const generateChildhoodEnvironment = () => {
+	return generateRandomItemFromObject(
+		childhoodEnvironments,
+		'childhoodEnvironment',
+		'childhoodEnvironmentReason'
+	);
+};
