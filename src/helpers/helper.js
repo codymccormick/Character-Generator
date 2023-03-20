@@ -1,5 +1,15 @@
 import { randomInRange } from './random';
 
+//Calculate ability score modifier
+export function calculateModifier(score) {
+	return Math.floor((score - 10) / 2);
+}
+
+//calculate proficiency bonus
+export function calculateProficiencyBonus(level) {
+	return Math.ceil(level / 4) + 1;
+}
+
 export function rollStat() {
 	const rolls = Array.from({ length: 4 }, () => randomInRange(1, 6));
 	rolls.sort((a, b) => a - b);
