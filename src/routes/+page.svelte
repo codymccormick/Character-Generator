@@ -34,7 +34,7 @@
 
 <style>
 	body {
-		background-image: url(../../static/pictures/parchment.jpg);
+		background-image: url(../pictures/parchment.jpg);
 	}
 	.container {
 		display: flex;

@@ -1,6 +1,6 @@
 import { rollFate, rollMisfortune, rollDeath } from '../../helpers/helper';
 import { randomInRange, generateRandomItemFromObject } from '../../helpers/random';
-import { caretakersOrigins, familyBackgrounds } from './data';
+import { caretakersOrigins, familyBackgrounds, } from './data';
 
 export const generateSibling = () => {
 	const age = randomInRange(1, 12);
@@ -85,13 +85,5 @@ export const generateFamilyBackground = () => {
 		familyBackgrounds,
 		'familyBackground',
 		'familyBackgroundReason'
-	);
-};
-
-export const generateChildhoodEnvironment = () => {
-	return generateRandomItemFromObject(
-		childhoodEnvironments,
-		'childhoodEnvironment',
-		'childhoodEnvironmentReason'
 	);
 };
