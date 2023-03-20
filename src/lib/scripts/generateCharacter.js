@@ -1,4 +1,4 @@
-import { genders, races, classes, alignments, occupations, backgrounds, birthplaces, childhoodEnvironments, caretakersOrigins, familyBackgrounds } from '../scripts/data';
+import { genders, classes, alignments, occupations, backgrounds, caretakersOrigins, familyBackgrounds } from '../scripts/data';
 import {
 	getRandomItemFromArray,
 	rollStat,
@@ -9,27 +9,28 @@ import {
 } from '../scripts/helper';
 import faker from 'faker';
 import { characterStore } from '../../routes/store';
+import {
+	generateRace,
+	generateBirthplace,
+	generateChildhoodEnvironment,
+  } from '../characterGeneration/origin';
 
 export function generateCharacter() {
 
 	const { background, backgroundReason } = generateRandomItemFromObject(backgrounds, 'background', 'backgroundReason');
 	const { occupation, occupationReason } = generateRandomItemFromObject(occupations, 'occupation', 'occupationReason');
-	const { birthplace, birthplaceReason } = generateRandomItemFromObject(birthplaces, 'birthplace', 'birthplaceReason');
-	const { childhoodEnvironment, childhoodEnvironmentReason } = generateRandomItemFromObject(childhoodEnvironments, 'childhoodEnvironment', 'childhoodEnvironmentReason');
 	const { caretakersOrigin, caretakersOriginReason } = generateRandomItemFromObject(caretakersOrigins, 'caretakersOrigin', 'caretakersOriginReason');
 	const { familyBackground, familyBackgroundReason } = generateRandomItemFromObject(familyBackgrounds, 'familyBackground', 'familyBackgroundReason');
 	
 	let character = {
 		name: faker.name.findName(),
 		age: generateAge(),
-		race: getRandomItemFromArray(races),
+		race: generateRace(),
 		gender: getRandomItemFromArray(genders),
 		class: getRandomItemFromArray(classes),
 		alignment: getRandomItemFromArray(alignments),
-		birthplace,
-		birthplaceReason,
-		childhoodEnvironment,
-		childhoodEnvironmentReason,
+		...generateBirthplace(),
+  		...generateChildhoodEnvironment(),
 		caretakersOrigin,
 		caretakersOriginReason,
 		caretakerStatus: rollCaretakerStatus(),

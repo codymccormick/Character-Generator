@@ -5,14 +5,8 @@
 </script>
 
 <div class="characterDescription">
-	<!-- <h1>Description</h1>
-    <p>{character.name} is a {character.age} year old {character.alignment} {character.gender} {character.race}</p>
-    <p>They grew up a {character.background} because {character.backgroundReason}</p>
-    <p>They currently are a {character.occupation}. They became a {character.occupation} because {character.occupationReason}</p> -->
-
 	{#if character && character.siblings && character.caretakerStatus}
-		<h2><u>Life Plan</u></h2>
-
+	
 		<h3>Birth & Childhood</h3>
 		<p><b>Birth Location:</b> {character.birthplace}</p>
 		<p><b>Description:</b> {character.birthplaceReason}</p>
@@ -25,19 +19,21 @@
 		<p><b>Family Background</b> {character.familyBackground}</p>
 		<p><b>Decription</b> {character.familyBackgroundReason}</p>
 		{#if character.caretakerStatus.status === 'Misfortune'}
-			<p><b>Caretakers misfortune:</b> {character.caretakerStatus.misfortuneDescription}</p>
+			<p><b>Caretakers misfortune:</b> {character.caretakerStatus.misfortune.misfortuneDescription}</p>
 		{:else if character.caretakerStatus.status === 'Death'}
-			<p><b>Caretakers Death:</b> {character.caretakerStatus.deathDescription}</p>
+			<p><b>Caretakers Death:</b> {character.caretakerStatus.death.deathDescription}</p>
 		{:else}
 			<p>{character.caretakerStatus.description}</p>
 		{/if}
 
 		<p><b>Siblings:</b></p>
-		<ul>
+		<div class="siblings-grid">
 			{#each character.siblings as sibling}
-				<li>
-					{sibling.birthOrder}
-					{sibling.gender}
+				<div class="sibling">
+					<p>
+						{sibling.birthOrder}
+						{sibling.gender}
+					</p>
 					{#if sibling.fate}
 						<ul>
 							<li>{sibling.fate.fate}</li>
@@ -50,9 +46,9 @@
 							{/if}
 						</ul>
 					{/if}
-				</li>
+				</div>
 			{/each}
-		</ul>
+		</div>
 	{/if}
 </div>
 
@@ -62,5 +58,15 @@
 		width: 750px;
 		padding: 5px;
 		margin-top: 20px;
+	}
+	.siblings-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 10px;
+	}
+	.sibling {
+		background-color: #f1f1f1;
+		padding: 10px;
+		border-radius: 5px;
 	}
 </style>
