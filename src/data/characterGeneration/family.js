@@ -1,6 +1,7 @@
-import { rollFate, rollMisfortune, rollDeath, randomInRange } from "../scripts/helper"
+import { rollFate, rollMisfortune, rollDeath, } from "../../helpers/helper"
+import { randomInRange } from "../../helpers/random"
 
-export function generateSibling() {
+export const generateSibling = () => {
 	const age = randomInRange(1, 12);
 	const gender = age % 2 ? 'brother' : 'sister';
 	const birthOrder = age <= 6 ? 'younger' : 'older';
@@ -8,7 +9,7 @@ export function generateSibling() {
 	return { birthOrder, gender, fate };
 }
 
-export function generateSiblings() {
+export const generateSiblings = () => {
 	const hasSiblings = randomInRange(1, 6) !== 6;
 	const siblings = [];
 
@@ -24,7 +25,7 @@ export function generateSiblings() {
 	return siblings;
 }
 
-export function rollCaretakerStatus() {
+export const rollCaretakerStatus = () => {
 	const roll = randomInRange(1, 12);
 	const result = {};
 
@@ -42,7 +43,7 @@ export function rollCaretakerStatus() {
 	return result;
 }
 
-export function rollParentEvent(eventType) {
+export const rollParentEvent = (eventType) => {
 	const eventRoll = randomInRange(1, 6);
 	const isEven = eventRoll % 2 === 0;
 	const events = Array.from({ length: 2 }, (_, i) => {
@@ -62,7 +63,7 @@ export function rollParentEvent(eventType) {
 	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 }
 
-export function generateParentEventDescription(events, affectedParents, eventType) {
+export const generateParentEventDescription = (events, affectedParents, eventType) => {
 	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
 	const description = events.find((e) => e && e.description)?.description;
 	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${

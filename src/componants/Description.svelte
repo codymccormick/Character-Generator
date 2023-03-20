@@ -1,5 +1,5 @@
 <script>
-	import { characterStore } from '../../routes/store';
+	import { characterStore } from '../data/store';
 
 	$: character = $characterStore;
 </script>

@@ -1,5 +1,5 @@
 <script>
-	import { generateCharacter } from '../scripts/generateCharacter';
+	import { generateCharacter } from '../data/generateCharacter';
 </script>
 
 <button on:click={generateCharacter}> Generate Character </button>

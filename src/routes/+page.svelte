@@ -1,10 +1,10 @@
 <script>
-	import Header from '../lib/componants/Header.svelte';
-	import StatBlock from '../lib/componants/StatBlock.svelte';
-	import Description from '../lib/componants/Description.svelte';
-	import Button from '../lib/componants/Button.svelte';
+	import Header from '../componants/Header.svelte';
+	import StatBlock from '../componants/StatBlock.svelte';
+	import Description from '../componants/Description.svelte';
+	import Button from '../componants/Button.svelte';
 	import { onMount } from 'svelte';
-	import { generateCharacter } from '../lib/scripts/generateCharacter';
+	import { generateCharacter } from '../data/generateCharacter';
 
 	onMount(() => {
 		generateCharacter();
@@ -34,7 +34,7 @@
 
 <style>
 	body {
-		background-image: url(../lib/pictures/parchmnt.jpg);
+		background-image: url(../pictures/parchmnt.jpg);
 	}
 	.container {
 		display: flex;

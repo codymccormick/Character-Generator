@@ -1,4 +1,4 @@
-import { getRandomItemFromArray, generateRandomItemFromObject } from '../scripts/helper';
+import { getRandomItemFromArray, generateRandomItemFromObject } from '../../helpers/random';
 
 export const races = [
 	'Human',
@@ -79,11 +79,11 @@ export const childhoodEnvironments = {
 	],		
 };
 
-export function generateRace() {
+export const generateRace = () => {
   return getRandomItemFromArray(races);
 }
 
-export function generateBirthplace() {
+export const generateBirthplace = () => {
   return generateRandomItemFromObject(
     birthplaces,
     'birthplace',
@@ -91,7 +91,7 @@ export function generateBirthplace() {
   );
 }
 
-export function generateChildhoodEnvironment() {
+export const generateChildhoodEnvironment = () => {
   return generateRandomItemFromObject(
     childhoodEnvironments,
     'childhoodEnvironment',
