@@ -7,13 +7,13 @@
 <div class="characterDescription">
 	{#if character && character.siblings && character.caretakerStatus}
 	
-		<h3>Birth & Childhood</h3>
+		<h3>Origin</h3>
 		<p><b>Birth Location:</b> {character.birthplace}</p>
 		<p><b>Description:</b> {character.birthplaceReason}</p>
 		<p><b>Childhood Environment:</b> {character.childhoodEnvironment}</p>
 		<p><b>Description:</b> {character.childhoodEnvironmentReason}</p>
 
-		<h3>Origin</h3>
+		<h3>Family</h3>
 		<p><b>Caretakers :</b> {character.caretakersOrigin}</p>
 		<p><b>Description:</b> {character.caretakersOriginReason}</p>
 		<p><b>Family Background</b> {character.familyBackground}</p>

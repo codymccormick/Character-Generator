@@ -2,7 +2,7 @@ import { generateRandomItemFromObject, getRandomItemFromArray } from '../helpers
 import { rollStat, generateAge } from '../helpers/helper';
 import faker from 'faker';
 import { characterStore } from './store';
-import { genders, classes, alignments, occupations, backgrounds } from './characterGeneration/data';
+import { genders, classes, alignments, occupations, } from './characterGeneration/data';
 import {
 	generateRace,
 	generateBirthplace,
@@ -41,12 +41,7 @@ class Character {
 		this.wisdom = rollStat();
 		this.charisma = rollStat();
 
-		// Generate background and occupation properties
-		const { background, backgroundReason } = generateRandomItemFromObject(
-			backgrounds,
-			'background',
-			'backgroundReason'
-		);
+		
 		const { occupation, occupationReason } = generateRandomItemFromObject(
 			occupations,
 			'occupation',
@@ -55,8 +50,6 @@ class Character {
 
 		this.occupation = occupation;
 		this.occupationReason = occupationReason;
-		this.background = background;
-		this.backgroundReason = backgroundReason;
 	}
 }
 
