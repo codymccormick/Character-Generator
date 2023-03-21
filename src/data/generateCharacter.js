@@ -16,6 +16,7 @@ import {
 import { generateRandomItemFromObject, getRandomItemFromArray } from '../helpers/random';
 
 export const generateCharacter = () => {
+	// Generate character background and occupation
 	const { background, backgroundReason } = generateRandomItemFromObject(
 		backgrounds,
 		'background',
@@ -27,6 +28,7 @@ export const generateCharacter = () => {
 		'occupationReason'
 	);
 
+	// Create the character object
 	let character = {
 		name: faker.name.findName(),
 		age: generateAge(),

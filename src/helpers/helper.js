@@ -1,22 +1,24 @@
 import { randomInRange } from './random';
 
-//Calculate ability score modifier
-export function calculateModifier(score) {
+// Calculate ability score modifier
+export const calculateModifier = (score) => {
 	return Math.floor((score - 10) / 2);
-}
+};
 
-//calculate proficiency bonus
-export function calculateProficiencyBonus(level) {
+// Calculate proficiency bonus
+export const calculateProficiencyBonus = (level) => {
 	return Math.ceil(level / 4) + 1;
-}
+};
 
-export function rollStat() {
+// Roll a stat (ability score) by rolling 4d6 and taking the sum of the highest 3 rolls
+export const rollStat = () => {
 	const rolls = Array.from({ length: 4 }, () => randomInRange(1, 6));
 	rolls.sort((a, b) => a - b);
 	return rolls.slice(1).reduce((a, b) => a + b);
-}
+};
 
-export function generateAge() {
+// Generate a character age based on a random roll and predefined age ranges
+export const generateAge = () => {
 	const ageRanges = [
 		{ rollRange: [1, 20], ageRange: { min: 10, max: 20 } },
 		{ rollRange: [21, 59], ageRange: { min: 21, max: 30 } },
@@ -33,9 +35,10 @@ export function generateAge() {
 		age = ageRange && randomInRange(ageRange.ageRange.min, ageRange.ageRange.max);
 	}
 	return age;
-}
+};
 
-export function rollFate() {
+// The rollFate function determines fate based on a random roll
+export const rollFate = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -81,9 +84,10 @@ export function rollFate() {
 	}
 
 	return result;
-}
+};
 
-export function rollMisfortune() {
+// The rollMisfortune function determines misfortune based on a random roll
+export const rollMisfortune = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -138,9 +142,10 @@ export function rollMisfortune() {
 	}
 
 	return result;
-}
+};
 
-export function rollDeath() {
+// The rollDeath function determines death based on a random roll
+export const rollDeath = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -170,9 +175,8 @@ export function rollDeath() {
 		case 8:
 		case 9:
 			result = {
-				death: 'Murdered',
-				description:
-					'From the random pick pocket to a planned assasination. Roll 1d12 - on a 10+, you know who did it'
+				death: 'Murdered by You',
+				description: `${roll >= 10 ? 'You know who did it' : 'You do not know who did it'}`
 			};
 			break;
 		case 10:
@@ -191,4 +195,4 @@ export function rollDeath() {
 	}
 
 	return result;
-}
+};

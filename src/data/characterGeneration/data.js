@@ -1,5 +1,7 @@
+// List of available genders
 export const genders = ['Male', 'Female'];
 
+// List of available character classes
 export const classes = [
 	'Barbarian',
 	'Bard',
@@ -15,6 +17,7 @@ export const classes = [
 	'Wizard'
 ];
 
+// List of available alignments
 export const alignments = [
 	'Chaotic Evil',
 	'Lawful Evil',
@@ -25,6 +28,7 @@ export const alignments = [
 	'Chaotic Good'
 ];
 
+// Descriptions of character occupations and their origins
 export const occupations = {
 	Academic: [
 		'Passionate about knowledge and research from a young age',
@@ -143,10 +147,11 @@ export const occupations = {
 	]
 };
 
+// Character backgrounds and related story hooks
 export const backgrounds = {
 	Acolyte: [
 		'Seeking to uncover ancient texts and artifacts to uncover the secrets of their deity',
-		'Fleeing from their former temple after being framed for a crime they didn"t commit',
+		'Fleeing from their former temple after being framed for a crime they didn\'t commit',
 		'On a pilgrimage to spread the teachings of their deity to new lands'
 	],
 	Charlatan: [
@@ -156,8 +161,8 @@ export const backgrounds = {
 	],
 	Criminal: [
 		'Seeking to gain enough wealth to retire and live a life of luxury',
-		'Attempting to infiltrate a powerful thieves" guild to take them down from the inside',
-		'Framed for a crime they didn"t commit and seeking to clear their name'
+		'Attempting to infiltrate a powerful thieves\' guild to take them down from the inside',
+		'Framed for a crime they didn\'t commit and seeking to clear their name'
 	],
 	Entertainer: [
 		'Searching for inspiration for their next great performance',
@@ -171,7 +176,7 @@ export const backgrounds = {
 	],
 	'Guild Artisan': [
 		'Attempting to create a revolutionary new invention that will change the world',
-		'Seeking to uncover a rival guild"s secrets and gain a competitive advantage',
+		'Seeking to uncover a rival guild\'s secrets and gain a competitive advantage',
 		'Trying to establish a new guild in an area where there is none'
 	],
 	Hermit: [
@@ -180,9 +185,9 @@ export const backgrounds = {
 		'Trying to uncover a long-lost magical artifact that is rumored to be hidden in the wilderness'
 	],
 	Noble: [
-		'Trying to maintain their family"s political power and influence in the face of mounting challenges',
+		'Trying to maintain their family\'s political power and influence in the face of mounting challenges',
 		'Seeking to uncover a conspiracy that threatens to undermine the stability of their kingdom',
-		'Trying to find a suitable spouse to continue their family"s legacy'
+		'Trying to find a suitable spouse to continue their family\'s legacy'
 	],
 	Outlander: [
 		'Seeking to protect their homeland from an invading army',
@@ -211,63 +216,36 @@ export const backgrounds = {
 	]
 };
 
+// Different family backgrounds for characters
 export const familyBackgrounds = {
-	'Homeless ': [
-		'Pan handling in the streets ',
-	],
-	'Entertainers': [
-		'Bards,Minstrels, Poets, Actors '
-	],
-	'Serfs/Servants': [
-		'In service to a feudal lord'
-	],
-	'Free Laborers': [
-		'Self sufficient farmers, fishermen or other subsistence trade',
-	],
-	'Monks or Scholars': [
-		'Parents were immersed in a higher calling'
-	],
-	'Military': [
-		'Career soldiers or mercenaries'
-	],
-	'Tradesman': [
-		'Practiced a minor trade',
-	],
-	'Guild': [
-		'Practiced a popular trade as members of a broad guild'
-	],
-	'Merchant': [
-		'From peddlers to gypsies, trade in everything and anything'
-	],
-	'Minor Noble': [
-		"Part of a knight's, minor liege lord or other minor household",
-	],
-	'Major Noble': [
-		'Member of a recognized noble family with ties to dukes and barons'
-	],
-	'Royalty': [
-		'In the same bloodline as the ruling family'
-	]
-}
+	'Homeless ': ['Pan handling in the streets '],
+	Entertainers: ['Bards,Minstrels, Poets, Actors '],
+	'Serfs/Servants': ['In service to a feudal lord'],
+	'Free Laborers': ['Self sufficient farmers, fishermen or other subsistence trade'],
+	'Monks or Scholars': ['Parents were immersed in a higher calling'],
+	Military: ['Career soldiers or mercenaries'],
+	Tradesman: ['Practiced a minor trade'],
+	Guild: ['Practiced a popular trade as members of a broad guild'],
+	Merchant: ['From peddlers to gypsies, trade in everything and anything'],
+	'Minor Noble': ['Part of a knight\'s, minor liege lord or other minor household'],
+	'Major Noble': ['Member of a recognized noble family with ties to dukes and barons'],
+	Royalty: ['In the same bloodline as the ruling family']
+};
 
+// Different caretaker origins for characters
 export const caretakersOrigins = {
-	'Original Parents': [
-		'Raised by the ones that gave birth to you',
-	],
+	'Original Parents': ['Raised by the ones that gave birth to you'],
 	'Close Family': [
 		'Raised by family members, not your parents (aunt/uncle, grandfather/mother, etc)'
 	],
-	'Adopted': [
-		'Never knew original parents. Raised by a couple not related to you.'
-	],
-	'Institution': [
+	Adopted: ['Never knew original parents. Raised by a couple not related to you.'],
+	Institution: [
 		'Raised at an institution, be it an orphanage, monastery or other.' //Skip to Significant Times in Your Life
 	],
-	'Master' : [
+	Master: [
 		'Sold or given or kidnapped at an early age and raised as property.' //Skip to Significant Times in Your Life
 	],
 	'On Your Own': [
 		'Have had to rely on yourself for as long as you can remember. ' //Skip to Significant Times in Your Life
-	],		
+	]
 };
-

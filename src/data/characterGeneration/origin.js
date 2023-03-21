@@ -79,10 +79,12 @@ export const childhoodEnvironments = {
 	],		
 };
 
+// Generates a random race from the races array
 export const generateRace = () => {
   return getRandomItemFromArray(races);
 }
 
+// Generates a random birthplace with a reason
 export const generateBirthplace = () => {
   return generateRandomItemFromObject(
     birthplaces,
@@ -91,6 +93,7 @@ export const generateBirthplace = () => {
   );
 }
 
+// Generates a random childhood environment with a reason
 export const generateChildhoodEnvironment = () => {
   return generateRandomItemFromObject(
     childhoodEnvironments,

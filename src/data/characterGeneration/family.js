@@ -2,6 +2,7 @@ import { rollFate, rollMisfortune, rollDeath } from '../../helpers/helper';
 import { randomInRange, generateRandomItemFromObject } from '../../helpers/random';
 import { caretakersOrigins, familyBackgrounds, } from './data';
 
+// Generates a sibling object with birth order, gender, and fate
 export const generateSibling = () => {
 	const age = randomInRange(1, 12);
 	const gender = age % 2 ? 'brother' : 'sister';
@@ -10,6 +11,7 @@ export const generateSibling = () => {
 	return { birthOrder, gender, fate };
 };
 
+// Generates an array of sibling objects
 export const generateSiblings = () => {
 	const hasSiblings = randomInRange(1, 6) !== 6;
 	const siblings = [];
@@ -26,6 +28,7 @@ export const generateSiblings = () => {
 	return siblings;
 };
 
+// Determines the status of the character's caretakers and returns an object with relevant data
 export const rollCaretakerStatus = () => {
 	const roll = randomInRange(1, 12);
 	const result = {};
@@ -44,6 +47,7 @@ export const rollCaretakerStatus = () => {
 	return result;
 };
 
+// Generates an event for parents based on eventType ('misfortune' or 'death')
 export const rollParentEvent = (eventType) => {
 	const eventRoll = randomInRange(1, 6);
 	const isEven = eventRoll % 2 === 0;
@@ -64,6 +68,7 @@ export const rollParentEvent = (eventType) => {
 	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 };
 
+// Generates a description for the parent event, combining eventType and affectedParents
 export const generateParentEventDescription = (events, affectedParents, eventType) => {
 	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
 	const description = events.find((e) => e && e.description)?.description;
@@ -72,6 +77,7 @@ export const generateParentEventDescription = (events, affectedParents, eventTyp
 	} affected: ${description}`;
 };
 
+// Generates a random caretaker origin and reason
 export const generateCaretakerOrigin = () => {
 	return generateRandomItemFromObject(
 		caretakersOrigins,
@@ -80,6 +86,7 @@ export const generateCaretakerOrigin = () => {
 	);
 };
 
+// Generates a random family background and reason
 export const generateFamilyBackground = () => {
 	return generateRandomItemFromObject(
 		familyBackgrounds,
