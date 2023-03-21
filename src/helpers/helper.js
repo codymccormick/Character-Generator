@@ -1,26 +1,24 @@
-export const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+import { randomInRange } from './random';
 
-export function getRandomItemFromArray(array) {
-	const randomIndex = Math.floor(Math.random() * array.length);
-	return array[randomIndex];
-}
+// Calculate ability score modifier
+export const calculateModifier = (score) => {
+	return Math.floor((score - 10) / 2);
+};
 
-export function generateRandomItemFromObject(object, itemName, reasonName) {
-	const randomKey = getRandomItemFromArray(Object.keys(object));
-	const randomReason = getRandomItemFromArray(object[randomKey]);
-	return {
-		[itemName]: randomKey,
-		[reasonName]: randomReason
-	};
-}
+// Calculate proficiency bonus
+export const calculateProficiencyBonus = (level) => {
+	return Math.ceil(level / 4) + 1;
+};
 
-export function rollStat() {
-	const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+// Roll a stat (ability score) by rolling 4d6 and taking the sum of the highest 3 rolls
+export const rollStat = () => {
+	const rolls = Array.from({ length: 4 }, () => randomInRange(1, 6));
 	rolls.sort((a, b) => a - b);
 	return rolls.slice(1).reduce((a, b) => a + b);
-}
+};
 
-export function generateAge() {
+// Generate a character age based on a random roll and predefined age ranges
+export const generateAge = () => {
 	const ageRanges = [
 		{ rollRange: [1, 20], ageRange: { min: 10, max: 20 } },
 		{ rollRange: [21, 59], ageRange: { min: 21, max: 30 } },
@@ -32,34 +30,15 @@ export function generateAge() {
 
 	let age;
 	while (!age) {
-		const roll = Math.floor(Math.random() * 100) + 1;
+		const roll = randomInRange(1, 100);
 		const ageRange = ageRanges.find(({ rollRange }) => rollRange.includes(roll));
 		age = ageRange && randomInRange(ageRange.ageRange.min, ageRange.ageRange.max);
 	}
 	return age;
-}
+};
 
-export function generateSiblings() {
-	const hasSiblings = Math.floor(Math.random() * 6) + 1 !== 6;
-	const siblings = [];
-
-	if (hasSiblings) {
-		const numSiblings = Math.floor(Math.random() * 12) + 1;
-		for (let i = 0; i < numSiblings; i++) {
-			const age = Math.floor(Math.random() * 12) + 1;
-			const gender = age % 2 ? 'brother' : 'sister';
-			const birthOrder = age <= 6 ? 'younger' : 'older';
-			const fate = rollFate();
-			siblings.push({ birthOrder, gender, fate });
-		}
-	} else {
-		siblings.push({ gender: null, birthOrder: null, fate: null });
-	}
-
-	return siblings;
-}
-
-function rollFate() {
+// The rollFate function determines fate based on a random roll
+export const rollFate = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -105,9 +84,10 @@ function rollFate() {
 	}
 
 	return result;
-}
+};
 
-function rollMisfortune() {
+// The rollMisfortune function determines misfortune based on a random roll
+export const rollMisfortune = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -162,9 +142,10 @@ function rollMisfortune() {
 	}
 
 	return result;
-}
+};
 
-function rollDeath() {
+// The rollDeath function determines death based on a random roll
+export const rollDeath = () => {
 	const roll = Math.floor(Math.random() * 12) + 1;
 	let result;
 
@@ -194,9 +175,8 @@ function rollDeath() {
 		case 8:
 		case 9:
 			result = {
-				death: 'Murdered',
-				description:
-					'From the random pick pocket to a planned assasination. Roll 1d12 - on a 10+, you know who did it'
+				death: 'Murdered by You',
+				description: `${roll >= 10 ? 'You know who did it' : 'You do not know who did it'}`
 			};
 			break;
 		case 10:
@@ -215,54 +195,4 @@ function rollDeath() {
 	}
 
 	return result;
-}
-
-export function rollCaretakerStatus() {
-	const roll = Math.floor(Math.random() * 12) + 1;
-	const result = {};
-
-	if (roll <= 6) {
-		result.status = 'Alive and well';
-		result.description = 'Your parents or guardians are both doing well';
-	} else if (roll >= 7 && roll <= 10) {
-		const misfortuneRoll = Math.floor(Math.random() * 6) + 1;
-		const isEven = misfortuneRoll % 2 === 0;
-		result.status = 'Misfortune';
-		if (isEven) {
-			const misfortuneResult = rollMisfortune();
-			result.misfortuneDescription = `Both parents or guardians are affected: ${misfortuneResult.description}`;
-			result.misfortune = [misfortuneResult.misfortune, misfortuneResult.misfortune];
-		} else {
-			const affectedParent = Math.floor(Math.random() * 2) + 1;
-			const misfortuneResult = rollMisfortune();
-			result.misfortuneDescription = `Only one parent or guardian is affected: ${
-				affectedParent === 1 ? 'dad' : 'mom'
-			}: ${misfortuneResult.description}`;
-			result.misfortune = [
-				affectedParent === 1 ? misfortuneResult.misfortune : null,
-				affectedParent === 2 ? misfortuneResult.misfortune : null
-			];
-		}
-	} else {
-		const deathRoll = Math.floor(Math.random() * 6) + 1;
-		const isEven = deathRoll % 2 === 0;
-		result.status = 'Death';
-		if (isEven) {
-			const deathResult = rollDeath();
-			result.deathDescription = `Both parents or guardians are affected: ${deathResult.description}`;
-			result.death = [deathResult.death, deathResult.death];
-		} else {
-			const affectedParent = Math.floor(Math.random() * 2) + 1;
-			const deathResult = rollDeath();
-			result.deathDescription = `Only one parent or guardian is affected: ${
-				affectedParent === 1 ? 'dad' : 'mom'
-			}: ${deathResult.description}`;
-			result.death = [
-				affectedParent === 1 ? deathResult.death : null,
-				affectedParent === 2 ? deathResult.death : null
-			];
-		}
-	}
-
-	return result;
-}
+};

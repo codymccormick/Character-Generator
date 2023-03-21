@@ -1,10 +1,9 @@
 <script>
-	import Header from '../lib/componants/Header.svelte';
-	import StatBlock from '../lib/componants/StatBlock.svelte';
-	import Description from '../lib/componants/Description.svelte';
-	import Button from '../lib/componants/Button.svelte';
+	import Header from '../componants/Header.svelte';
+	import Description from '../componants/Description.svelte';
+	import Button from '../componants/Button.svelte';
 	import { onMount } from 'svelte';
-	import { generateCharacter } from '../lib/scripts/generateCharacter';
+	import { generateCharacter } from '../data/generateCharacter';
 
 	onMount(() => {
 		generateCharacter();
@@ -26,15 +25,12 @@
 				<Description />
 			</div>
 		</div>
-		<div class="right">
-			<StatBlock />
-		</div>
 	</main>
 </body>
 
 <style>
 	body {
-		background-image: url(../lib/pictures/parchmnt.jpg);
+		background-image: url(../pictures/parchment.jpg);
 	}
 	.container {
 		display: flex;
@@ -46,9 +42,5 @@
 		justify-content: center;
 		align-items: center;
 		margin: auto;
-		margin-right: -20rem;
-	}
-	.right {
-		margin-left: auto;
 	}
 </style>
