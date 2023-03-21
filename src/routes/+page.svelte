@@ -1,6 +1,5 @@
 <script>
 	import Header from '../componants/Header.svelte';
-	import StatBlock from '../componants/StatBlock.svelte';
 	import Description from '../componants/Description.svelte';
 	import Button from '../componants/Button.svelte';
 	import { onMount } from 'svelte';
@@ -26,9 +25,6 @@
 				<Description />
 			</div>
 		</div>
-		<div class="right">
-			<StatBlock />
-		</div>
 	</main>
 </body>
 
@@ -46,9 +42,5 @@
 		justify-content: center;
 		align-items: center;
 		margin: auto;
-		margin-right: -20rem;
-	}
-	.right {
-		margin-left: auto;
 	}
 </style>
