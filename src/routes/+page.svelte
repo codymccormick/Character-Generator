@@ -15,33 +15,27 @@
 		<Header />
 	</div>
 
-	<div style="display: flex; justify-content: center;">
+	<div class=button style="display: flex; justify-content: center;">
 		<Button />
 	</div>
 
-	<main class="container">
-		<div class="center">
-			<div>
-				<Description />
+	<main>
+		<div class="smui-layout-grid">
+		  <div class="smui-layout-grid__inner">
+			<div class="smui-layout-grid__cell">
+			  <Description />
 			</div>
+		  </div>
 		</div>
-	</main>
+	  </main>
 </body>
 
 <style>
 	body {
-		background-image: url(../pictures/parchment.jpg);
+		background-color: #f5f5f5;;
 	}
-	.container {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-top: 15px;
-	}
-	.center {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin: auto;
+
+	.button {
+		margin-bottom: 10px;
 	}
 </style>
