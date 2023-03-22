@@ -36,6 +36,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		margin-top: 15px;
 	}
 	.center {
 		display: flex;

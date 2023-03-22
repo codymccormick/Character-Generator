@@ -1,5 +1,6 @@
 <script>
 	import { generateCharacter } from '../data/generateCharacter';
+	import Button from '@smui/button';
 </script>
 
-<button on:click={generateCharacter}> Generate Character </button>
+<Button on:click={generateCharacter} variant="unelevated"> Generate Character </Button>
