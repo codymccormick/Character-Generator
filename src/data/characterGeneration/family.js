@@ -52,7 +52,7 @@ export const rollParentEvent = (eventType) => {
 	const events = Array.from({ length: 2 }, (_, i) => {
 		if (isEven || i === (eventRoll % 2) - 1) {
 			const eventResult = eventType === 'misfortune' ? rollMisfortune() : rollDeath();
-			return eventResult[eventType];
+			return eventResult;
 		} else {
 			return null;
 		}
@@ -63,17 +63,18 @@ export const rollParentEvent = (eventType) => {
 		.filter((p) => p);
 
 	const eventDescription = generateParentEventDescription(events, affectedParents, eventType);
+	console.log( {[`${eventType}Description`]: eventDescription });
 	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 };
 
 // Generates a description for the parent event, combining eventType, affectedParents, and description
 export const generateParentEventDescription = (events, affectedParents, eventType) => {
-	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
+	const affected = affectedParents.length === 2 ? 'Both' : affectedParents;
 	const description = events.find((e) => e && e.description)?.description;
 	const eventDescription = events
-		.filter((e) => e && e[eventType])
-		.map((e) => e[eventType].description)
-		.join(', ');
+	.filter((e) => e && e[eventType])
+	.map((e) => `${e[eventType]}: ${e[eventType].description}`)
+	.join(', ');
 	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${
 		affectedParents.length > 1 ? 's are' : ' is'
 	} affected: ${eventDescription}. ${description}`;
