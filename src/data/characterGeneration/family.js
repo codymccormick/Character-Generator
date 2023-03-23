@@ -38,13 +38,16 @@ export const rollCaretakerStatus = () => {
 export const rollParentEvent = (eventType) => {
 	const eventRoll = randomInRange(1, 6);
 	const isEven = eventRoll % 2 === 0;
+	const parentToAffect = isEven ? null : randomInRange(0, 1); // null for both parents, 0 for dad, 1 for mom
+
 	const events = Array.from({ length: 2 }, (_, i) =>
-		isEven || randomInRange(0, 1) === i
+		isEven || parentToAffect === i
 			? eventType === 'misfortune'
 				? rollMisfortune()
 				: rollDeath()
 			: null
 	);
+
 	const eventDescription = events
 		.map((e, i) =>
 			e
