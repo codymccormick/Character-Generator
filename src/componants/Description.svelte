@@ -1,64 +1,91 @@
 <script>
 	import { characterStore } from '../data/store';
+	import Paper, { Content } from '@smui/paper';
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
 
 	$: character = $characterStore;
+	$: isLoading = !character;
 </script>
 
-<div class="characterDescription">
-	{#if character && character.siblings && character.caretakerStatus}
-	
-		<h3>Origin</h3>
-		<p><b>Birth Location:</b> {character.birthplace}</p>
-		<p><b>Description:</b> {character.birthplaceReason}</p>
-		<p><b>Childhood Environment:</b> {character.childhoodEnvironment}</p>
-		<p><b>Description:</b> {character.childhoodEnvironmentReason}</p>
-
-		<h3>Family</h3>
-		<p><b>Caretakers :</b> {character.caretakersOrigin}</p>
-		<p><b>Description:</b> {character.caretakersOriginReason}</p>
-		<p><b>Family Background</b> {character.familyBackground}</p>
-		<p><b>Decription</b> {character.familyBackgroundReason}</p>
-		{#if character.caretakerStatus.status === 'Misfortune'}
-			<p><b>Caretakers misfortune:</b> {character.caretakerStatus.misfortune.misfortuneDescription}</p>
-		{:else if character.caretakerStatus.status === 'Death'}
-			<p><b>Caretakers Death:</b> {character.caretakerStatus.death.deathDescription}</p>
-		{:else}
-			<p>{character.caretakerStatus.description}</p>
-		{/if}
-
-		<p><b>Siblings:</b></p>
-		<div class="siblings-grid">
-			{#each character.siblings as sibling}
-				<div class="sibling">
-					<p>
-						{sibling.birthOrder}
-						{sibling.gender}
-					</p>
-					{#if sibling.fate}
-						<ul>
-							<li>{sibling.fate.fate}</li>
-							<li>{sibling.fate.description}</li>
-							{#if sibling.fate.misfortune}
-								<li>{sibling.fate.misfortune.description}</li>
+{#if isLoading}
+	<p>Loading...</p>
+{:else}
+	<Paper color="primary" variant="outlined" class="mdc-theme--primary">
+		<div class="characterDescription">
+			{#if character && character.siblings && character.caretakerStatus}
+				<LayoutGrid>
+					<Cell class="section">
+						<h2>Origin</h2>
+						<div class="subsection">
+							<Content
+								><b>Birth Location:</b>
+								{character.birthplace}: {character.birthplaceReason}
+							</Content>
+							<Content
+								><b>Childhood Environment:</b>
+								{character.childhoodEnvironment}: {character.childhoodEnvironmentReason}
+							</Content>
+						</div>
+					</Cell>
+					<Cell class="section">
+						<h2>Family Background</h2>
+						<div class="subsection">
+							<Content
+								><b>Caretakers:</b>
+								{character.caretakersOrigin}: {character.caretakersOriginReason}
+							</Content>
+							<Content
+								><b>Family Background:</b>
+								{character.familyBackground}: {character.familyBackgroundReason}
+							</Content>
+							{#if character.caretakerStatus.status === 'Misfortune'}
+								<Content>
+									<b>Caretakers' misfortune:</b>
+									{character.caretakerStatus.misfortune.misfortuneDescription}
+								</Content>
+							{:else if character.caretakerStatus.status === 'Death'}
+								<Content
+									><b>Caretakers' Death:</b>
+									{character.caretakerStatus.death.eventDescription}
+								</Content>
+							{:else}
+								<h3>{character.caretakerStatus.description}</h3>
 							{/if}
-							{#if sibling.fate.death}
-								<li>{sibling.fate.death.description}</li>
+						</div>
+					</Cell>
+					<Cell class="section">
+						<h2>Sibling Details</h2>
+						<div class="subsection siblings-grid">
+							{#if character.siblings.length > 0 && character.siblings[0].gender !== null}
+								{#each character.siblings as sibling}
+									<div class="sibling">
+										<Content><b>{sibling.birthOrder} {sibling.gender}</b></Content>
+										{#if sibling.fate}
+											<ul>
+												<li>{sibling.fate.fate}</li>
+												<li>{sibling.fate.description}</li>
+												{#if sibling.fate.misfortune}
+													<li>{sibling.fate.misfortune.description}</li>
+												{/if}
+												{#if sibling.fate.death}
+													<li>{sibling.fate.death.description}</li>
+												{/if}
+											</ul>
+										{/if}
+									</div>
+								{/each}
+							{:else}
+								<Content><b>None</b></Content>
 							{/if}
-						</ul>
-					{/if}
-				</div>
-			{/each}
+						</div>
+					</Cell>
+				</LayoutGrid>
+			{/if}
 		</div>
-	{/if}
-</div>
+	</Paper>
+{/if}
 
 <style>
-	.characterDescription {
-		border: 3px solid #a73335;
-		width: 750px;
-		padding: 5px;
-		margin-top: 20px;
-	}
 	.siblings-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -68,5 +95,18 @@
 		background-color: #f1f1f1;
 		padding: 10px;
 		border-radius: 5px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+	ul {
+		margin: 0;
+		padding-left: 1.5em;
+		list-style-type: none;
+	}
+	li::before {
+		content: '•';
+		color: #2c3e50;
+		display: inline-block;
+		position: relative;
+		left: -1em;
 	}
 </style>
