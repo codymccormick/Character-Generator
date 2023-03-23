@@ -41,12 +41,16 @@
 							{#if character.caretakerStatus.status === 'Misfortune'}
 								<Content>
 									<b>Caretakers' misfortune:</b><br />
-									{@html character.caretakerStatus.misfortune.misfortuneDescription}
+									{#each character.caretakerStatus.misfortune.misfortuneDescription as { parent, eventName, description }}
+										{parent}<br />{eventName}<br />{description}<br /><br />
+									{/each}
 								</Content>
 							{:else if character.caretakerStatus.status === 'Death'}
 								<Content>
 									<b>Caretakers' Death:</b><br />
-									{@html character.caretakerStatus.death.deathDescription}
+									{#each character.caretakerStatus.death.deathDescription as { parent, eventName, description }}
+										{parent}<br />{eventName}<br />{description}<br /><br />
+									{/each}
 								</Content>
 							{:else}
 								<h3>{character.caretakerStatus.description}</h3>
