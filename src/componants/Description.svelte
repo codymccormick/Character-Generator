@@ -40,13 +40,13 @@
 							</Content>
 							{#if character.caretakerStatus.status === 'Misfortune'}
 								<Content>
-									<b>Caretakers' misfortune:</b>
-									{character.caretakerStatus.misfortune.misfortuneDescription}
+									<b>Caretakers' misfortune:</b><br />
+									{@html character.caretakerStatus.misfortune.misfortuneDescription}
 								</Content>
 							{:else if character.caretakerStatus.status === 'Death'}
-								<Content
-									><b>Caretakers' Death:</b>
-									{character.caretakerStatus.death.eventDescription}
+								<Content>
+									<b>Caretakers' Death:</b><br />
+									{@html character.caretakerStatus.death.deathDescription}
 								</Content>
 							{:else}
 								<h3>{character.caretakerStatus.description}</h3>
