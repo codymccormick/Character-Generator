@@ -1,6 +1,7 @@
 <script>
 	import { characterStore } from '../data/store';
-	import Paper, { Title, Subtitle, Content } from '@smui/paper';
+	import Paper, { Content } from '@smui/paper';
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
 
 	$: character = $characterStore;
 	$: isLoading = !character;
@@ -12,55 +13,73 @@
 	<Paper color="primary" variant="outlined" class="mdc-theme--primary">
 		<div class="characterDescription">
 			{#if character && character.siblings && character.caretakerStatus}
-				<div class="section">
-					<Title>Origin</Title>
-					<div class="subsection">
-						<Content><b>Birth Location:</b> {character.birthplace}: {character.birthplaceReason}</Content>
-						<Content><b>Childhood Environment:</b> {character.childhoodEnvironment}: {character.childhoodEnvironmentReason}</Content>
-					</div>
-				</div>
-				<div class="section">
-					<Title>Family Background</Title>
-					<div class="subsection">
-						<Content><b>Caretakers:</b> {character.caretakersOrigin}: {character.caretakersOriginReason}</Content>
-						<Content><b>Family Background:</b> {character.familyBackground}: {character.familyBackgroundReason}</Content>
-						{#if character.caretakerStatus.status === 'Misfortune'}
-							<Content>
-								<b>Caretakers' misfortune:</b>
-								{character.caretakerStatus.misfortune.misfortuneDescription}
-							</Content>
-						{:else if character.caretakerStatus.status === 'Death'}
+				<LayoutGrid>
+					<Cell class="section">
+						<h2>Origin</h2>
+						<div class="subsection">
 							<Content
-								><b>Caretakers' Death:</b>
-								{character.caretakerStatus.death.deathDescription}</Content
-							>
-						{:else}
-							<Subtitle>{character.caretakerStatus.description}</Subtitle>
-						{/if}
-					</div>
-				</div>
-				<div class="section">
-					<Title>Sibling Details</Title>
-					<div class="subsection siblings-grid">
-						{#each character.siblings as sibling}
-							<div class="sibling">
-								<Content><b>{sibling.birthOrder} {sibling.gender}</b></Content>
-								{#if sibling.fate}
-									<ul>
-										<li>{sibling.fate.fate}</li>
-										<li>{sibling.fate.description}</li>
-										{#if sibling.fate.misfortune}
-											<li>{sibling.fate.misfortune.description}</li>
+								><b>Birth Location:</b>
+								{character.birthplace}: {character.birthplaceReason}
+							</Content>
+							<Content
+								><b>Childhood Environment:</b>
+								{character.childhoodEnvironment}: {character.childhoodEnvironmentReason}
+							</Content>
+						</div>
+					</Cell>
+					<Cell class="section">
+						<h2>Family Background</h2>
+						<div class="subsection">
+							<Content
+								><b>Caretakers:</b>
+								{character.caretakersOrigin}: {character.caretakersOriginReason}
+							</Content>
+							<Content
+								><b>Family Background:</b>
+								{character.familyBackground}: {character.familyBackgroundReason}
+							</Content>
+							{#if character.caretakerStatus.status === 'Misfortune'}
+								<Content>
+									<b>Caretakers' misfortune:</b>
+									{character.caretakerStatus.misfortune.misfortuneDescription}
+								</Content>
+							{:else if character.caretakerStatus.status === 'Death'}
+								<Content
+									><b>Caretakers' Death:</b>
+									{character.caretakerStatus.death.eventDescription}
+								</Content>
+							{:else}
+								<h3>{character.caretakerStatus.description}</h3>
+							{/if}
+						</div>
+					</Cell>
+					<Cell class="section">
+						<h2>Sibling Details</h2>
+						<div class="subsection siblings-grid">
+							{#if character.siblings.length > 0 && character.siblings[0].gender !== null}
+								{#each character.siblings as sibling}
+									<div class="sibling">
+										<Content><b>{sibling.birthOrder} {sibling.gender}</b></Content>
+										{#if sibling.fate}
+											<ul>
+												<li>{sibling.fate.fate}</li>
+												<li>{sibling.fate.description}</li>
+												{#if sibling.fate.misfortune}
+													<li>{sibling.fate.misfortune.description}</li>
+												{/if}
+												{#if sibling.fate.death}
+													<li>{sibling.fate.death.description}</li>
+												{/if}
+											</ul>
 										{/if}
-										{#if sibling.fate.death}
-											<li>{sibling.fate.death.description}</li>
-										{/if}
-									</ul>
-								{/if}
-							</div>
-						{/each}
-					</div>
-				</div>
+									</div>
+								{/each}
+							{:else}
+								<Content><b>None</b></Content>
+							{/if}
+						</div>
+					</Cell>
+				</LayoutGrid>
 			{/if}
 		</div>
 	</Paper>

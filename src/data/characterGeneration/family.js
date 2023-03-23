@@ -13,19 +13,17 @@ export const generateSibling = () => {
 
 // Generates an array of sibling objects
 export const generateSiblings = () => {
-	const hasSiblings = randomInRange(1, 6) !== 6;
-	const siblings = [];
+    const hasSiblings = randomInRange(1, 6) !== 6;
+    const siblings = [];
 
-	if (hasSiblings) {
-		const numSiblings = randomInRange(1, 12);
-		for (let i = 0; i < numSiblings; i++) {
-			siblings.push(generateSibling());
-		}
-	} else {
-		siblings.push({ gender: null, birthOrder: null, fate: null });
-	}
+    if (hasSiblings) {
+        const numSiblings = randomInRange(1, 12);
+        for (let i = 0; i < numSiblings; i++) {
+            siblings.push(generateSibling());
+        }
+    }
 
-	return siblings;
+    return siblings;
 };
 
 // Determines the status of the character's caretakers and returns an object with relevant data
@@ -68,13 +66,17 @@ export const rollParentEvent = (eventType) => {
 	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 };
 
-// Generates a description for the parent event, combining eventType and affectedParents
+// Generates a description for the parent event, combining eventType, affectedParents, and description
 export const generateParentEventDescription = (events, affectedParents, eventType) => {
 	const affected = affectedParents.length === 2 ? 'Both' : affectedParents[0];
 	const description = events.find((e) => e && e.description)?.description;
+	const eventDescription = events
+		.filter((e) => e && e[eventType])
+		.map((e) => e[eventType].description)
+		.join(', ');
 	return `${affected} parent${affectedParents.length > 1 ? 's' : ''} or guardian${
 		affectedParents.length > 1 ? 's are' : ' is'
-	} affected: ${description}`;
+	} affected: ${eventDescription}. ${description}`;
 };
 
 // Generates a random caretaker origin and reason

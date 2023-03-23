@@ -1,17 +1,11 @@
-<header>
-	<div id="title">
-		<h1>D&D Character Generator</h1>
-	</div>
-</header>
+<script>
+	  import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
+</script>
 
-<style>
-	header {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-		background-color: #333;
-		color: #fff;
-		margin-bottom: 10px;
-	}
-</style>
+	<TopAppBar variant="static">
+		<Row>
+		  <Section class=title>
+			<Title>D&D Character Generator</Title>
+		  </Section>
+		</Row>
+	  </TopAppBar>
