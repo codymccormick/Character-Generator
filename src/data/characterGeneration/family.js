@@ -36,44 +36,52 @@ export const rollCaretakerStatus = () => {
 
 // Generates an event for parents based on eventType ('misfortune' or 'death')
 export const rollParentEvent = (eventType) => {
-	const eventRoll = randomInRange(1, 6);
-	const isEven = eventRoll % 2 === 0;
-	const parentToAffect = isEven ? null : randomInRange(0, 1); // null for both parents, 0 for dad, 1 for mom
+    const eventRoll = randomInRange(1, 6);
+    const isEven = eventRoll % 2 === 0;
+    let parentToAffect;
+    if (isEven) {
+        parentToAffect = null;
+    } else {
+        parentToAffect = randomInRange(0, 1);
+    }
 
-	const events = Array.from({ length: 2 }, (_, i) =>
-		isEven || parentToAffect === i
-			? eventType === 'misfortune'
-				? rollMisfortune()
-				: rollDeath()
-			: null
-	);
+    const events = [];
+    for (let i = 0; i < 2; i++) {
+        if (isEven || parentToAffect === i) {
+            if (eventType === 'misfortune') {
+                events.push(rollMisfortune());
+            } else {
+                events.push(rollDeath());
+            }
+        } else {
+            events.push(null);
+        }
+    }
 
-	const eventDescription = events
-		.map((e, i) =>
-			e
-				? { parent: i === 0 ? 'Dad' : 'Mom', eventName: e[eventType], description: e.description }
-				: null
-		)
-		.filter((d) => d);
+    const eventDescription = [];
+    for (let i = 0; i < events.length; i++) {
+        if (events[i]) {
+            const parent = i === 0 ? 'Dad' : 'Mom';
+            const eventName = events[i][eventType];
+            const description = events[i].description;
+            eventDescription.push({ parent, eventName, description });
+        }
+    }
 
-	return { [eventType]: events, [`${eventType}Description`]: eventDescription };
+    return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 };
 
-// Generates a description for the parent event, combining eventType, affectedParents, and description
 export const generateParentEventDescription = (events, affectedParents, eventType) => {
-	const eventDescriptions = events
-		.map((e, i) => {
-			if (e && e[eventType]) {
-				const parent = i === 0 ? 'Dad' : 'Mom';
-				const eventName = e[eventType];
-				const description = e.description;
-				return { parent, eventName, description };
-			}
-			return null;
-		})
-		.filter((d) => d);
-
-	return eventDescriptions;
+    const eventDescriptions = [];
+    for (let i = 0; i < events.length; i++) {
+        if (events[i] && events[i][eventType]) {
+            const parent = i === 0 ? 'Dad' : 'Mom';
+            const eventName = events[i][eventType];
+            const description = events[i].description;
+            eventDescriptions.push({ parent, eventName, description });
+        }
+    }
+    return eventDescriptions;
 };
 
 // Generates a random caretaker origin and reason
