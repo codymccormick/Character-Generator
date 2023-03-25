@@ -84,7 +84,6 @@ export const generateParentEventDescription = (events, eventType) => {
 	for (let i = 0; i < events.length; i++) {
 		// loop through each event in the array
 		if (events[i] && events[i][eventType]) {
-			// check if the event matches the specified eventType
 			const parent = i === 0 ? 'Dad' : 'Mom'; // determine which parent the event applies to
 			const eventName = events[i][eventType]; // get the name of the event
 			const description = events[i].description; // get the event description
