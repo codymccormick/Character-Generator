@@ -71,7 +71,7 @@ export const rollParentEvent = (eventType) => {
     return { [eventType]: events, [`${eventType}Description`]: eventDescription };
 };
 
-export const generateParentEventDescription = (events, affectedParents, eventType) => {
+export const generateParentEventDescription = (events, eventType) => {
     const eventDescriptions = [];
     for (let i = 0; i < events.length; i++) {
         if (events[i] && events[i][eventType]) {
