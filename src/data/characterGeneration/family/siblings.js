@@ -1,5 +1,5 @@
 import { randomInRange } from '../../../helpers/random';
-import { rollFate } from '../../../helpers/helper';
+import { rollFate } from '../misc/fate';
 
 export const generateSibling = () => ({
 	birthOrder: randomInRange(1, 12) <= 6 ? 'younger' : 'older',

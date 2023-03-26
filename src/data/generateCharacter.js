@@ -1,22 +1,25 @@
-import { generateRandomItemFromObject, getRandomItemFromArray } from '../helpers/random';
-import { rollStat, generateAge } from '../helpers/helper';
 import faker from 'faker';
 import { characterStore } from './store';
-import { genders, classes, alignments, occupations } from './characterGeneration/data';
+import { rollStat } from '../helpers/helper';
+import { getRandomItemFromArray } from '../helpers/random';
+import { classes } from './characterGeneration/misc/classes';
+import { generateAge } from './characterGeneration/misc/age';
 import { generateRace } from './characterGeneration/origins/race';
-import { generateBirthplace } from './characterGeneration/origins/birthplace';
-import { generateChildhoodEnvironment } from './characterGeneration/origins/childhoodEnvironment';
+import { alignments } from './characterGeneration/misc/alignments';
+import { generateOccupation } from './characterGeneration/occupation';
 import { generateSiblings } from './characterGeneration/family/siblings';
-import { generateFamilyBackground } from './characterGeneration/family/familyBackground';
+import { generateBirthplace } from './characterGeneration/origins/birthplace';
 import { rollCaretakerStatus } from './characterGeneration/family/caretakerStatus';
 import { generateCaretakerOrigin } from './characterGeneration/family/caretakerOrigins';
+import { generateFamilyBackground } from './characterGeneration/family/familyBackground';
+import { generateChildhoodEnvironment } from './characterGeneration/origins/childhoodEnvironment';
 
 class Character {
 	constructor() {
 		this.name = faker.name.findName();
 		this.age = generateAge();
 		this.race = generateRace();
-		this.gender = getRandomItemFromArray(genders);
+		this.gender = Math.random() > 0.5 ? 'Male' : 'Female';
 		this.class = getRandomItemFromArray(classes);
 		this.alignment = getRandomItemFromArray(alignments);
 
@@ -29,6 +32,8 @@ class Character {
 		Object.assign(this, generateFamilyBackground());
 		this.siblings = generateSiblings();
 
+		Object.assign(this, generateOccupation());
+
 		// Roll ability scores
 		this.strength = rollStat();
 		this.dexterity = rollStat();
@@ -36,15 +41,6 @@ class Character {
 		this.intelligence = rollStat();
 		this.wisdom = rollStat();
 		this.charisma = rollStat();
-
-		const { occupation, occupationReason } = generateRandomItemFromObject(
-			occupations,
-			'occupation',
-			'occupationReason'
-		);
-
-		this.occupation = occupation;
-		this.occupationReason = occupationReason;
 	}
 }
 
