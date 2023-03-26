@@ -6,11 +6,16 @@ export const generateCaretakerOrigin = () =>
 
 // Different caretaker origins for characters
 export const caretakersOrigins = {
-	'Original Parents': ['Raised by the ones that gave birth to you'],
-	'Close Family': [
-		'Raised by family members, not your parents (aunt/uncle, grandfather/mother, etc)'
+	'Original Parents': [
+		'Raised by the ones that gave birth to you'
 	],
-	Adopted: ['Never knew original parents. Raised by a couple not related to you.'],
+	'Close Family': [
+		'You were raised by your aunt and uncle',
+		'You were raised by your grandparents'
+	],
+	Adopted: [
+		'Never knew original parents. Raised by a couple not related to you.'
+	],
 	Institution: [
 		'Raised at an institution, be it an orphanage, monastery or other.' //Skip to Significant Times in Your Life
 	],

@@ -29,7 +29,7 @@ export const rollDeath = () => {
 		case 8:
 		case 9:
 			result = {
-				death: 'Murdered by You',
+				death: 'Murdered',
 				description: `${roll >= 10 ? 'You know who did it' : 'You do not know who did it'}`
 			};
 			break;
