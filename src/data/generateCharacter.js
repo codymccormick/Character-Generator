@@ -13,6 +13,7 @@ import { rollCaretakerStatus } from './characterGeneration/family/caretakerStatu
 import { generateCaretakerOrigin } from './characterGeneration/family/caretakerOrigins';
 import { generateFamilyBackground } from './characterGeneration/family/familyBackground';
 import { generateChildhoodEnvironment } from './characterGeneration/origins/childhoodEnvironment';
+import { generateFateEvents } from './characterGeneration/misc/fate';
 
 class Character {
 	constructor() {
@@ -33,6 +34,8 @@ class Character {
 		this.siblings = generateSiblings();
 
 		Object.assign(this, generateOccupation());
+
+		this.fateEvents = generateFateEvents();
 
 		// Roll ability scores
 		this.strength = rollStat();
