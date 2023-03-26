@@ -1,19 +1,5 @@
-import { rollFate, rollMisfortune, rollDeath } from '../../helpers/helper';
-import { randomInRange, generateRandomItemFromObject } from '../../helpers/random';
-import { caretakersOrigins, familyBackgrounds } from './data';
-
-// Generates a sibling object with birth order, gender, and fate
-export const generateSibling = () => ({
-	birthOrder: randomInRange(1, 12) <= 6 ? 'younger' : 'older',
-	gender: randomInRange(1, 12) % 2 ? 'brother' : 'sister',
-	fate: rollFate()
-});
-
-// Generates an array of sibling objects
-export const generateSiblings = () =>
-	randomInRange(1, 6) !== 6
-		? Array.from({ length: randomInRange(1, 12) }, () => generateSibling())
-		: [];
+import { randomInRange } from '../../../helpers/random';
+import { rollMisfortune, rollDeath } from '../../../helpers/helper';
 
 // Determines the caretaker status based on a random roll
 export const rollCaretakerStatus = () => {
@@ -92,11 +78,3 @@ export const generateParentEventDescription = (events, eventType) => {
 	}
 	return eventDescriptions; // return the array of event descriptions
 };
-
-// Generates a random caretaker origin and reason
-export const generateCaretakerOrigin = () =>
-	generateRandomItemFromObject(caretakersOrigins, 'caretakersOrigin', 'caretakersOriginReason');
-
-// Generates a random family background and reason
-export const generateFamilyBackground = () =>
-	generateRandomItemFromObject(familyBackgrounds, 'familyBackground', 'familyBackgroundReason');

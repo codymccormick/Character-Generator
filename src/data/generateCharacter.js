@@ -2,18 +2,14 @@ import { generateRandomItemFromObject, getRandomItemFromArray } from '../helpers
 import { rollStat, generateAge } from '../helpers/helper';
 import faker from 'faker';
 import { characterStore } from './store';
-import { genders, classes, alignments, occupations, } from './characterGeneration/data';
-import {
-	generateRace,
-	generateBirthplace,
-	generateChildhoodEnvironment
-} from './characterGeneration/origin';
-import {
-	generateSiblings,
-	rollCaretakerStatus,
-	generateFamilyBackground,
-	generateCaretakerOrigin
-} from './characterGeneration/family';
+import { genders, classes, alignments, occupations } from './characterGeneration/data';
+import { generateRace } from './characterGeneration/origins/race';
+import { generateBirthplace } from './characterGeneration/origins/birthplace';
+import { generateChildhoodEnvironment } from './characterGeneration/origins/childhoodEnvironment';
+import { generateSiblings } from './characterGeneration/family/siblings';
+import { generateFamilyBackground } from './characterGeneration/family/familyBackground';
+import { rollCaretakerStatus } from './characterGeneration/family/caretakerStatus';
+import { generateCaretakerOrigin } from './characterGeneration/family/caretakerOrigins';
 
 class Character {
 	constructor() {
@@ -41,7 +37,6 @@ class Character {
 		this.wisdom = rollStat();
 		this.charisma = rollStat();
 
-		
 		const { occupation, occupationReason } = generateRandomItemFromObject(
 			occupations,
 			'occupation',
