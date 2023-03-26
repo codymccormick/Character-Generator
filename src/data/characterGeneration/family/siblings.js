@@ -10,5 +10,5 @@ export const generateSibling = () => ({
 // Generates an array of sibling objects
 export const generateSiblings = () =>
 	randomInRange(1, 6) !== 6
-		? Array.from({ length: randomInRange(1, 12) }, () => generateSibling())
+		? Array.from({ length: randomInRange(1, 6) }, () => generateSibling())
 		: [];

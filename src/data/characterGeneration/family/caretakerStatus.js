@@ -1,6 +1,6 @@
 import { randomInRange } from '../../../helpers/random';
-import { rollDeath } from '../misc/death';
-import { rollMisfortune } from '../misc/misfortune';
+import { rollDeath } from '../significantEvents/death';
+import { rollMisfortune } from '../significantEvents/misfortune';
 
 // Determines the caretaker status based on a random roll
 export const rollCaretakerStatus = () => {

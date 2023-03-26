@@ -1,5 +1,5 @@
-import { rollMisfortune } from "../misc/misfortune";
-import { rollDeath } from "../misc/death";
+import { rollMisfortune } from "../significantEvents/misfortune";
+import { rollDeath } from "../significantEvents/death";
 
 // The rollFate function determines fate based on a random roll
 export const rollFate = () => {
