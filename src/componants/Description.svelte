@@ -113,9 +113,6 @@
 										<b>{event.title}:</b>
 										{event.type}<br />
 										{event.description}
-										{#if event.months}
-											<br /><b>Duration:</b> {event.months} months
-										{/if}
 										{#if event.type === 'Long Lost Someone'}
 											<div class="sibling">
 												<b>{event.sibling.birthOrder} {event.sibling.gender}</b>
@@ -130,6 +127,47 @@
 															<li>{event.sibling.fate.death.description}</li>
 														{/if}
 													</ul>
+												{/if}
+											</div>
+										{/if}
+										{#if event.title === 'Made a friend'}
+											<div class="friend">
+												<b>Friend: {event.name}</b>
+												<ul>
+													<li>{event.type}<br /></li>
+													<li>{event.description}</li>
+												</ul>
+												{#if event.heft}
+													<br /><b>Heft:</b>
+													{event.heft.heft}: {event.heft.description}
+												{/if}
+											</div>
+										{/if}
+										{#if event.title === 'Made an enemy' || event.enemy}
+											<div class="enemy">
+												<b>Enemy: {event.name || event.enemy.name}</b>
+												<ul>
+													<li>{event.type}<br /></li>
+													<li>{event.description}</li>
+													<li>
+														<b>Who hates whom:</b>
+														{event.enemy && event.enemy.hates.hates}<br />
+													</li>
+													<li>
+														<b>Intensity level:</b>
+														{event.enemy && event.enemy.intensity.intensity}<br />
+													</li>
+													{#if event.enemy && event.enemy.animosity}
+														<li>
+															<b>Animosity:</b>
+															{event.enemy.animosity.animosity}<br />
+															{event.enemy.animosity.description}
+														</li>
+													{/if}
+												</ul>
+												{#if event.heft}
+													<br /><b>Heft:</b>
+													{event.heft.heft}: {event.heft.description}
 												{/if}
 											</div>
 										{/if}
@@ -152,7 +190,9 @@
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 10px;
 	}
-	.sibling {
+	.sibling,
+	.friend,
+	.enemy {
 		background-color: #f1f1f1;
 		padding: 10px;
 		border-radius: 5px;

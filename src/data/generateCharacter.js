@@ -1,26 +1,26 @@
-import faker from 'faker';
-import { characterStore } from './store';
-import { rollStat } from '../helpers/helper';
-import { getRandomItemFromArray } from '../helpers/random';
-import { classes } from './characterGeneration/misc/classes';
-import { generateAge } from './characterGeneration/misc/age';
-import { generateRace } from './characterGeneration/origins/race';
-import { alignments } from './characterGeneration/misc/alignments';
-import { generateOccupation } from './characterGeneration/occupation';
-import { generateSiblings } from './characterGeneration/family/siblings';
-import { generateBirthplace } from './characterGeneration/origins/birthplace';
-import { rollCaretakerStatus } from './characterGeneration/family/caretakerStatus';
-import { generateCaretakerOrigin } from './characterGeneration/family/caretakerOrigins';
-import { generateFamilyBackground } from './characterGeneration/family/familyBackground';
-import { generateChildhoodEnvironment } from './characterGeneration/origins/childhoodEnvironment';
-import { generateFateEvents } from './characterGeneration/significantEvents/fate';
+import faker from "faker";
+import { characterStore } from "./store";
+import { rollStat } from "../helpers/helper";
+import { getRandomItemFromArray } from "../helpers/random";
+import { classes } from "./characterGeneration/misc/classes";
+import { generateAge } from "./characterGeneration/misc/age";
+import { generateRace } from "./characterGeneration/origins/race";
+import { alignments } from "./characterGeneration/misc/alignments";
+import { generateOccupation } from "./characterGeneration/occupation";
+import { generateSiblings } from "./characterGeneration/family/siblings";
+import { generateBirthplace } from "./characterGeneration/origins/birthplace";
+import { rollCaretakerStatus } from "./characterGeneration/family/caretakerStatus";
+import { generateCaretakerOrigin } from "./characterGeneration/family/caretakerOrigins";
+import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
+import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
+import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
 
 class Character {
 	constructor() {
 		this.name = faker.name.findName();
 		this.age = generateAge();
 		this.race = generateRace();
-		this.gender = Math.random() > 0.5 ? 'Male' : 'Female';
+		this.gender = Math.random() > 0.5 ? "Male" : "Female";
 		this.class = getRandomItemFromArray(classes);
 		this.alignment = getRandomItemFromArray(alignments);
 
@@ -36,6 +36,16 @@ class Character {
 		Object.assign(this, generateOccupation());
 
 		this.fateEvents = generateFateEvents();
+		this.enemies = [];
+		this.friends = [];
+
+		for (const event of this.fateEvents) {
+			if (event.title === "Made an enemy") {
+				this.enemies.push(event);
+			} else if (event.title === "Made a friend") {
+				this.friends.push(event);
+			}
+		}
 
 		// Roll ability scores
 		this.strength = rollStat();

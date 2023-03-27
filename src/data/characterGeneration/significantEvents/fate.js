@@ -3,7 +3,6 @@ import { generateWindfall } from './windfall.js';
 import { generateFriend } from './friend.js';
 import { generateEnemy } from './enemy.js';
 import { generateCupidStrikes } from './cupidStrikes.js';
-// Import the required functions from other files
 // import { generateImprovement } from './personalImprovement.js';
 
 export function generateFateEvents() {
