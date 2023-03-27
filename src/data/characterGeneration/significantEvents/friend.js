@@ -1,9 +1,18 @@
 import faker from "faker";
 import { generateHeft } from "./heft";
+import { BaseCharacter } from "../BaseCharacter";
+
+export class Friend extends BaseCharacter {
+	constructor() {
+		super();
+
+		this.heft = generateHeft();
+	}
+}
 
 export const generateFriend = () => {
   const friendRoll = Math.floor(Math.random() * 12) + 1;
-  let friend;
+  let friend = new Friend();
 
   switch (friendRoll) {
     case 1:

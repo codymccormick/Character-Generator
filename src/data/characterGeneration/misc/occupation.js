@@ -1,4 +1,4 @@
-import { generateRandomItemFromObject } from '../../helpers/random';
+import { generateRandomItemFromObject } from '../../../helpers/random';
 
 export const generateOccupation = () => 
 	generateRandomItemFromObject(occupations, 'occupation', 'occupationReason');

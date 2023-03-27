@@ -1,8 +1,20 @@
 import { generateHeft } from "./heft";
 import faker from "faker";
+import { BaseCharacter } from "../BaseCharacter";
+
+export class Enemy extends BaseCharacter {
+	constructor() {
+		super();
+
+		this.heft = generateHeft();
+		this.whoHatesWhom = whoHatesWhom();
+		this.animosity = generateAnimosity();
+		this.intensity = generateIntensity();
+	}
+}
 
 // Function to generate animosity
-const generateAnimosity = () => {
+export const generateAnimosity = () => {
 	const animosityRoll = Math.floor(Math.random() * 12) + 1;
 
 	const animosityTable = [
@@ -39,7 +51,7 @@ const generateAnimosity = () => {
 };
 
 // Function to determine who hates whom
-const whoHatesWhom = () => {
+export const whoHatesWhom = () => {
 	const hatesTable = [
 		{ hates: "You towards the other person", description: "The animosity is from you for them" },
 		{
@@ -54,7 +66,7 @@ const whoHatesWhom = () => {
 };
 
 // Function to determine intensity of hate
-const generateIntensity = () => {
+export const generateIntensity = () => {
 	const intensityTable = [
 		{
 			intensity: "Annoyed",
@@ -92,7 +104,7 @@ const generateIntensity = () => {
 
 export const generateEnemy = () => {
 	const enemyRoll = Math.floor(Math.random() * 12) + 1;
-	let enemy;
+	let enemy = new Enemy();
 
 	switch (enemyRoll) {
 		case 1:

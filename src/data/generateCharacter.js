@@ -1,30 +1,17 @@
-import faker from "faker";
 import { characterStore } from "./store";
-import { rollStat } from "../helpers/helper";
-import { getRandomItemFromArray } from "../helpers/random";
-import { classes } from "./characterGeneration/misc/classes";
-import { generateAge } from "./characterGeneration/misc/age";
-import { generateRace } from "./characterGeneration/origins/race";
-import { alignments } from "./characterGeneration/misc/alignments";
-import { generateOccupation } from "./characterGeneration/occupation";
-import { generateSiblings } from "./characterGeneration/family/siblings";
+import { BaseCharacter } from "./characterGeneration/BaseCharacter";
 import { generateBirthplace } from "./characterGeneration/origins/birthplace";
-import { rollCaretakerStatus } from "./characterGeneration/family/caretakerStatus";
-import { generateCaretakerOrigin } from "./characterGeneration/family/caretakerOrigins";
-import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
 import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
+import { generateCaretakerOrigin } from "./characterGeneration/family/caretakerOrigins";
+import { rollCaretakerStatus } from "./characterGeneration/family/caretakerStatus";
+import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
+import { generateSiblings } from "./characterGeneration/family/siblings";
 import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
 
-class Character {
+export class GeneratedCharacter extends BaseCharacter {
 	constructor() {
-		this.name = faker.name.findName();
-		this.age = generateAge();
-		this.race = generateRace();
-		this.gender = Math.random() > 0.5 ? "Male" : "Female";
-		this.class = getRandomItemFromArray(classes);
-		this.alignment = getRandomItemFromArray(alignments);
+		super();
 
-		// Add birthplace, childhood environment, and caretaker origin properties
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 		Object.assign(this, generateCaretakerOrigin());
@@ -32,8 +19,6 @@ class Character {
 		this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());
 		this.siblings = generateSiblings();
-
-		Object.assign(this, generateOccupation());
 
 		this.fateEvents = generateFateEvents();
 		this.enemies = [];
@@ -46,20 +31,12 @@ class Character {
 				this.friends.push(event);
 			}
 		}
-
-		// Roll ability scores
-		this.strength = rollStat();
-		this.dexterity = rollStat();
-		this.constitution = rollStat();
-		this.intelligence = rollStat();
-		this.wisdom = rollStat();
-		this.charisma = rollStat();
 	}
 }
 
 export const generateCharacter = () => {
-	const character = new Character();
+	const character = new GeneratedCharacter();
 	characterStore.set(character);
 	console.log(character);
 	return character;
-};
+  };
