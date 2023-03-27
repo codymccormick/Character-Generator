@@ -25,7 +25,7 @@ class Character {
 		this.alignment = getRandomItemFromArray(alignments);
 
 		// Add birthplace, childhood environment, and caretaker origin properties
-		Object.assign(this, generateBirthplace());
+		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 		Object.assign(this, generateCaretakerOrigin());
 

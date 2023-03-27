@@ -1,10 +1,16 @@
 import { randomInRange } from '../../../helpers/random';
 import { rollFate } from './siblingFate';
+import { generateOccupation } from '../occupation';
+import { getRandomItemFromArray } from '../../../helpers/random';
+import { alignments } from '../misc/alignments';
 
+//Generates a sibling object
 export const generateSibling = () => ({
 	birthOrder: randomInRange(1, 12) <= 6 ? 'younger' : 'older',
 	gender: randomInRange(1, 12) % 2 ? 'brother' : 'sister',
-	fate: rollFate()
+	fate: rollFate(),
+	occupation: generateOccupation(),
+	alignment: getRandomItemFromArray(alignments)
 });
 
 // Generates an array of sibling objects

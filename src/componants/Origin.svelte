@@ -11,7 +11,7 @@
     <div class="subsection">
         <Content
             ><b>Birth Location:</b>
-            {character.birthplace}: {character.birthplaceReason}
+            {character.birthplace}
         </Content>
         <Content
             ><b>Childhood Environment:</b>
