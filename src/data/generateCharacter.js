@@ -7,7 +7,7 @@ import { rollCaretakerStatus } from "./characterGeneration/family/caretaker";
 import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
 import { generateSiblings } from "./characterGeneration/family/siblings";
 import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
-import { generateCaretaker } from "./characterGeneration/family/caretaker";
+// import { generateCaretaker } from "./characterGeneration/family/caretaker";
 import { generateParents } from "./characterGeneration/family/caretaker";
 
 export class MainCharacter extends BaseCharacter {
@@ -16,9 +16,10 @@ export class MainCharacter extends BaseCharacter {
 
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
-		Object.assign(this, generateRaisedBy());
 
-		this.parents = generateParents();
+		this.parents = generateParents(); // Move this line before generateRaisedBy()
+		Object.assign(this, generateRaisedBy(this.parents));
+
 		this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());
 		this.siblings = generateSiblings(this.age, this.parents);

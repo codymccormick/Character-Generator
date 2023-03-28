@@ -1,7 +1,18 @@
 import { generateRandomItemFromObject } from '../../../helpers/random';
+import { isParentDead } from './caretaker';
 
-export const generateRaisedBy = () =>
-	generateRandomItemFromObject(raisedBy, 'raisedBy', 'raisedByReason');
+export const generateRaisedBy = (parents) => {
+	// If both parents are dead, set raisedBy to "Close Family"
+	if (isParentDead(parents.father) && isParentDead(parents.mother)) {
+		return {
+			raisedBy: "Close Family",
+			raisedByReason: "Both parents are dead",
+		};
+	}
+
+	// Otherwise, generate raisedBy normally
+	return generateRandomItemFromObject(raisedBy, "raisedBy", "raisedByReason");
+};
 
 export const raisedBy = {
 	'Original Parents': [

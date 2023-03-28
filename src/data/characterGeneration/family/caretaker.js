@@ -18,7 +18,17 @@ export const generateCaretaker = (type) => {
 export const generateParents = () => {
 	const father = generateCaretaker("parent");
 	const mother = generateCaretaker("parent");
+
+	// Generate proper events for parents
+	father.event = rollParentEvent();
+	mother.event = rollParentEvent();
+
 	return { father, mother };
+};
+
+// Create a new function to check if a parent is dead
+export const isParentDead = (parent) => {
+	return parent.event && parent.event.status === "Death";
 };
 
 // Determines the caretaker status based on a random roll
