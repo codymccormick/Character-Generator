@@ -1,11 +1,9 @@
 import { generateRandomItemFromObject } from '../../../helpers/random';
 
-// Generates a random caretaker origin and reason
-export const generateCaretakerOrigin = () =>
-	generateRandomItemFromObject(caretakersOrigins, 'caretakersOrigin', 'caretakersOriginReason');
+export const generateRaisedBy = () =>
+	generateRandomItemFromObject(raisedBy, 'raisedBy', 'raisedByReason');
 
-// Different caretaker origins for characters
-export const caretakersOrigins = {
+export const raisedBy = {
 	'Original Parents': [
 		'Raised by the ones that gave birth to you'
 	],

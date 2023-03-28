@@ -19,25 +19,34 @@ export class Sibling extends BaseCharacter {
 }
 
 //Generates a sibling object
-export const generateSibling = () => {
+export const generateSibling = (mainCharacterAge) => {
 	const sibling = new Sibling();
 	sibling.birthOrder = randomInRange(1, 12) % 2 ? "younger" : "older";
 	sibling.gender = randomInRange(1, 12) % 2 ? "brother" : "sister";
-	sibling.fate = rollFate();
-	sibling.occupation = generateOccupation();
 	sibling.alignment = getRandomItemFromArray(alignments);
+	sibling.occupation = generateOccupation();
+	sibling.fate = rollFate();
+
+	// Determine sibling age based on main character's age and birth order
+	const ageDifference = randomInRange(1, 6);
+	if (sibling.birthOrder === "younger") {
+		sibling.age = Math.max(mainCharacterAge - ageDifference, 1);
+	} else {
+		sibling.age = mainCharacterAge + ageDifference;
+	}
+
 	return sibling;
 };
 
 // Generates an array of sibling objects
-export const generateSiblings = () =>
+export const generateSiblings = (mainCharacterAge) =>
 	randomInRange(1, 6) !== 6
-		? Array.from({ length: randomInRange(1, 6) }, () => generateSibling())
+		? Array.from({ length: randomInRange(1, 6) }, () => generateSibling(mainCharacterAge))
 		: [];
 
 // The rollFate function determines fate based on a random roll
 export const rollFate = () => {
-	const roll = Math.floor(Math.random() * 12) + 1;
+	const roll = randomInRange(1, 12);
 	let result;
 
 	switch (roll) {
