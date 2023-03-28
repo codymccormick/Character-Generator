@@ -36,22 +36,22 @@
 				><b>Family Background:</b>
 				{character.familyBackground}: {character.familyBackgroundReason}
 			</Content>
-			{#if character.caretakerStatus.status === 'Misfortune'}
+			{#if character.parents.status === 'Misfortune'}
 				<Content>
-					<b>Caretakers' misfortune:</b><br />
-					{#each character.caretakerStatus.misfortune.misfortuneDescription as { parent, eventName, description }}
+					<b>Parents' misfortune:</b><br />
+					{#each character.parents.misfortune.misfortuneDescription as { parent, eventName, description }}
 						{parent}<br />{eventName}<br />{description}<br /><br />
 					{/each}
 				</Content>
-			{:else if character.caretakerStatus.status === 'Death'}
+			{:else if character.parents.status === 'Death'}
 				<Content>
-					<b>Caretakers' Death:</b><br />
-					{#each character.caretakerStatus.death.deathDescription as { parent, eventName, description }}
+					<b>Parents' Death:</b><br />
+					{#each character.parents.death.deathDescription as { parent, eventName, description }}
 						{parent}<br />{eventName}<br />{description}<br /><br />
 					{/each}
 				</Content>
-			{:else}
-				<h3>{character.caretakerStatus.description}</h3>
+				{:else}
+				<h3>{character.parents.description}</h3>
 			{/if}
 		</Card>
 	{/if}

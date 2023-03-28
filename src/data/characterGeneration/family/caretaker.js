@@ -18,19 +18,25 @@ export const generateCaretaker = (type) => {
 export const generateParents = (maxChildAge) => {
 	const father = generateCaretaker("parent");
 	const mother = generateCaretaker("parent");
-
+  
 	// Ensure parents are at least 16 years older than the oldest child
 	father.age = maxChildAge + randomInRange(16, 30);
-	father.gender = "Male"
+	father.gender = "Male";
 	mother.age = maxChildAge + randomInRange(16, 30);
-	mother.gender = "Female"
-
+	mother.gender = "Female";
+  
 	// Generate proper events for parents
 	father.event = rollParentEvent();
 	mother.event = rollParentEvent();
-
+  
+	// Add caretakerStatus to parents
+	const caretakerStatus = rollCaretakerStatus();
+	father.caretakerStatus = caretakerStatus;
+	mother.caretakerStatus = caretakerStatus;
+  
 	return { father, mother };
-};
+  };
+  
 
 // Create a new function to check if a parent is dead
 export const isParentDead = (parent) => {
@@ -39,24 +45,26 @@ export const isParentDead = (parent) => {
 
 // Determines the caretaker status based on a random roll
 export const rollCaretakerStatus = () => {
-	const roll = randomInRange(1, 12);
-	const result = {};
+    const roll = randomInRange(1, 12);
+    const result = {};
 
-	if (roll <= 6) {
-		// 50% chance of parents/guardians being alive and well
-		result.status = "Alive and well";
-		result.description = "Your parents or guardians are both doing well";
-	} else if (roll <= 10) {
-		// 33% chance of parents/guardians experiencing misfortune
-		result.status = "Misfortune";
-		result.misfortune = rollParentEvent("misfortune");
-	} else {
-		// 17% chance of parents/guardians experiencing death
-		result.status = "Death";
-		result.death = rollParentEvent("death");
-	}
+    if (roll <= 6) {
+        // 50% chance of parents/guardians being alive and well
+        result.status = "Alive and well";
+        result.description = "Your parents or guardians are both doing well";
+    } else if (roll <= 10) {
+        // 33% chance of parents/guardians experiencing misfortune
+        result.status = "Misfortune";
+        result.description = "Your parents or guardians have experienced misfortune";
+        result.misfortune = rollParentEvent("misfortune");
+    } else {
+        // 17% chance of parents/guardians experiencing death
+        result.status = "Death";
+        result.description = "Your parents or guardians have experienced death";
+        result.death = rollParentEvent("death");
+    }
 
-	return result;
+    return result;
 };
 
 // Generates an event for parents based on eventType ('misfortune' or 'death')

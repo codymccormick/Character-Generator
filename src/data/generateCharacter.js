@@ -3,7 +3,7 @@ import { BaseCharacter } from "./characterGeneration/BaseCharacter";
 import { generateBirthplace } from "./characterGeneration/origins/birthplace";
 import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
 import { generateRaisedBy } from "./characterGeneration/family/raisedBy";
-import { rollCaretakerStatus } from "./characterGeneration/family/caretaker";
+// import { rollCaretakerStatus } from "./characterGeneration/family/caretaker";
 import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
 import { generateSiblings } from "./characterGeneration/family/siblings";
 import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
@@ -23,7 +23,7 @@ export class MainCharacter extends BaseCharacter {
 
 		Object.assign(this, generateRaisedBy(this.parents));
 
-		this.caretakerStatus = rollCaretakerStatus();
+		// this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());
 
 		this.fateEvents = generateFateEvents();
@@ -43,6 +43,6 @@ export class MainCharacter extends BaseCharacter {
 export const generateCharacter = () => {
 	const character = new MainCharacter();
 	characterStore.set(character);
-	console.log(character);
+	console.dir(character);
 	return character;
 };
