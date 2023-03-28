@@ -18,11 +18,13 @@ export class BaseCharacter {
 		this.occupation = generateOccupation();
 
 		// Roll ability scores
-		this.strength = rollStat();
-		this.dexterity = rollStat();
-		this.constitution = rollStat();
-		this.intelligence = rollStat();
-		this.wisdom = rollStat();
-		this.charisma = rollStat();
+		this.stats = {
+			strength: rollStat(),
+			dexterity: rollStat(),
+			constitution: rollStat(),
+			intelligence: rollStat(),
+			wisdom: rollStat(),
+			charisma: rollStat(),
+		};
 	}
 }

@@ -25,11 +25,13 @@
 				<br /> Mother: {character.parents.mother.name}
 				<br />{character.parents.mother.age}
 			</Content>
+			{#if character.caretaker}
 			<Content
 				><b>Caretakers:</b>
 				<br />father: {character.caretakers.father.name}
 				<br />mother: {character.caretakers.mother.name}
 			</Content>
+			{/if}
 			<Content
 				><b>Family Background:</b>
 				{character.familyBackground}: {character.familyBackgroundReason}
