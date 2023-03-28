@@ -21,7 +21,9 @@ export const generateParents = (maxChildAge) => {
 
 	// Ensure parents are at least 16 years older than the oldest child
 	father.age = maxChildAge + randomInRange(16, 30);
+	father.gender = "Male"
 	mother.age = maxChildAge + randomInRange(16, 30);
+	mother.gender = "Female"
 
 	// Generate proper events for parents
 	father.event = rollParentEvent();
