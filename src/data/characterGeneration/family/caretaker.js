@@ -15,9 +15,13 @@ export const generateCaretaker = (type) => {
 	return caretaker;
 };
 
-export const generateParents = () => {
+export const generateParents = (maxChildAge) => {
 	const father = generateCaretaker("parent");
 	const mother = generateCaretaker("parent");
+
+	// Ensure parents are at least 16 years older than the oldest child
+	father.age = maxChildAge + randomInRange(16, 30);
+	mother.age = maxChildAge + randomInRange(16, 30);
 
 	// Generate proper events for parents
 	father.event = rollParentEvent();

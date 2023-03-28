@@ -3,16 +3,25 @@
 	import { Cell } from '@smui/layout-grid';
 	import Card, { Content } from '@smui/card';
 
-	$: character = $characterStore;
+	let character;
+
+	// Subscribe to the characterStore and update the character
+	// whenever the store value changes
+	$: {
+		characterStore.subscribe(($characterStore) => {
+			character = $characterStore;
+		});
+	}
 </script>
 
 <Cell class="section">
+	{#if character && character.parents}
 	<Card variant="outlined" padded>
 		<h2>Family</h2>
 		<Content
 			><b>Parents:</b>
-			<br />Father:{character.parents.father.name}
-			<br /> Mother: {character.parents.mother.name}
+			<br />Father:{character.parents.father.name}{character.parents.father.age}
+			<br /> Mother: {character.parents.mother.name}{character.parents.father.age}
 		</Content>
 		<Content
 			><b>Caretakers:</b>
@@ -41,4 +50,5 @@
 			<h3>{character.caretakerStatus.description}</h3>
 		{/if}
 	</Card>
+	{/if}
 </Cell>

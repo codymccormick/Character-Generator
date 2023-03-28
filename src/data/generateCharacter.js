@@ -17,17 +17,14 @@ export class MainCharacter extends BaseCharacter {
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 
-		this.parents = generateParents();
-		const raisedByResult = generateRaisedBy(this.parents);
-		Object.assign(this, raisedByResult);
+		this.siblings = generateSiblings(this.age);
+		const maxChildAge = Math.max(this.age, ...this.siblings.map((sibling) => sibling.age));
+		this.parents = generateParents(maxChildAge); // Pass maxChildAge as an argument
 
-		if (raisedByResult.caretakers) {
-			this.caretakers = raisedByResult.caretakers;
-		}
+		Object.assign(this, generateRaisedBy(this.parents));
 
 		this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());
-		this.siblings = generateSiblings(this.age, this.parents);
 
 		this.fateEvents = generateFateEvents();
 		this.enemies = [];

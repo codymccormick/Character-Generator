@@ -39,10 +39,10 @@ export const generateSibling = (mainCharacterAge, parents) => {
 	return sibling;
 };
 
-export const generateSiblings = (mainCharacterAge, parents) =>
-	randomInRange(1, 6) !== 6
-		? Array.from({ length: randomInRange(1, 6) }, () => generateSibling(mainCharacterAge, parents))
-		: [];
+export const generateSiblings = (mainCharacterAge) =>
+  randomInRange(1, 6) !== 6
+    ? Array.from({ length: randomInRange(1, 6) }, () => generateSibling(mainCharacterAge))
+    : [];
 
 // The rollFate function determines fate based on a random roll
 export const rollFate = () => {
