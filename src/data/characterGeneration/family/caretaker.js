@@ -4,14 +4,21 @@ import { rollDeath } from "../significantEvents/death";
 import { rollMisfortune } from "../significantEvents/misfortune";
 
 export class Caretaker extends BaseCharacter {
-	constructor() {
+	constructor(type) {
 		super();
+		this.type = type;
 	}
 }
 
-export const generateCaretaker = () => {
-	const caretaker = new Caretaker();
+export const generateCaretaker = (type) => {
+	const caretaker = new Caretaker(type);
 	return caretaker;
+};
+
+export const generateParents = () => {
+	const father = generateCaretaker("parent");
+	const mother = generateCaretaker("parent");
+	return { father, mother };
 };
 
 // Determines the caretaker status based on a random roll

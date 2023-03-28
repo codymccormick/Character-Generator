@@ -3,24 +3,25 @@ import { BaseCharacter } from "./characterGeneration/BaseCharacter";
 import { generateBirthplace } from "./characterGeneration/origins/birthplace";
 import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
 import { generateRaisedBy } from "./characterGeneration/family/raisedBy";
-import { rollCaretakerStatus } from "./characterGeneration/family/caretakerStatus";
+import { rollCaretakerStatus } from "./characterGeneration/family/caretaker";
 import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
 import { generateSiblings } from "./characterGeneration/family/siblings";
 import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
 import { generateCaretaker } from "./characterGeneration/family/caretaker";
+import { generateParents } from "./characterGeneration/family/caretaker";
 
-export class GeneratedCharacter extends BaseCharacter {
+export class MainCharacter extends BaseCharacter {
 	constructor() {
 		super();
 
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 		Object.assign(this, generateRaisedBy());
-		
-		this.cartaker = generateCaretaker()
+
+		this.parents = generateParents();
 		this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());
-		this.siblings = generateSiblings(this.age);
+		this.siblings = generateSiblings(this.age, this.parents);
 
 		this.fateEvents = generateFateEvents();
 		this.enemies = [];
@@ -37,8 +38,8 @@ export class GeneratedCharacter extends BaseCharacter {
 }
 
 export const generateCharacter = () => {
-	const character = new GeneratedCharacter();
+	const character = new MainCharacter();
 	characterStore.set(character);
 	console.log(character);
 	return character;
-  };
+};

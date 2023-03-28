@@ -8,7 +8,7 @@
 
 <Cell class="section">
 	<Card variant="outlined" padded>
-		<h2>Family Background</h2>
+		<h2>Family</h2>
 			<Content
 				><b>Caretakers:</b>
 				{character.caretakersOrigin}: {character.caretakersOriginReason}
