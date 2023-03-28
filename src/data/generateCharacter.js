@@ -17,8 +17,13 @@ export class MainCharacter extends BaseCharacter {
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 
-		this.parents = generateParents(); // Move this line before generateRaisedBy()
-		Object.assign(this, generateRaisedBy(this.parents));
+		this.parents = generateParents();
+		const raisedByResult = generateRaisedBy(this.parents);
+		Object.assign(this, raisedByResult);
+
+		if (raisedByResult.caretakers) {
+			this.caretakers = raisedByResult.caretakers;
+		}
 
 		this.caretakerStatus = rollCaretakerStatus();
 		Object.assign(this, generateFamilyBackground());

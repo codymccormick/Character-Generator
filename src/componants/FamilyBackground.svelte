@@ -16,7 +16,8 @@
 		</Content>
 		<Content
 			><b>Caretakers:</b>
-			{character.caretakersOrigin}: {character.caretakersOriginReason}
+			<br/>father: {character.caretakers.father.name}
+			<br/>mother: {character.caretakers.mother.name}
 		</Content>
 		<Content
 			><b>Family Background:</b>

@@ -1,5 +1,6 @@
 import { generateRandomItemFromObject } from '../../../helpers/random';
 import { isParentDead } from './caretaker';
+import { generateParents } from './caretaker';
 
 export const generateRaisedBy = (parents) => {
 	// If both parents are dead, set raisedBy to "Close Family"
@@ -10,8 +11,15 @@ export const generateRaisedBy = (parents) => {
 		};
 	}
 
-	// Otherwise, generate raisedBy normally
-	return generateRandomItemFromObject(raisedBy, "raisedBy", "raisedByReason");
+	// Generate raisedBy normally
+	const raisedByResult = generateRandomItemFromObject(raisedBy, "raisedBy", "raisedByReason");
+
+	// If the character was not raised by their original parents, generate new caretakers
+	if (raisedByResult.raisedBy !== "Original Parents") {
+		raisedByResult.caretakers = generateParents();
+	}
+
+	return raisedByResult;
 };
 
 export const raisedBy = {
