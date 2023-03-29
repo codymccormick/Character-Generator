@@ -26,19 +26,24 @@
 				<br />{character.parents.mother.age}
 			</Content>
 			<Content>
-                <b>Parents' Status:</b><br />
-                {#if character.parents.father.caretakerStatus.status === 'Misfortune' || character.parents.father.caretakerStatus.status === 'Death'}
-                    Dad: {character.parents.father.caretakerStatus.status === 'Misfortune' ? 'Misfortune' : 'Death'}<br />
-                    {character.parents.father.event ? character.parents.father.event.description : ''}
-                {/if}
-                {#if character.parents.mother.caretakerStatus.status === 'Misfortune' || character.parents.mother.caretakerStatus.status === 'Death'}
-                    Mom: {character.parents.mother.caretakerStatus.status === 'Misfortune' ? 'Misfortune' : 'Death'}<br />
-                    {character.parents.mother.event ? character.parents.mother.event.description : ''}
-                {/if}
-                {#if character.parents.father.caretakerStatus.status === 'Alive and well' && character.parents.mother.caretakerStatus.status === 'Alive and well'}
-                    Your parents or guardians are both doing well.
-                {/if}
-            </Content>
+				<b>Parents' Status:</b><br />
+				{#if character.parents.father.caretakerStatus.status === 'Misfortune' || character.parents.father.caretakerStatus.status === 'Death'}
+					Dad: {character.parents.father.caretakerStatus.status === 'Misfortune'
+						? 'Misfortune'
+						: 'Death'}<br />
+					<br />
+					{character.parents.father.event ? character.parents.father.event.description : ''}
+				{/if}
+				{#if character.parents.mother.caretakerStatus.status === 'Misfortune' || character.parents.mother.caretakerStatus.status === 'Death'}
+					Mom: {character.parents.mother.caretakerStatus.status === 'Misfortune'
+						? 'Misfortune'
+						: 'Death'}<br />
+					{character.parents.mother.event ? character.parents.mother.event.description : ''}
+				{/if}
+				{#if character.parents.father.caretakerStatus.status === 'Alive and well' && character.parents.mother.caretakerStatus.status === 'Alive and well'}
+					Your parents or guardians are both doing well.
+				{/if}
+			</Content>
 		</Card>
 	{/if}
 </Cell>
