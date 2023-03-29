@@ -17,43 +17,36 @@
 		<Card variant="outlined" padded>
 			<h2>Family</h2>
 			<Content>
-				<b>Parents:</b>
-				<br />Father: {character.parents.father.name}
-				<br />Age: {character.parents.father.age}
-				<br /> Mother: {character.parents.mother.name}
-				<br />Age: {character.parents.mother.age}
-			</Content>
-			<Content>
-				<b>Parents' Status:</b><br />
-				<Content>
-					<b>Dad:</b>
-					{#if character.parents.father.caretakerStatus === 'Misfortune'}
-						Misfortune
-						<br />
-						{character.parents.father.events.misfortune.description}
-					{:else if character.parents.father.caretakerStatus === 'Death'}
-						Death
-						<br />
-						{character.parents.father.events.death.description}
-					{:else}
-						Alive and well
-					{/if}
+				<b>Father:</b>
+				{character.parents.father.name}
+				{#if character.parents.father.caretakerStatus === 'Misfortune'}
+					<br />Age: {character.parents.father.age}
+					<br /><br />Misfortune
 					<br />
-				</Content>
-				<Content>
-					<b>Mom:</b>
-					{#if character.parents.mother.caretakerStatus === 'Misfortune'}
-						Misfortune
-						<br />
-						{character.parents.mother.events.misfortune.description}
-					{:else if character.parents.mother.caretakerStatus === 'Death'}
-						Death
-						<br />
-						{character.parents.mother.events.death.description}
-					{:else}
-						Alive and well
-					{/if}
-				</Content>
+					{character.parents.father.events.misfortune.description}
+				{:else if character.parents.father.caretakerStatus === 'Death'}
+				<br /><br />Dead
+					<br />
+					{character.parents.father.events.death.description}
+				{:else}
+					Age: {character.parents.father.age}
+					<br /><br />Alive and well
+				{/if}
+				<br /><br /> <b>Mother:</b>
+				{character.parents.mother.name}
+				{#if character.parents.mother.caretakerStatus === 'Misfortune'}
+					<br />Age: {character.parents.mother.age}
+					<br /><br />Misfortune
+					<br />
+					{character.parents.mother.events.misfortune.description}
+				{:else if character.parents.mother.caretakerStatus === 'Death'}
+				<br /><br />Dead
+					<br />
+					{character.parents.mother.events.death.description}
+				{:else}
+					Age: {character.parents.mother.age}
+					<br /><br />Alive and well
+				{/if}
 			</Content>
 		</Card>
 	{/if}
