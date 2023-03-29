@@ -36,7 +36,7 @@
 				{/if}
 				{#if character.parents.mother.caretakerStatus.status === 'Misfortune' || character.parents.mother.caretakerStatus.status === 'Death'}
 					Mom: {character.parents.mother.caretakerStatus.status === 'Misfortune'
-						? 'Misfortune'
+						? 'Misfortune' 
 						: 'Death'}
 					{character.parents.mother.event ? character.parents.mother.event.description : ''}
 				{/if}
