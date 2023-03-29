@@ -5,8 +5,6 @@
 
 	let character;
 
-	// Subscribe to the characterStore and update the character
-	// whenever the store value changes
 	$: {
 		characterStore.subscribe(($characterStore) => {
 			character = $characterStore;
@@ -18,8 +16,8 @@
 	{#if character}
 		<Card variant="outlined" padded>
 			<h2>Family</h2>
-			<Content
-				><b>Parents:</b>
+			<Content>
+				<b>Parents:</b>
 				<br />Father: {character.parents.father.name}
 				<br />Age: {character.parents.father.age}
 				<br /> Mother: {character.parents.mother.name}
@@ -27,26 +25,35 @@
 			</Content>
 			<Content>
 				<b>Parents' Status:</b><br />
-				{#if character.parents.father.caretakerStatus === 'Misfortune' || character.parents.father.caretakerStatus === 'Death'}
 				<Content>
-					Dad: {character.parents.father.caretakerStatus === 'Misfortune'
-						? 'Misfortune'
-						: 'Death'}
+					<b>Dad:</b>
+					{#if character.parents.father.caretakerStatus === 'Misfortune'}
+						Misfortune
+						<br />
+						{character.parents.father.events.misfortune.description}
+					{:else if character.parents.father.caretakerStatus === 'Death'}
+						Death
+						<br />
+						{character.parents.father.events.death.description}
+					{:else}
+						Alive and well
+					{/if}
 					<br />
-					{character.parents.father.event ? character.parents.father.event.description : ''}
 				</Content>
-				{/if}
-				{#if character.parents.mother.caretakerStatus === 'Misfortune' || character.parents.mother.caretakerStatus === 'Death'}
 				<Content>
-					Mom: {character.parents.mother.caretakerStatus === 'Misfortune'
-						? 'Misfortune' 
-						: 'Death'}
-					{character.parents.mother.event ? character.parents.mother.event.description : ''}
+					<b>Mom:</b>
+					{#if character.parents.mother.caretakerStatus === 'Misfortune'}
+						Misfortune
+						<br />
+						{character.parents.mother.events.misfortune.description}
+					{:else if character.parents.mother.caretakerStatus === 'Death'}
+						Death
+						<br />
+						{character.parents.mother.events.death.description}
+					{:else}
+						Alive and well
+					{/if}
 				</Content>
-				{/if}
-				{#if character.parents.father.caretakerStatus.status === 'Alive and well' && character.parents.mother.caretakerStatus.status === 'Alive and well'}
-					Your parents or guardians are both doing well.
-				{/if}
 			</Content>
 		</Card>
 	{/if}
