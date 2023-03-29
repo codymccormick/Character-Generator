@@ -17,8 +17,8 @@
 		<Card variant="outlined" padded>
 			<h2>Family</h2>
 			<Content>
-				<b>Father:</b>
-				{character.parents.father.name}
+				<b>Father</b>
+				<br />Name: {character.parents.father.name}
 				{#if character.parents.father.caretakerStatus === 'Misfortune'}
 					<br />Age: {character.parents.father.age}
 					<br /><br />Misfortune
@@ -29,11 +29,11 @@
 					<br />
 					{character.parents.father.events.death.description}
 				{:else}
-					Age: {character.parents.father.age}
+				<br />Age: {character.parents.father.age}
 					<br /><br />Alive and well
 				{/if}
-				<br /><br /> <b>Mother:</b>
-				{character.parents.mother.name}
+				<br /><br /> <b>Mother</b>
+				<br />Name: {character.parents.mother.name}
 				{#if character.parents.mother.caretakerStatus === 'Misfortune'}
 					<br />Age: {character.parents.mother.age}
 					<br /><br />Misfortune
@@ -44,7 +44,7 @@
 					<br />
 					{character.parents.mother.events.death.description}
 				{:else}
-					Age: {character.parents.mother.age}
+				<br />Age: {character.parents.mother.age}
 					<br /><br />Alive and well
 				{/if}
 			</Content>
