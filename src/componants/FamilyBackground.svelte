@@ -15,7 +15,7 @@
 </script>
 
 <Cell class="section">
-	{#if character && character.parents}
+	{#if character}
 		<Card variant="outlined" padded>
 			<h2>Family</h2>
 			<Content
@@ -25,34 +25,20 @@
 				<br /> Mother: {character.parents.mother.name}
 				<br />{character.parents.mother.age}
 			</Content>
-			{#if character.caretaker}
-			<Content
-				><b>Caretakers:</b>
-				<br />father: {character.caretakers.father.name}
-				<br />mother: {character.caretakers.mother.name}
-			</Content>
-			{/if}
-			<Content
-				><b>Family Background:</b>
-				{character.familyBackground}: {character.familyBackgroundReason}
-			</Content>
-			{#if character.parents.status === 'Misfortune'}
-				<Content>
-					<b>Parents' misfortune:</b><br />
-					{#each character.parents.misfortune.misfortuneDescription as { parent, eventName, description }}
-						{parent}<br />{eventName}<br />{description}<br /><br />
-					{/each}
-				</Content>
-			{:else if character.parents.status === 'Death'}
-				<Content>
-					<b>Parents' Death:</b><br />
-					{#each character.parents.death.deathDescription as { parent, eventName, description }}
-						{parent}<br />{eventName}<br />{description}<br /><br />
-					{/each}
-				</Content>
-				{:else}
-				<h3>{character.parents.description}</h3>
-			{/if}
+			<Content>
+                <b>Parents' Status:</b><br />
+                {#if character.parents.father.caretakerStatus.status === 'Misfortune' || character.parents.father.caretakerStatus.status === 'Death'}
+                    Dad: {character.parents.father.caretakerStatus.status === 'Misfortune' ? 'Misfortune' : 'Death'}<br />
+                    {character.parents.father.event ? character.parents.father.event.description : ''}
+                {/if}
+                {#if character.parents.mother.caretakerStatus.status === 'Misfortune' || character.parents.mother.caretakerStatus.status === 'Death'}
+                    Mom: {character.parents.mother.caretakerStatus.status === 'Misfortune' ? 'Misfortune' : 'Death'}<br />
+                    {character.parents.mother.event ? character.parents.mother.event.description : ''}
+                {/if}
+                {#if character.parents.father.caretakerStatus.status === 'Alive and well' && character.parents.mother.caretakerStatus.status === 'Alive and well'}
+                    Your parents or guardians are both doing well.
+                {/if}
+            </Content>
 		</Card>
 	{/if}
 </Cell>
