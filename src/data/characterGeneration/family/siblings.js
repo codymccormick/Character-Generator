@@ -11,10 +11,7 @@ export class Sibling extends BaseCharacter {
 	constructor() {
 		super();
 
-		this.birthplace = null; // Set this value when creating the GeneratedCharacter instance
 		this.siblings = null; // Set this value when creating the GeneratedCharacter instance
-		this.childhoodEnvironment = null; // Set this value when creating the GeneratedCharacter instance
-		this.caretakerOrigin = null; // Set this value when creating the GeneratedCharacter instance
 		this.parents = null; // Set this value when creating the GeneratedCharacter instance
 	}
 }
@@ -39,10 +36,20 @@ export const generateSibling = (mainCharacterAge, parents) => {
 	return sibling;
 };
 
-export const generateSiblings = (mainCharacterAge) =>
-  randomInRange(1, 6) !== 6
-    ? Array.from({ length: randomInRange(1, 6) }, () => generateSibling(mainCharacterAge))
-    : [];
+export const getSiblingsAges = (siblings) => {
+	return Object.values(siblings).map((sibling) => sibling.age);
+};
+
+export const generateSiblings = (mainCharacterAge, parents) => {
+	const siblingsCount = randomInRange(1, 6) !== 6 ? randomInRange(1, 6) : 0;
+	const siblingsObj = {};
+
+	for (let i = 0; i < siblingsCount; i++) {
+		siblingsObj[`sibling${i + 1}`] = generateSibling(mainCharacterAge, parents);
+	}
+
+	return siblingsObj;
+};
 
 // The rollFate function determines fate based on a random roll
 export const rollFate = () => {

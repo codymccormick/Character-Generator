@@ -16,6 +16,7 @@
 	"devDependencies": {
 		"@material/typography": "^14.0.0",
 		"@playwright/test": "^1.28.1",
+		"@smui-extra/accordion": "^7.0.0-beta.0",
 		"@smui/banner": "^7.0.0-beta.0",
 		"@smui/button": "^7.0.0-beta.0",
 		"@smui/card": "^7.0.0-beta.0",
