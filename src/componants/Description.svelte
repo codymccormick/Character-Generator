@@ -1,6 +1,6 @@
 <script>
 	import { characterStore } from '../data/store';
-	import LayoutGrid from '@smui/layout-grid';
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import BasicInfo from './BasicInfo.svelte';
 	import Origin from './Origin.svelte';
 	import FamilyBackground from './FamilyBackground.svelte';
@@ -18,10 +18,14 @@
 		<div class="characterDescription">
 			{#if character}
 				<LayoutGrid>
-					<BasicInfo />
+					<Cell class="section">
+						<BasicInfo />
+					</Cell>
 					<Origin />
-					<FamilyBackground />
 					<SignificantEvents />
+					<Cell class="section">
+					<FamilyBackground />
+				</Cell>
 				</LayoutGrid>
 			{/if}
 		</div>
