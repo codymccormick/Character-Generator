@@ -22,7 +22,6 @@
 					<BasicInfo />
 					<Origin />
 					<FamilyBackground />
-					<Sibling />
 					<SignificantEvents />
 				</LayoutGrid>
 			{/if}
