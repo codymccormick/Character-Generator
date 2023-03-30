@@ -4,7 +4,6 @@
 	import BasicInfo from './BasicInfo.svelte';
 	import Origin from './Origin.svelte';
 	import FamilyBackground from './FamilyBackground.svelte';
-	import Sibling from './Sibling.svelte';
 	import SignificantEvents from './SignificantEvents.svelte';
 	import Card from '@smui/card';
 
