@@ -11,7 +11,7 @@
 	<Card variant="outlined" padded>
 		<h2>Significant Events</h2>
 		{#if character.fateEvents.length > 0}
-			<Accordion>
+			<Accordion multiple>
 				{#each character.fateEvents as event, index}
 					<Panel>
 						<Header>
