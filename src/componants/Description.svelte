@@ -3,7 +3,7 @@
 	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import BasicInfo from './BasicInfo.svelte';
 	import Origin from './Origin.svelte';
-	import FamilyBackground from './FamilyBackground.svelte';
+	import Family from './Family.svelte';
 	import SignificantEvents from './SignificantEvents.svelte';
 	import Card from '@smui/card';
 
@@ -21,11 +21,15 @@
 					<Cell class="section">
 						<BasicInfo />
 					</Cell>
-					<Origin />
-					<SignificantEvents />
 					<Cell class="section">
-					<FamilyBackground />
-				</Cell>
+						<Origin />
+					</Cell>
+					<Cell class="section">
+						<SignificantEvents />
+					</Cell>
+					<Cell class="section">
+						<Family />
+					</Cell>
 				</LayoutGrid>
 			{/if}
 		</div>

@@ -6,16 +6,14 @@
 	$: character = $characterStore;
 </script>
 
-<Cell class="section">
-	<Card variant="outlined" padded>
-		<h2>Origin</h2>
-		<Content
-			><b>Birth Location:</b>
-			<br />{character.birthplace}
-		</Content>
-		<Content
-			><b>Childhood Environment:</b>
-			<br />{character.childhoodEnvironment}: {character.childhoodEnvironmentReason}
-		</Content>
-	</Card>
-</Cell>
+<Card variant="outlined" padded>
+	<h2>Origin</h2>
+	<Content
+		><b>Birth Location:</b>
+		<br />{character.birthplace}
+	</Content>
+	<Content
+		><b>Childhood Environment:</b>
+		<br />{character.childhoodEnvironment}: {character.childhoodEnvironmentReason}
+	</Content>
+</Card>

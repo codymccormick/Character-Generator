@@ -32,11 +32,19 @@
 
 <style>
 	body {
-		background-color: #f5f5f5;;
+	  margin: 0;
+	  padding: 0;
 	}
-
+  
 	.button {
-		margin-bottom: 10px;
-		margin-top: 10px;
+	  margin-bottom: 10px;
+	  margin-top: 10px;
+	  text-align: center;
 	}
-</style>
+  
+	main {
+	  margin: 0 auto;
+	  max-width: 1200px;
+	  padding: 0 16px;
+	}
+  </style>
