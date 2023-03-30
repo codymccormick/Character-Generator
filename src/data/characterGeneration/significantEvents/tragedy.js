@@ -1,5 +1,5 @@
 // import { generateDisability } from './disability.js';
- import { generateEnemy } from "./enemy";
+// import { generateEnemy } from "./enemy";
 
 function randomInRange(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -28,8 +28,8 @@ export function generateTragedy() {
 			return {
 				title: "Tragedy",
 				type: "Debt",
-				description: "Financial or otherwise, you make yourself indebted to someone or some group.", //Roll on the enemy and heft tables to determine what kind and how powerful they are.
-				enemy: generateEnemy(),
+				description: "Financial or otherwise, you make yourself indebted to someone or some group.",
+				// enemy: generateEnemy(),
 			};
 
 		case tragedyRoll >= 7 && tragedyRoll <= 8:

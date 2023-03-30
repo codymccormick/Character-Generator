@@ -1,10 +1,103 @@
 import { generateHeft } from "./heft";
 import faker from "faker";
+import { BaseCharacter } from "../BaseCharacter";
+
+export class Enemy extends BaseCharacter {
+	constructor() {
+		super();
+
+		this.heft = generateHeft();
+		this.animosity = generateAnimosity();
+		this.whoHatesWhom = whoHatesWhom();
+		this.intensity = generateIntensity();
+	}
+}
+
+export const generateEnemy = () => {
+	const enemyRoll = Math.floor(Math.random() * 12) + 1;
+	let enemy = new Enemy();
+
+	switch (enemyRoll) {
+		case 1:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Ex-Friend";
+			enemy.description = "You used to have lunch together and the like, but things went sour";
+			break;
+		case 2:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Ex-Lover";
+			enemy.description = "All that love turned to hate";
+			break;
+		case 3:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Relative";
+			enemy.description = "Family bonds cut by strife";
+			break;
+		case 4:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Childhood Enemy";
+			enemy.description = "An old face you hoped you would never see again";
+			break;
+		case 5:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Person You Worked For";
+			enemy.description = "One overtime too many";
+			break;
+		case 6:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Person That Worked for You";
+			enemy.description = "You should have paid for that overtime";
+			break;
+		case 7:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Ex-Partner";
+			enemy.description = "A working or adventuring relationship turns to arguments";
+			break;
+		case 8:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Gang or Tribe";
+			enemy.description = "You managed to step on the really wrong foot";
+			break;
+		case 9:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Authorities";
+			enemy.description = "There are those amongst the law that dislike you";
+			break;
+		case 10:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Dark Powers";
+			enemy.description =
+				"Somehow you've come to the attention of dark forces, and they know your name";
+			break;
+		case 11:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Creature with Animal Intelligence";
+			enemy.description =
+				"You kicked that mule one time too many, and now it hates you to the bone";
+			break;
+		case 12:
+			enemy.name = faker.name.findName();
+			enemy.title = "Made an enemy";
+			enemy.type = "Intelligent Creature";
+			enemy.description = "You have some creature like a beholder or dragon angry with you";
+			break;
+	}
+	return enemy;
+};
 
 // Function to generate animosity
-const generateAnimosity = () => {
-	const animosityRoll = Math.floor(Math.random() * 12) + 1;
-
+export const generateAnimosity = () => {
 	const animosityTable = [
 		{ animosity: "Humiliation", description: "Caused the loss of face or status publicly" },
 		{ animosity: "Rift", description: "Caused the loss of a friend or lover" },
@@ -34,12 +127,13 @@ const generateAnimosity = () => {
 			description: "Took economic advantage by scam, or physical advantage through force",
 		},
 	];
+	const animosityRoll = Math.floor(Math.random() * animosityTable.length);
 
-	return animosityTable[animosityRoll - 1];
+	return animosityTable[animosityRoll];
 };
 
 // Function to determine who hates whom
-const whoHatesWhom = () => {
+export const whoHatesWhom = () => {
 	const hatesTable = [
 		{ hates: "You towards the other person", description: "The animosity is from you for them" },
 		{
@@ -54,7 +148,7 @@ const whoHatesWhom = () => {
 };
 
 // Function to determine intensity of hate
-const generateIntensity = () => {
+export const generateIntensity = () => {
 	const intensityTable = [
 		{
 			intensity: "Annoyed",
@@ -88,149 +182,4 @@ const generateIntensity = () => {
 	const intensityRoll = Math.floor(Math.random() * intensityTable.length);
 
 	return intensityTable[intensityRoll];
-};
-
-export const generateEnemy = () => {
-	const enemyRoll = Math.floor(Math.random() * 12) + 1;
-	let enemy;
-
-	switch (enemyRoll) {
-		case 1:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Ex-Friend",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "You used to have lunch together and the like, but things went sour",
-			};
-			break;
-		case 2:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Ex-Lover",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "All that love turned to hate",
-			};
-			break;
-		case 3:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Relative",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "Family bonds cut by strife",
-			};
-			break;
-		case 4:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Childhood Enemy",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "An old face you hoped you would never see again",
-			};
-			break;
-		case 5:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Person You Worked For",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "One overtime too many",
-			};
-			break;
-		case 6:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Person That Worked for You",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "You should have paid for that overtime",
-			};
-			break;
-		case 7:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Ex-Partner",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "A working or adventuring relationship turns to arguments",
-			};
-			break;
-		case 8:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Gang or Tribe",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "You managed to step on the really wrong foot",
-			};
-			break;
-		case 9:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Authorities",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "There are those amongst the law that dislike you",
-			};
-			break;
-		case 10:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Dark Powers",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "Somehow you've come to the attention of dark forces, and they know your name",
-			};
-			break;
-		case 11:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Creature with Animal Intelligence",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "You kicked that mule one time too many, and now it hates you to the bone",
-			};
-			break;
-		case 12:
-			enemy = {
-				name: faker.name.findName(),
-				title: "Made an enemy",
-				type: "Intelligent Creature",
-				hates: whoHatesWhom(),
-				intensity: generateIntensity(),
-				heft: generateHeft(),
-				description: "You have some creature like a beholder or dragon angry with you",
-			};
-			break;
-	}
-
-	// Add the animosity property to the enemy object
-	enemy.animosity = generateAnimosity();
-
-	return enemy;
 };

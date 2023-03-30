@@ -21,7 +21,7 @@ export const generateCupidStrikes = () => {
         cupidStrikes = {
             title: "Cupid Strikes",
           type: 'A Good Thing',
-          description: `A serious relationship has lasted into this year. ${relationshipResult}`,
+          description: `A serious relationship ${relationshipResult}`,
         };
         break;
       case 5:
