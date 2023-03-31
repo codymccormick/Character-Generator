@@ -1,7 +1,7 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
 export const generateClass = () => {
-	getRandomItemFromArray(classes);
+	return getRandomItemFromArray(classes);
 }
 
 export const classes = [
