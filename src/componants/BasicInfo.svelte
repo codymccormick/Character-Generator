@@ -18,7 +18,7 @@
 			<Content><b>Gender:</b> {character.gender}</Content>
 		</Row>
 		<Row>
-			<Content><b>Race:</b> {character.race}</Content>
+			<Content><b>Race:</b> {character.race.title}</Content>
 		</Row>
 		<Row>
 			<Content><b>Alignment:</b> {character.alignment}</Content>

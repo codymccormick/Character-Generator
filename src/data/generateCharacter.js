@@ -28,7 +28,7 @@ export class MainCharacter extends BaseCharacter {
 		Object.assign(this, generateRaisedBy(this.parents));
 
 		// this.caretakerStatus = rollCaretakerStatus();
-		Object.assign(this, generateFamilyBackground());
+		this.familyBackground = generateFamilyBackground();
 
 		this.fateEvents = generateFateEvents();
 		this.enemies = [];
