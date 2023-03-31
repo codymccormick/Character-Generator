@@ -5,7 +5,7 @@ import { generateChildhoodEnvironment } from "./characterGeneration/origins/chil
 import { generateRaisedBy } from "./characterGeneration/family/raisedBy";
 import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
 import { generateSiblings } from "./characterGeneration/family/siblings";
-import { generateFateEvents } from "./characterGeneration/significantEvents/fate";
+import { generateFateEvents } from "./characterGeneration/events/fate";
 import { generateParents } from "./characterGeneration/family/caretaker";
 import { getSiblingsAges } from "./characterGeneration/family/siblings";
 

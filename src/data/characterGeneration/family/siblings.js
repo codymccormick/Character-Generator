@@ -3,8 +3,8 @@ import { generateOccupation } from "../misc/occupation";
 import { getRandomItemFromArray } from "../../../helpers/random";
 import { alignments } from "../misc/alignments";
 import { BaseCharacter } from "../BaseCharacter";
-import { rollMisfortune } from "../significantEvents/misfortune";
-import { rollDeath } from "../significantEvents/death";
+import { rollMisfortune } from "../events/misfortune";
+import { rollDeath } from "../events/death";
 
 //Creates a sibling object
 export class Sibling extends BaseCharacter {

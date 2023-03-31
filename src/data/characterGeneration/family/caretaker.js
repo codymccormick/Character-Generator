@@ -1,7 +1,7 @@
 import { BaseCharacter } from "../BaseCharacter";
 import { randomInRange } from "../../../helpers/random";
-import { rollDeath } from "../significantEvents/death";
-import { rollMisfortune } from "../significantEvents/misfortune";
+import { rollDeath } from "../events/death";
+import { rollMisfortune } from "../events/misfortune";
 
 export class Caretaker extends BaseCharacter {
 	constructor(type) {
