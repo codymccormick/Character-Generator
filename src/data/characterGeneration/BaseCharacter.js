@@ -6,6 +6,7 @@ import { getRandomItemFromArray } from "../../helpers/random";
 import { classes } from "../characterGeneration/misc/classes";
 import { generateOccupation } from "./misc/occupation";
 import { rollStat } from "../../helpers/helper";
+import { generateAlignment } from "../characterGeneration/misc/alignments";
 
 export class BaseCharacter {
 	constructor() {
@@ -13,7 +14,7 @@ export class BaseCharacter {
 		this.age = generateAge();
 		this.race = generateRace();
 		this.gender = Math.random() > 0.5 ? "Male" : "Female";
-		this.alignment = getRandomItemFromArray(alignments);
+		this.alignment = generateAlignment();
 		this.class = getRandomItemFromArray(classes);
 		this.occupation = generateOccupation();
 
