@@ -1,6 +1,5 @@
 <script>
 	import { characterStore } from '../data/store';
-	import { Cell } from '@smui/layout-grid';
 	import Card, { Content } from '@smui/card';
 
 	$: character = $characterStore;

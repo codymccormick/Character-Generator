@@ -11,41 +11,40 @@ export function generateTragedy() {
 	switch (true) {
 		case tragedyRoll >= 1 && tragedyRoll <= 2:
 			return {
-				title: "Tragedy",
-				type: "Crippling Event",
+				title: "Crippling Event",
+				type: "Tragedy",
 				description: "You suffer major harm that has a permanent effect.", //Roll on the Disability Table.,
 				// disability: generateDisability(),
 			};
 
 		case tragedyRoll >= 3 && tragedyRoll <= 4:
 			return {
-				title: "Tragedy",
-				type: "Financial blow",
+				title: "Financial blow",
+				type: "Tragedy",
 				description: "You manage to lose all your gold/possessions.",
 			};
 
 		case tragedyRoll >= 5 && tragedyRoll <= 6:
 			return {
-				title: "Tragedy",
-				type: "Debt",
+				title: "Debt",
+				type: "Tragedy",
 				description: "Financial or otherwise, you make yourself indebted to someone or some group.",
 				// enemy: generateEnemy(),
 			};
 
 		case tragedyRoll >= 7 && tragedyRoll <= 8:
 			return {
-				title: "Tragedy",
-				type: "Infamy",
+				title: "Infamy",
+				type: "Tragedy",
 				description:
 					"You are known, and reviled, in connection with some sort of disastrous event. You may, or may not, be innocent, but most anyone who knows of the event will treat you with disdain at best.",
 			};
 
 		case tragedyRoll >= 9 && tragedyRoll <= 10:
 			return {
-				title: "Tragedy",
-				type: "Crisis",
-				description:
-					"You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for 1d12 months.",
+				title: "Crisis",
+				type: "Tragedy",
+				description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${months} months.`,
 				months: randomInRange(1, 12),
 			};
 
@@ -60,8 +59,8 @@ export function generateTragedy() {
 				statusDescription = "Is taken";
 			}
 			return {
-				title: "Tragedy",
-				type: "Lose a Loved One",
+				title: "Lose a Loved One",
+				type: "Tragedy",
 				description: `Someone very close to you ${statusDescription}.`,
 			};
 

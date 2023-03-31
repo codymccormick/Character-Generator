@@ -13,12 +13,17 @@ export class MainCharacter extends BaseCharacter {
 	constructor() {
 		super();
 
+		this.siblings = [];
 		this.birthplace = generateBirthplace();
 		Object.assign(this, generateChildhoodEnvironment());
 
-		this.siblings = generateSiblings(this.age, this.parents);
 		const maxChildAge = Math.max(this.age, ...getSiblingsAges(this.siblings));
-		this.parents = generateParents(maxChildAge); // Pass maxChildAge as an argument
+		this.parents = generateParents(maxChildAge);
+
+		// Add all siblings to the main character's siblings property
+		this.siblings.forEach((sibling) => {
+			this.siblings.push(sibling);
+		});
 
 		Object.assign(this, generateRaisedBy(this.parents));
 
@@ -28,6 +33,10 @@ export class MainCharacter extends BaseCharacter {
 		this.fateEvents = generateFateEvents();
 		this.enemies = [];
 		this.friends = [];
+
+		// Generate siblings after initializing all other properties
+		const siblingsData = generateSiblings(this);
+		this.siblings.push(...siblingsData);
 
 		for (const event of this.fateEvents) {
 			if (event.title === "Made an enemy") {

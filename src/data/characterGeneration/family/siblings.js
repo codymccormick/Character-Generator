@@ -40,15 +40,20 @@ export const getSiblingsAges = (siblings) => {
 	return Object.values(siblings).map((sibling) => sibling.age);
 };
 
-export const generateSiblings = (mainCharacterAge, parents) => {
+export const generateSiblings = (mainCharacter) => {
 	const siblingsCount = randomInRange(1, 6) !== 6 ? randomInRange(1, 6) : 0;
-	const siblingsObj = {};
+	const siblingsArr = [];
 
 	for (let i = 0; i < siblingsCount; i++) {
-		siblingsObj[`sibling${i + 1}`] = generateSibling(mainCharacterAge, parents);
+		siblingsArr.push(generateSibling(mainCharacter.age, mainCharacter.parents));
 	}
 
-	return siblingsObj;
+	// Add the main character as a sibling for each sibling
+	for (const sibling of siblingsArr) {
+		sibling.siblings = [mainCharacter, ...siblingsArr.filter((s) => s !== sibling)];
+	}
+
+	return siblingsArr;
 };
 
 // The rollFate function determines fate based on a random roll

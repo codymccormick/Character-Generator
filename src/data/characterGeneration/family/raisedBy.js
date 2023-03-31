@@ -34,12 +34,12 @@ export const raisedBy = {
 		'Never knew original parents. Raised by a couple not related to you.'
 	],
 	Institution: [
-		'Raised at an institution, be it an orphanage, monastery or other.' //Skip to Significant Times in Your Life
+		'Raised at an institution, be it an orphanage, monastery or other.'
 	],
 	Master: [
-		'Sold or given or kidnapped at an early age and raised as property.' //Skip to Significant Times in Your Life
+		'Sold or given or kidnapped at an early age and raised as property.'
 	],
 	'On Your Own': [
-		'Have had to rely on yourself for as long as you can remember. ' //Skip to Significant Times in Your Life
+		'Have had to rely on yourself for as long as you can remember. '
 	]
 };

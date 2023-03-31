@@ -98,8 +98,6 @@ export const generateParents = (maxChildAge) => {
 	return events;
   };
   
-  
-
 // Create a new function to check if a parent is dead
 export const isParentDead = (parent) => {
 	return parent.event && parent.event.status === "Death";

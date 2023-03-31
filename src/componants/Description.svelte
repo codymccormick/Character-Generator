@@ -18,16 +18,16 @@
 		<div class="characterDescription">
 			{#if character}
 				<LayoutGrid>
-					<Cell class="section">
+					<Cell>
 						<BasicInfo />
 					</Cell>
-					<Cell class="section">
+					<Cell>
 						<Origin />
 					</Cell>
-					<Cell class="section">
+					<Cell>
 						<SignificantEvents />
 					</Cell>
-					<Cell class="section">
+					<Cell>
 						<Family />
 					</Cell>
 				</LayoutGrid>
