@@ -15,7 +15,7 @@ export class MainCharacter extends BaseCharacter {
 
 		this.siblings = [];
 		this.birthplace = generateBirthplace();
-		Object.assign(this, generateChildhoodEnvironment());
+		this.childhoodEnvironment = generateChildhoodEnvironment();
 
 		const maxChildAge = Math.max(this.age, ...getSiblingsAges(this.siblings));
 		this.parents = generateParents(maxChildAge);

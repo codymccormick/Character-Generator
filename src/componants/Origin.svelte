@@ -9,10 +9,10 @@
 	<h2>Origin</h2>
 	<Content
 		><b>Birth Location:</b>
-		<br />{character.birthplace}
+		<br />{character.birthplace.title} {character.birthplace.description}
 	</Content>
 	<Content
 		><b>Childhood Environment:</b>
-		<br />{character.childhoodEnvironment}: {character.childhoodEnvironmentReason}
+		<br />{character.childhoodEnvironment.title}: {character.childhoodEnvironment.description}
 	</Content>
 </Card>

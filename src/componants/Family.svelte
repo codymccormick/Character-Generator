@@ -40,18 +40,18 @@
 						<Cell><b>Status</b></Cell>
 						<Cell>
 							{#if character.parents.father.caretakerStatus === 'Misfortune'}
-								Misfortune: {character.parents.father.events.misfortune}
-							{:else if character.parents.father.caretakerStatus === 'death'}
-								Dead: {character.parents.father.events.death}
+								{character.parents.father.events.misfortune.title}: {character.parents.father.events.misfortune.description}
+							{:else if character.parents.father.caretakerStatus === 'Death'}
+								{character.parents.father.events.death.title}: {character.parents.father.events.death.description}
 							{:else}
 								Alive and well
 							{/if}
 						</Cell>
 						<Cell>
 							{#if character.parents.mother.caretakerStatus === 'Misfortune'}
-								Misfortune: {character.parents.mother.events.misfortune}
-							{:else if character.parents.mother.caretakerStatus === 'death'}
-								Dead: {character.parents.mother.events.death}
+								{character.parents.mother.events.misfortune.title}: {character.parents.mother.events.misfortune.description}
+							{:else if character.parents.mother.caretakerStatus === 'Death'}
+								{character.parents.mother.events.death.title}: {character.parents.mother.events.death.description}
 							{:else}
 								Alive and well
 							{/if}

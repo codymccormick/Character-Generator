@@ -46,7 +46,7 @@
 									</ul>
 									{#if event.heft}
 										<br /><b>Heft:</b>
-										{event.heft.heft}: {event.heft.description}
+										{event.heft.title}: {event.heft.description}
 									{/if}
 								</div>
 							{/if}
@@ -72,7 +72,7 @@
 									</ul>
 									{#if event.heft}
 										<br /><b>Heft:</b>
-										{event.heft.heft}: {event.heft.description}
+										{event.heft.title}: {event.heft.description}
 									{/if}
 								</div>
 							{/if}
