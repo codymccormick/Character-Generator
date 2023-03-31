@@ -1,3 +1,9 @@
+import { getRandomItemFromArray } from "../../../helpers/random";
+
+export const generateClass = () => {
+	getRandomItemFromArray(classes);
+}
+
 export const classes = [
 	{
 	  title: "Barbarian",
