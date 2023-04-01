@@ -1,6 +1,5 @@
 <script>
 	import { characterStore } from '../data/store';
-	import { Cell } from '@smui/layout-grid';
 	import Card, { Content } from '@smui/card';
 	import Accordion, { Panel, Header, Content as AccordionContent } from '@smui-extra/accordion';
 
@@ -37,7 +36,7 @@
 									{/if}
 								</div>
 							{/if}
-							{#if event.title === 'Made a friend'}
+							{#if event.type === 'Friend'}
 								<div class="friend">
 									<b>Friend: {event.name}</b>
 									<ul>
@@ -50,7 +49,7 @@
 									{/if}
 								</div>
 							{/if}
-							{#if event.title === 'Made an enemy'}
+							{#if event.type === 'Enemy'}
 								<div class="enemy">
 									<b>Enemy: {event.name}</b>
 									<ul>

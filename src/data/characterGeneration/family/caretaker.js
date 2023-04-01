@@ -1,7 +1,7 @@
 import { BaseCharacter } from "../BaseCharacter";
 import { randomInRange } from "../../../helpers/random";
-import { rollDeath } from "../events/death";
-import { rollMisfortune } from "../events/misfortune";
+import { generateDeath } from "../events/death";
+import { generateMisfortune } from "../events/misfortune";
 
 export class Caretaker extends BaseCharacter {
 	constructor(type) {
@@ -32,16 +32,16 @@ export const generateParents = (maxChildAge) => {
 	// Generate proper events for parents
 	const fatherEvent =
 		fatherCaretakerStatus.status === "Death"
-			? rollDeath()
+			? generateDeath()
 			: fatherCaretakerStatus.status === "Misfortune"
-			? rollMisfortune()
+			? generateMisfortune()
 			: null;
 
 	const motherEvent =
 		motherCaretakerStatus.status === "Death"
-			? rollDeath()
+			? generateDeath()
 			: motherCaretakerStatus.status === "Misfortune"
-			? rollMisfortune()
+			? generateMisfortune()
 			: null;
 
 	// Add events to parents
@@ -73,7 +73,7 @@ export const generateParents = (maxChildAge) => {
 	const events = [];
   
 	if (caretakerStatus.status === "Death") {
-	  const deathEvent = rollDeath();
+	  const deathEvent = generateDeath();
 	  if (deathEvent) {
 		events.push({
 		  type: "Death",
@@ -84,7 +84,7 @@ export const generateParents = (maxChildAge) => {
 	} else if (caretakerStatus.status === "Misfortune") {
 	  const numEvents = randomInRange(1, 3);
 	  for (let i = 0; i < numEvents; i++) {
-		const misfortuneEvent = rollMisfortune();
+		const misfortuneEvent = generateMisfortune();
 		if (misfortuneEvent) {
 		  events.push({
 			type: "Misfortune",
@@ -140,9 +140,9 @@ export const rollParentEvent = (eventType) => {
 	let event = null;
 
 	if (eventType === "misfortune") {
-		event = rollMisfortune();
+		event = generateMisfortune();
 	} else {
-		event = rollDeath();
+		event = generateDeath();
 	}
 
 	if (event) {

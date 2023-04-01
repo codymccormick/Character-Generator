@@ -1,6 +1,6 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
-export const rollMisfortune = () => {
+export const generateMisfortune = () => {
 	return getRandomItemFromArray(misfortunes);
 };
 

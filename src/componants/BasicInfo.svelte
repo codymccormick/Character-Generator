@@ -21,7 +21,7 @@
 			<Content><b>Race:</b> {character.race.title}</Content>
 		</Row>
 		<Row>
-			<Content><b>Alignment:</b> {character.alignment}</Content>
+			<Content><b>Alignment:</b> {character.alignment.title}</Content>
 		</Row>
 	</DataTable>
 </Card>

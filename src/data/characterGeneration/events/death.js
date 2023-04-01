@@ -1,6 +1,6 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
-export const rollDeath = () => {
+export const generateDeath = () => {
 	return getRandomItemFromArray(deaths);
 };
 

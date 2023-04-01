@@ -25,7 +25,7 @@ export class MainCharacter extends BaseCharacter {
 			this.siblings.push(sibling);
 		});
 
-		Object.assign(this, generateRaisedBy(this.parents));
+		Object.assign(this.raisedBy = generateRaisedBy(this.parents));
 
 		// this.caretakerStatus = rollCaretakerStatus();
 		this.familyBackground = generateFamilyBackground();

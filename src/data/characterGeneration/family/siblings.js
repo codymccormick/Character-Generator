@@ -1,10 +1,8 @@
 import { randomInRange } from "../../../helpers/random";
 import { generateOccupation } from "../misc/occupation";
-import { getRandomItemFromArray } from "../../../helpers/random";
-import { alignments } from "../misc/alignments";
 import { BaseCharacter } from "../BaseCharacter";
-import { rollMisfortune } from "../events/misfortune";
-import { rollDeath } from "../events/death";
+import { generateMisfortune } from "../events/misfortune";
+import { generateDeath } from "../events/death";
 
 //Creates a sibling object
 export class Sibling extends BaseCharacter {
@@ -19,9 +17,6 @@ export class Sibling extends BaseCharacter {
 export const generateSibling = (mainCharacterAge, parents) => {
 	const sibling = new Sibling();
 	sibling.birthOrder = randomInRange(1, 12) % 2 ? "younger" : "older";
-	sibling.gender = randomInRange(1, 12) % 2 ? "brother" : "sister";
-	sibling.alignment = getRandomItemFromArray(alignments);
-	sibling.occupation = generateOccupation();
 	sibling.fate = rollFate();
 	sibling.parents = parents;
 
@@ -79,7 +74,7 @@ export const rollFate = () => {
 		case 5:
 		case 6:
 			result = { fate: "Misfortune", description: "This sibling has had bad luck in life." };
-			result.misfortune = rollMisfortune();
+			result.misfortune = generateMisfortune();
 			break;
 		case 7:
 		case 8:
@@ -98,7 +93,7 @@ export const rollFate = () => {
 		case 11:
 		case 12:
 			result = { fate: "Dead", description: "This sibling has died." };
-			result.death = rollDeath();
+			result.death = generateDeath();
 			break;
 	}
 

@@ -1,5 +1,5 @@
-import { generateHeft } from "./heft";
 import { BaseCharacter } from "../BaseCharacter";
+import { generateHeft } from "./heft";
 
 export class Enemy extends BaseCharacter {
 	constructor() {
@@ -18,65 +18,65 @@ export const generateEnemy = () => {
 
 	switch (enemyRoll) {
 		case 1:
-			enemy.title = "Made an enemy";
-			enemy.type = "Ex-Friend";
+			enemy.type = "Enemy";
+			enemy.title = "Ex-Friend";
 			enemy.description = "You used to have lunch together and the like, but things went sour";
 			break;
 		case 2:
-			enemy.title = "Made an enemy";
-			enemy.type = "Ex-Lover";
+			enemy.type = "Enemy";
+			enemy.title = "Ex-Lover";
 			enemy.description = "All that love turned to hate";
 			break;
 		case 3:
-			enemy.title = "Made an enemy";
-			enemy.type = "Relative";
+			enemy.type = "Enemy";
+			enemy.title = "Relative";
 			enemy.description = "Family bonds cut by strife";
 			break;
 		case 4:
-			enemy.title = "Made an enemy";
-			enemy.type = "Childhood Enemy";
+			enemy.type = "Enemy";
+			enemy.title = "Childhood Enemy";
 			enemy.description = "An old face you hoped you would never see again";
 			break;
 		case 5:
-			enemy.title = "Made an enemy";
-			enemy.type = "Person You Worked For";
+			enemy.type = "Enemy";
+			enemy.title = "Person You Worked For";
 			enemy.description = "One overtime too many";
 			break;
 		case 6:
-			enemy.title = "Made an enemy";
-			enemy.type = "Person That Worked for You";
+			enemy.type = "Enemy";
+			enemy.title = "Person That Worked for You";
 			enemy.description = "You should have paid for that overtime";
 			break;
 		case 7:
-			enemy.title = "Made an enemy";
-			enemy.type = "Ex-Partner";
+			enemy.type = "Enemy";
+			enemy.title = "Ex-Partner";
 			enemy.description = "A working or adventuring relationship turns to arguments";
 			break;
 		case 8:
-			enemy.title = "Made an enemy";
-			enemy.type = "Gang or Tribe";
+			enemy.type = "Enemy";
+			enemy.title = "Gang or Tribe";
 			enemy.description = "You managed to step on the really wrong foot";
 			break;
 		case 9:
-			enemy.title = "Made an enemy";
-			enemy.type = "Authorities";
+			enemy.type = "Enemy";
+			enemy.title = "Authorities";
 			enemy.description = "There are those amongst the law that dislike you";
 			break;
 		case 10:
-			enemy.title = "Made an enemy";
-			enemy.type = "Dark Powers";
+			enemy.type = "Enemy";
+			enemy.title = "Dark Powers";
 			enemy.description =
 				"Somehow you've come to the attention of dark forces, and they know your name";
 			break;
 		case 11:
-			enemy.title = "Made an enemy";
-			enemy.type = "Creature with Animal Intelligence";
+			enemy.type = "Enemy";
+			enemy.title = "Creature with Animal Intelligence";
 			enemy.description =
 				"You kicked that mule one time too many, and now it hates you to the bone";
 			break;
 		case 12:
-			enemy.title = "Made an enemy";
-			enemy.type = "Intelligent Creature";
+			enemy.type = "Enemy";
+			enemy.title = "Intelligent Creature";
 			enemy.description = "You have some creature like a beholder or dragon angry with you";
 			break;
 	}
@@ -105,7 +105,7 @@ export const generateAnimosity = () => {
 		{ animosity: "Sore loser", description: "Defeated this person in combat or game/gamble" },
 		{
 			animosity: "Bigotry",
-			description: "From race to religious beliefs, the hatred stems from stereotype",
+			description: "From race to religious beliefs, the hatred stems from stereotitle",
 		},
 		{ animosity: "Murdered", description: "Convinced this person killed a friend/relative/lover" },
 		{ animosity: "Jealousy", description: "This person's looks/life/luck/wealth bother you" },
