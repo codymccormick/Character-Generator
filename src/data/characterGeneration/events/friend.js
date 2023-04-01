@@ -1,5 +1,5 @@
 import { generateHeft } from "./heft";
-import { BaseCharacter } from "../BaseCharacter";
+import { BaseCharacter } from "../../BaseCharacter";
 
 export class Friend extends BaseCharacter {
 	constructor() {

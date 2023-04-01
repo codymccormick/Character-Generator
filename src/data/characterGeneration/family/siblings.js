@@ -1,6 +1,6 @@
 import { randomInRange } from "../../../helpers/random";
 import { generateOccupation } from "../misc/occupation";
-import { BaseCharacter } from "../BaseCharacter";
+import { BaseCharacter } from "../../BaseCharacter";
 import { generateMisfortune } from "../events/misfortune";
 import { generateDeath } from "../events/death";
 

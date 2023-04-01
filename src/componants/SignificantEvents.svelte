@@ -40,7 +40,6 @@
 								<div class="friend">
 									<b>Friend: {event.name}</b>
 									<ul>
-										<li>{event.type}<br /></li>
 										<li>{event.description}</li>
 									</ul>
 									{#if event.heft}
@@ -53,7 +52,6 @@
 								<div class="enemy">
 									<b>Enemy: {event.name}</b>
 									<ul>
-										<li>{event.type}<br /></li>
 										<li>{event.description}</li>
 										<li>
 											<b>Who hates whom:</b>

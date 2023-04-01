@@ -1,5 +1,5 @@
 import { characterStore } from "./store";
-import { BaseCharacter } from "./characterGeneration/BaseCharacter";
+import { BaseCharacter } from "./BaseCharacter";
 import { generateBirthplace } from "./characterGeneration/origins/birthplace";
 import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
 import { generateRaisedBy } from "./characterGeneration/family/raisedBy";

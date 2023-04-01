@@ -1,4 +1,4 @@
-import { BaseCharacter } from "../BaseCharacter";
+import { BaseCharacter } from "../../BaseCharacter";
 import { generateHeft } from "./heft";
 
 export class Enemy extends BaseCharacter {
