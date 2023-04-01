@@ -62,7 +62,7 @@
 		</Content>
 		<Content>
 			<h3>Siblings</h3>
-			{#if Object.keys(character.siblings).length}
+			{#if character.siblings.length}
 				<DataTable>
 					<Head>
 						<Row>
@@ -74,19 +74,19 @@
 						</Row>
 					</Head>
 					<Body>
-						{#each Object.values(character.siblings) as sibling}
+						{#each character.siblings as sibling}
 							<Row>
 								<Cell>{sibling.name}</Cell>
 								<Cell>{sibling.age} years old</Cell>
 								<Cell>{sibling.gender}</Cell>
-								<Cell>{sibling.fate?.fate}</Cell>
+								<Cell>{sibling.fate.fate}</Cell>
 								<Cell>
-									{sibling.fate?.description}
-									{#if sibling.fate?.misfortune}
-										<br />{sibling.fate.misfortune.description}
+									{sibling.fate.description}
+									{#if sibling.fate.misfortune}
+										{sibling.fate.misfortune.description}
 									{/if}
-									{#if sibling.fate?.death}
-										<br />{sibling.fate.death.description}
+									{#if sibling.fate.death}
+										{sibling.fate.death.description}
 									{/if}
 								</Cell>
 							</Row>

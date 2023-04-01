@@ -1,10 +1,10 @@
 <script>
 	import { characterStore } from '../data/store';
-	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import BasicInfo from './BasicInfo.svelte';
-	import Origin from './Origin.svelte';
 	import Family from './Family.svelte';
+	import Origin from './Origin.svelte';
 	import SignificantEvents from './SignificantEvents.svelte';
+	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import Card from '@smui/card';
 
 	$: character = $characterStore;
@@ -18,16 +18,12 @@
 		<div class="characterDescription">
 			{#if character}
 				<LayoutGrid>
-					<Cell>
+					<Cell span="6">
 						<BasicInfo />
-					</Cell>
-					<Cell>
 						<Origin />
-					</Cell>
-					<Cell>
 						<SignificantEvents />
 					</Cell>
-					<Cell>
+					<Cell span="6">
 						<Family />
 					</Cell>
 				</LayoutGrid>
