@@ -19,3 +19,7 @@ export const generateAge = () => {
 	}
 	return age;
 };
+
+export const getSiblingsAges = (siblings) => {
+	return Object.values(siblings).map((sibling) => sibling.age);
+};

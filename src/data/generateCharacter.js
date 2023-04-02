@@ -7,7 +7,7 @@ import { generateFamilyBackground } from "./characterGeneration/family/familyBac
 import { generateSiblings } from "./characterGeneration/family/siblings";
 import { generateFateEvents } from "./characterGeneration/events/fate";
 import { generateParents } from "./characterGeneration/family/caretaker";
-import { getSiblingsAges } from "./characterGeneration/family/siblings";
+import { getSiblingsAges } from "./characterGeneration/misc/age";
 
 export class MainCharacter extends BaseCharacter {
 	constructor() {

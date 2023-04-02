@@ -38,37 +38,39 @@
 							{/if}
 							{#if event.type === 'Friend'}
 								<div class="friend">
-									<Card variant="outlined" padded>
-										<b>Name:</b>
-										{event.name}<br />
-										<br /><b>Description:</b>
-										{event.description}<br />
-
-										{#if event.heft}
-											<br /><b>Heft:</b>
-											{event.heft.title}: {event.heft.description}
-										{/if}
-									</Card>
+									<b>Friend: {event.name}</b>
+									<ul>
+										<li>{event.description}</li>
+									</ul>
+									{#if event.heft}
+										<br /><b>Heft:</b>
+										{event.heft.title}: {event.heft.description}
+									{/if}
 								</div>
 							{/if}
 							{#if event.type === 'Enemy'}
 								<div class="enemy">
-									<Card variant="outlined" padded>
-										<b>Name:</b>
-										{event.name}<br />
-										<br /><b>Animosity:</b>
-										{event.animosity.animosity}<br />
-										{event.animosity.description}<br />
-										<br /><b>Who hates whom:</b>
-										{event.whoHatesWhom.hates}<br />
-										<br /><b>Intensity level:</b>
-										{event.intensity.intensity}<br />
-
-										{#if event.heft}
-											<br /><b>Heft:</b>
-											{event.heft.title}: {event.heft.description}
-										{/if}
-									</Card>
+									<b>Enemy: {event.name}</b>
+									<ul>
+										<li>{event.description}</li>
+										<li>
+											<b>Who hates whom:</b>
+											{event.whoHatesWhom.hates}<br />
+										</li>
+										<li>
+											<b>Intensity level:</b>
+											{event.intensity.intensity}<br />
+										</li>
+										<li>
+											<b>Animosity:</b>
+											{event.animosity.animosity}<br />
+											{event.animosity.description}
+										</li>
+									</ul>
+									{#if event.heft}
+										<br /><b>Heft:</b>
+										{event.heft.title}: {event.heft.description}
+									{/if}
 								</div>
 							{/if}
 						</div>

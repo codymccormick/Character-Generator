@@ -2,11 +2,16 @@
 	import { characterStore } from '../data/store';
 	import Card, { Content } from '@smui/card';
 	import DataTable, { Head, Body, Row, Cell } from '@smui/data-table';
+	import Accordion, { Panel, Header, Content as AccordionContent } from '@smui-extra/accordion';
+
 
 	let character;
 
-	$: character = $characterStore;
-	
+	$: {
+		characterStore.subscribe(($characterStore) => {
+			character = $characterStore;
+		});
+	}
 </script>
 
 {#if character}
@@ -37,22 +42,18 @@
 						<Cell><b>Status</b></Cell>
 						<Cell>
 							{#if character.parents.father.caretakerStatus === 'Misfortune'}
-								{character.parents.father.events.misfortune.title}: {character.parents.father.events
-									.misfortune.description}
+								{character.parents.father.events.misfortune.title}: {character.parents.father.events.misfortune.description}
 							{:else if character.parents.father.caretakerStatus === 'Death'}
-								{character.parents.father.events.death.title}: {character.parents.father.events
-									.death.description}
+								{character.parents.father.events.death.title}: {character.parents.father.events.death.description}
 							{:else}
 								Alive and well
 							{/if}
 						</Cell>
 						<Cell>
 							{#if character.parents.mother.caretakerStatus === 'Misfortune'}
-								{character.parents.mother.events.misfortune.title}: {character.parents.mother.events
-									.misfortune.description}
+								{character.parents.mother.events.misfortune.title}: {character.parents.mother.events.misfortune.description}
 							{:else if character.parents.mother.caretakerStatus === 'Death'}
-								{character.parents.mother.events.death.title}: {character.parents.mother.events
-									.death.description}
+								{character.parents.mother.events.death.title}: {character.parents.mother.events.death.description}
 							{:else}
 								Alive and well
 							{/if}

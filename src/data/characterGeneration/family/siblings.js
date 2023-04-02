@@ -1,5 +1,4 @@
 import { randomInRange } from "../../../helpers/random";
-import { generateOccupation } from "../misc/occupation";
 import { BaseCharacter } from "../../BaseCharacter";
 import { generateMisfortune } from "../events/misfortune";
 import { generateDeath } from "../events/death";
@@ -17,7 +16,7 @@ export class Sibling extends BaseCharacter {
 export const generateSibling = (mainCharacterAge, parents) => {
 	const sibling = new Sibling();
 	sibling.birthOrder = randomInRange(1, 12) % 2 ? "younger" : "older";
-	sibling.fate = rollFate();
+	sibling.fate = generateSiblingFate();
 	sibling.parents = parents;
 
 	// Determine sibling age based on main character's age and birth order
@@ -29,10 +28,6 @@ export const generateSibling = (mainCharacterAge, parents) => {
 	}
 
 	return sibling;
-};
-
-export const getSiblingsAges = (siblings) => {
-	return Object.values(siblings).map((sibling) => sibling.age);
 };
 
 export const generateSiblings = (mainCharacter) => {
@@ -51,8 +46,8 @@ export const generateSiblings = (mainCharacter) => {
 	return siblingsArr;
 };
 
-// The rollFate function determines fate based on a random roll
-export const rollFate = () => {
+// The generateSiblingFate function determines fate based on a random roll
+export const generateSiblingFate = () => {
 	const roll = randomInRange(1, 12);
 	let result;
 

@@ -5,7 +5,7 @@
 	<TopAppBar variant="static">
 		<Row>
 		  <Section class=title>
-			<Title>Character Generator</Title>
+			<Title>Fantasy RPG Character Generator</Title>
 		  </Section>
 		</Row>
 	  </TopAppBar>
