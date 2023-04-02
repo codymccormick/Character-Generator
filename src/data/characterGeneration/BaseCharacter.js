@@ -1,10 +1,10 @@
 import faker from "faker";
-import { generateAge } from "./characterGeneration/misc/age";
-import { generateRace } from "./characterGeneration/origins/race";
-import { generateOccupation } from "./characterGeneration/misc/occupation";
-import { rollStat } from "../helpers/helper";
-import { generateAlignment } from "./characterGeneration/misc/alignments";
-import { generateClass } from "./characterGeneration/misc/classes";
+import { generateAge } from "./misc/age";
+import { generateRace } from "./origins/race"
+import { generateOccupation } from "./misc/occupation"
+import { rollStat } from "../../helpers/helper"
+import { generateAlignment } from "../characterGeneration/misc/alignments"
+import { generateClass } from "../characterGeneration/misc/classes"
 
 export class BaseCharacter {
 	constructor() {

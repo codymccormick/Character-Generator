@@ -1,5 +1,5 @@
 <script>
-	import { characterStore } from '../data/store';
+	import { characterStore } from '../helpers/store';
 	import BasicInfo from './BasicInfo.svelte';
 	import Family from './Family.svelte';
 	import Origin from './Origin.svelte';

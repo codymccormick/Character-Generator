@@ -3,7 +3,7 @@
 	import Description from '../componants/Description.svelte';
 	import Button from '../componants/Button.svelte';
 	import { onMount } from 'svelte';
-	import { generateCharacter } from '../data/generateCharacter';
+	import { generateCharacter } from "../data/characterGeneration/generateCharacter"
 
 	onMount(() => {
 		generateCharacter();

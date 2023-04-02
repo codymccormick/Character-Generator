@@ -1,4 +1,4 @@
-import { BaseCharacter } from "../../BaseCharacter";
+import { BaseCharacter } from "../BaseCharacter";
 import { generateHeft } from "../misc/heft";
 import { getRandomItemFromArray } from "../../../helpers/random";
 

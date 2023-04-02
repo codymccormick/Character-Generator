@@ -1,4 +1,4 @@
-import { BaseCharacter } from "../../BaseCharacter";
+import { BaseCharacter } from "../BaseCharacter";
 import { randomInRange } from "../../../helpers/random";
 import { generateDeath } from "../events/death";
 import { generateMisfortune } from "../events/misfortune";

@@ -1,13 +1,13 @@
-import { characterStore } from "./store";
+import { characterStore } from "../../helpers/store"
 import { BaseCharacter } from "./BaseCharacter";
-import { generateBirthplace } from "./characterGeneration/origins/birthplace";
-import { generateChildhoodEnvironment } from "./characterGeneration/origins/childhoodEnvironment";
-import { generateRaisedBy } from "./characterGeneration/family/raisedBy";
-import { generateFamilyBackground } from "./characterGeneration/family/familyBackground";
-import { generateSiblings } from "./characterGeneration/family/siblings";
-import { generateFateEvents } from "./characterGeneration/events/fate";
-import { generateParents } from "./characterGeneration/family/caretaker";
-import { getSiblingsAges } from "./characterGeneration/misc/age";
+import { generateBirthplace } from "./origins/birthplace";
+import { generateChildhoodEnvironment } from "./origins/childhoodEnvironment";
+import { generateRaisedBy } from "./family/raisedBy";
+import { generateFamilyBackground } from "./family/familyBackground";
+import { generateSiblings } from "./family/siblings";
+import { generateFateEvents } from "./events/fate";
+import { generateParents } from "./family/caretaker";
+import { getSiblingsAges } from "./misc/age";
 
 export class MainCharacter extends BaseCharacter {
 	constructor() {

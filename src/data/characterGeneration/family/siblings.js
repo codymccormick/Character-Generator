@@ -1,5 +1,5 @@
 import { randomInRange, getRandomItemFromArray } from "../../../helpers/random";
-import { BaseCharacter } from "../../BaseCharacter";
+import { BaseCharacter } from "../BaseCharacter";
 import { generateMisfortune } from "../events/misfortune";
 import { generateDeath } from "../events/death";
 

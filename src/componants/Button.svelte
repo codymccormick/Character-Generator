@@ -1,5 +1,5 @@
 <script>
-	import { generateCharacter } from '../data/generateCharacter';
+	import { generateCharacter } from "../data/characterGeneration/generateCharacter"
 	import Button from '@smui/button';
 </script>
 

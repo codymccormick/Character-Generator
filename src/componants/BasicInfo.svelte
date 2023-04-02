@@ -1,5 +1,5 @@
 <script>
-	import { characterStore } from '../data/store';
+	import { characterStore } from '../helpers/store';
 	import Card, { Content } from '@smui/card';
 	$: character = $characterStore;
 </script>
