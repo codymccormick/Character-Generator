@@ -1,4 +1,4 @@
-import { generateHeft } from "./heft";
+import { generateHeft } from "../misc/heft";
 import { BaseCharacter } from "../../BaseCharacter";
 
 export class Friend extends BaseCharacter {
@@ -26,7 +26,7 @@ export const generateFriend = () => {
 			break;
 		case 3:
 			friend.type = "Friend";
-			friend.typ = "Teacher or Mentor";
+			friend.type = "Teacher or Mentor";
 			friend.description = "A sage becomes a friend that instructs you in matters";
 			break;
 		case 4:

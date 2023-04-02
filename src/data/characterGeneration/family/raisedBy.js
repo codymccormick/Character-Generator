@@ -1,6 +1,5 @@
-import { generateRandomItemFromObject } from '../../../helpers/random';
-import { isParentDead } from './caretaker';
-import { generateParents } from './caretaker';
+import { generateRandomItemFromObject } from "../../../helpers/random";
+import { generateParents } from "./caretaker";
 
 export const generateRaisedBy = (parents) => {
 	// If both parents are dead, set raisedBy to "Close Family"
@@ -22,24 +21,19 @@ export const generateRaisedBy = (parents) => {
 	return raisedByResult;
 };
 
+// Function to check if a parent is dead
+export const isParentDead = (parent) => {
+	return parent.event && parent.event.status === "Death";
+};
+
 export const raisedBy = {
-	'Original Parents': [
-		'Raised by the ones that gave birth to you'
+	"Original Parents": ["Raised by the ones that gave birth to you"],
+	"Close Family": [
+		"You were raised by your aunt and uncle",
+		"You were raised by your grandparents",
 	],
-	'Close Family': [
-		'You were raised by your aunt and uncle',
-		'You were raised by your grandparents'
-	],
-	Adopted: [
-		'Never knew original parents. Raised by a couple not related to you.'
-	],
-	Institution: [
-		'Raised at an institution, be it an orphanage, monastery or other.'
-	],
-	Master: [
-		'Sold or given or kidnapped at an early age and raised as property.'
-	],
-	'On Your Own': [
-		'Have had to rely on yourself for as long as you can remember. '
-	]
+	Adopted: ["Never knew original parents. Raised by a couple not related to you."],
+	Institution: ["Raised at an institution, be it an orphanage, monastery or other."],
+	Master: ["Sold or given or kidnapped at an early age and raised as property."],
+	"On Your Own": ["Have had to rely on yourself for as long as you can remember. "],
 };

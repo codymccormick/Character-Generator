@@ -57,12 +57,12 @@
 										<b>Name:</b>
 										{event.name}<br />
 										<br /><b>Animosity:</b>
-										{event.animosity.animosity}<br />
+										{event.animosity.title}<br />
 										{event.animosity.description}<br />
 										<br /><b>Who hates whom:</b>
-										{event.whoHatesWhom.hates}<br />
+										{event.whoHatesWhom.title}<br />
 										<br /><b>Intensity level:</b>
-										{event.intensity.intensity}<br />
+										{event.intensity.title}<br />
 
 										{#if event.heft}
 											<br /><b>Heft:</b>

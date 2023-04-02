@@ -1,7 +1,7 @@
 import { generateTragedy } from "./tragedy.js";
 import { generateWindfall } from "./windfall.js";
-import { generateFriend } from "./friend.js";
-import { generateEnemy } from "./enemy.js";
+import { generateFriend } from "../relationships/friend.js";
+import { generateEnemy } from "../relationships/enemy.js";
 import { generateLoveEvents } from "./love";
 // import { generateImprovement } from './personalImprovement.js';
 

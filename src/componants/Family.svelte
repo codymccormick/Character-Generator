@@ -80,7 +80,7 @@
 								<Cell>{sibling.name}</Cell>
 								<Cell>{sibling.age} years old</Cell>
 								<Cell>{sibling.gender}</Cell>
-								<Cell>{sibling.fate.fate}</Cell>
+								<Cell>{sibling.fate.title}</Cell>
 								<Cell>
 									{sibling.fate.description}
 									{#if sibling.fate.misfortune}

@@ -4,170 +4,64 @@ import { generateDeath } from "../events/death";
 import { generateMisfortune } from "../events/misfortune";
 
 export class Caretaker extends BaseCharacter {
-	constructor(type) {
-		super();
-		this.type = type;
-	}
+  constructor(type) {
+    super();
+    this.type = type;
+  }
 }
 
 export const generateCaretaker = (type) => {
-	const caretaker = new Caretaker(type);
-	return caretaker;
+  return new Caretaker(type);
 };
 
 export const generateParents = (maxChildAge) => {
-	const father = generateCaretaker("parent");
-	const mother = generateCaretaker("parent");
-
-	// Ensure parents are at least 16 years older than the oldest child
-	father.age = maxChildAge + randomInRange(16, 30);
-	father.gender = "Male";
-	mother.age = maxChildAge + randomInRange(16, 30);
-	mother.gender = "Female";
-
-	// Call rollCaretakerStatus() for each parent individually
-	const fatherCaretakerStatus = rollCaretakerStatus();
-	const motherCaretakerStatus = rollCaretakerStatus();
-
-	// Generate proper events for parents
-	const fatherEvent =
-		fatherCaretakerStatus.status === "Death"
-			? generateDeath()
-			: fatherCaretakerStatus.status === "Misfortune"
-			? generateMisfortune()
-			: null;
-
-	const motherEvent =
-		motherCaretakerStatus.status === "Death"
-			? generateDeath()
-			: motherCaretakerStatus.status === "Misfortune"
-			? generateMisfortune()
-			: null;
-
-	// Add events to parents
-	father.events = {};
-	mother.events = {};
-	if (fatherCaretakerStatus.status === "Death" && fatherEvent) {
-		father.events["death"] = fatherEvent;
-	}
-	if (motherCaretakerStatus.status === "Death" && motherEvent) {
-		mother.events["death"] = motherEvent;
-	}
-	if (fatherCaretakerStatus.status === "Misfortune" && fatherEvent) {
-		father.events["misfortune"] = fatherEvent;
-	}
-	if (motherCaretakerStatus.status === "Misfortune" && motherEvent) {
-		mother.events["misfortune"] = motherEvent;
-	}
-
-	// Add caretakerStatus to parents
-	father.caretakerStatus = fatherCaretakerStatus.status;
-	mother.caretakerStatus = motherCaretakerStatus.status;
-
-	return { father, mother };
-};
-
+	const createParent = (gender) => {
+	  const parent = generateCaretaker("parent");
+	  parent.age = maxChildAge + randomInRange(16, 30);
+	  parent.gender = gender;
   
-  // Generates an array of events for a parent based on their caretaker status
-  export const generateParentEvents = (caretakerStatus) => {
-	const events = [];
+	  const caretakerStatus = rollCaretakerStatus();
+	  parent.caretakerStatus = caretakerStatus.status;
   
-	if (caretakerStatus.status === "Death") {
-	  const deathEvent = generateDeath();
-	  if (deathEvent) {
-		events.push({
-		  type: "Death",
-		  name: deathEvent.death,
-		  description: deathEvent.description,
-		});
-	  }
-	} else if (caretakerStatus.status === "Misfortune") {
-	  const numEvents = randomInRange(1, 3);
-	  for (let i = 0; i < numEvents; i++) {
+	  const events = {};
+  
+	  if (caretakerStatus.status === "Death") {
+		const deathEvent = generateDeath();
+		if (deathEvent) {
+		  events.death = deathEvent;
+		}
+	  } else if (caretakerStatus.status === "Misfortune") {
 		const misfortuneEvent = generateMisfortune();
 		if (misfortuneEvent) {
-		  events.push({
-			type: "Misfortune",
-			name: misfortuneEvent.misfortune,
-			description: misfortuneEvent.description,
-		  });
+		  events.misfortune = misfortuneEvent;
 		}
 	  }
-	}
   
-	return events;
+	  parent.events = events;
+	  return parent;
+	};
+  
+	const father = createParent("Male");
+	const mother = createParent("Female");
+  
+	return { father, mother };
   };
-  
-// Create a new function to check if a parent is dead
-export const isParentDead = (parent) => {
-	return parent.event && parent.event.status === "Death";
-};
 
 export const rollCaretakerStatus = () => {
-	const roll = randomInRange(1, 12);
+  const roll = randomInRange(1, 12);
 
-	if (roll <= 6) {
-		// 50% chance of parents/guardians being alive and well
-		return {
-			status: "Alive and well",
-			description: "Your parents or guardians are both doing well",
-		};
-	} else if (roll <= 10) {
-		// 33% chance of parents/guardians experiencing misfortune
-		return {
-			status: "Misfortune",
-			description: "Your parents or guardians have experienced misfortune",
-		};
-	} else {
-		// 17% chance of parents/guardians experiencing death
-		return { status: "Death", description: "Your parents or guardians have experienced death" };
-	}
+  if (roll <= 6) {
+    return {
+      status: "Alive and well",
+      description: "Your parents or guardians are both doing well",
+    };
+  } else if (roll <= 10) {
+    return {
+      status: "Misfortune",
+      description: "Your parents or guardians have experienced misfortune",
+    };
+  } else {
+    return { status: "Death", description: "Your parents or guardians have experienced death" };
+  }
 };
 
-// Generates an event for parents based on eventType ('misfortune' or 'death')
-export const rollParentEvent = (eventType) => {
-	if (!eventType) {
-		return null;
-	}
-
-	const eventRoll = randomInRange(1, 6);
-	const shouldAffectParent = eventRoll % 2 === 0; // 50% chance of the parent being affected by the event
-
-	if (!shouldAffectParent) {
-		return null;
-	}
-
-	let event = null;
-
-	if (eventType === "misfortune") {
-		event = generateMisfortune();
-	} else {
-		event = generateDeath();
-	}
-
-	if (event) {
-		// Return only eventType and description properties
-		const { [eventType]: eventName, description } = event;
-		return {
-			[eventType]: eventName,
-			description,
-		};
-	}
-
-	return null; // Return null if no event is generated
-};
-
-// Generates descriptions of events generated by rollParentEvent()
-export const generateParentEventDescription = (events, eventType) => {
-	const eventDescriptions = [];
-	for (let i = 0; i < events.length; i++) {
-		// loop through each event in the array
-		if (events[i] && events[i][eventType]) {
-			const parent = i === 0 ? "Dad" : "Mom"; // determine which parent the event applies to
-			const eventName = events[i][eventType]; // get the name of the event
-			const description = events[i].description; // get the event description
-			eventDescriptions.push({ parent, eventName, description }); // add a new object with the event details to the array of event descriptions
-		}
-	}
-	return eventDescriptions; // return the array of event descriptions
-};

@@ -12,8 +12,9 @@ import { getSiblingsAges } from "./characterGeneration/misc/age";
 export class MainCharacter extends BaseCharacter {
 	constructor() {
 		super();
-
 		this.siblings = [];
+		this.enemies = [];
+		this.friends = [];
 		this.birthplace = generateBirthplace();
 		this.childhoodEnvironment = generateChildhoodEnvironment();
 
@@ -25,23 +26,20 @@ export class MainCharacter extends BaseCharacter {
 			this.siblings.push(sibling);
 		});
 
-		Object.assign(this.raisedBy = generateRaisedBy(this.parents));
+		Object.assign((this.raisedBy = generateRaisedBy(this.parents)));
 
-		// this.caretakerStatus = rollCaretakerStatus();
 		this.familyBackground = generateFamilyBackground();
 
 		this.fateEvents = generateFateEvents();
-		this.enemies = [];
-		this.friends = [];
-
+		
 		// Generate siblings after initializing all other properties
 		const siblingsData = generateSiblings(this);
 		this.siblings.push(...siblingsData);
 
 		for (const event of this.fateEvents) {
-			if (event.title === "Made an enemy") {
+			if (event.type === "Enemy") {
 				this.enemies.push(event);
-			} else if (event.title === "Made a friend") {
+			} else if (event.type === "Friend") {
 				this.friends.push(event);
 			}
 		}
