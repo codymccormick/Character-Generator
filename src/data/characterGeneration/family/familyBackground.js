@@ -1,8 +1,9 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
-// Generates a random family background and reason
+// Generates a random family background and reason by selecting a random item from the familyBackgrounds array
 export const generateFamilyBackground = () => getRandomItemFromArray(familyBackgrounds);
 
+// Array of objects that define different family backgrounds
 export const familyBackgrounds = [
 	{
 		title: "Homeless",

@@ -1,18 +1,22 @@
 import { generateHeft } from "../misc/heft";
 import { BaseCharacter } from "../BaseCharacter";
 
+// Define the Friend class that extends the BaseCharacter class
 export class Friend extends BaseCharacter {
 	constructor() {
 		super();
 
+		// Generate the friend's heft
 		this.heft = generateHeft();
 	}
 }
 
+// Define a function to generate a new Friend instance with specific details
 export const generateFriend = () => {
 	const friendRoll = Math.floor(Math.random() * 12) + 1;
 	let friend = new Friend();
 
+	// Assign properties to the friend object based on a random roll
 	switch (friendRoll) {
 		case 1:
 			friend.type = "Friend";
@@ -26,7 +30,7 @@ export const generateFriend = () => {
 			break;
 		case 3:
 			friend.type = "Friend";
-			friend.type = "Teacher or Mentor";
+			friend.title = "Teacher or Mentor";
 			friend.description = "A sage becomes a friend that instructs you in matters";
 			break;
 		case 4:
@@ -67,12 +71,14 @@ export const generateFriend = () => {
 		case 11:
 			friend.type = "Friend";
 			friend.title = "Creature with Animal Intelligence";
-			friend.description = "You befriend a badger or horse, or even a random Displacer Beast you can no longer find";
+			friend.description =
+				"You befriend a badger or horse, or even a random Displacer Beast you can no longer find";
 			break;
 		case 12:
 			friend.type = "Friend";
 			friend.title = "Intelligent Creature";
-			friend.description = "Maybe you ran into a Sphinx or a Wemic and managed to take the proverbial thorn out of the proverbial paw";
+			friend.description =
+				"Maybe you ran into a Sphinx or a Wemic and managed to take the proverbial thorn out of the proverbial paw";
 			break;
 	}
 

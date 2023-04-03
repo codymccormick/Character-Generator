@@ -1,9 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generates a random occupation from the occupations array
 export const generateOccupation = () => {
 	return getRandomItemFromArray(occupations);
 };
 
+// Array of potential occupations
 export const occupations = [
 	{
 		title: "Academic",

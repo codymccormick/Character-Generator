@@ -1,10 +1,12 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 import { randomInRange } from "../../../helpers/random";
 
+// Generates a random heft from the heft array
 export const generateHeft = () => {
 	return getRandomItemFromArray(heft);
 };
 
+// Array of potential hefts
 export const heft = [
 	{
 		title: "Peon",

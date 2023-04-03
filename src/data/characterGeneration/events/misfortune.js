@@ -1,9 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generates a random misfortune from the misfortune array
 export const generateMisfortune = () => {
 	return getRandomItemFromArray(misfortunes);
 };
 
+// Array of potential misfortunes
 export const misfortunes = [
 	{
 		title: "Cult Involvement",
@@ -18,7 +20,8 @@ export const misfortunes = [
 	{
 		title: "Incapacitation",
 		type: "Misfortune",
-		description: "Victim of a harrowing encounter or accident that resulted in partial or complete incapacitation",
+		description:
+			"Victim of a harrowing encounter or accident that resulted in partial or complete incapacitation",
 	},
 	{
 		title: "Curse",
@@ -33,12 +36,14 @@ export const misfortunes = [
 	{
 		title: "Debt",
 		type: "Misfortune",
-		description: "Plagued by terrible decisions or misfortune, leaving a massive debt to be repaid through labor or slavery",
+		description:
+			"Plagued by terrible decisions or misfortune, leaving a massive debt to be repaid through labor or slavery",
 	},
 	{
 		title: "Loss of Wealth",
 		type: "Misfortune",
-		description: "Bears the heavy burden of responsibility for the loss of all personal wealth and property",
+		description:
+			"Bears the heavy burden of responsibility for the loss of all personal wealth and property",
 	},
 	{
 		title: "Mental Breakdown",
@@ -73,7 +78,8 @@ export const misfortunes = [
 	{
 		title: "Identity Theft",
 		type: "Misfortune",
-		description: "Victim of identity theft, resulting in severe personal and financial consequences",
+		description:
+			"Victim of identity theft, resulting in severe personal and financial consequences",
 	},
 	{
 		title: "Betrayal",
@@ -96,4 +102,3 @@ export const misfortunes = [
 		description: "Suffered a life-altering injury or illness that changed their path forever",
 	},
 ];
-

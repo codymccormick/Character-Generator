@@ -1,6 +1,7 @@
 import { generateRandomItemFromObject } from "../../../helpers/random";
 import { generateParents } from "./caretaker";
 
+// Generate the character's upbringing based on their parents
 export const generateRaisedBy = (parents) => {
 	// If both parents are dead, set raisedBy to "Close Family"
 	if (isParentDead(parents.father) && isParentDead(parents.mother)) {
@@ -18,6 +19,7 @@ export const generateRaisedBy = (parents) => {
 		raisedByResult.caretakers = generateParents();
 	}
 
+	// Return the result
 	return raisedByResult;
 };
 
@@ -26,6 +28,7 @@ export const isParentDead = (parent) => {
 	return parent.event && parent.event.status === "Death";
 };
 
+// Object that defines different ways a character can be raised
 export const raisedBy = {
 	"Original Parents": ["Raised by the ones that gave birth to you"],
 	"Close Family": [

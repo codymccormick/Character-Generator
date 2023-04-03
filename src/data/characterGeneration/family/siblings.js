@@ -3,17 +3,23 @@ import { BaseCharacter } from "../BaseCharacter";
 import { generateMisfortune } from "../events/misfortune";
 import { generateDeath } from "../events/death";
 
-//Creates a sibling object
+// Define the Sibling class
 export class Sibling extends BaseCharacter {
 	constructor() {
 		super();
 	}
 }
 
+// Generate a single sibling
 export const generateSibling = (mainCharacterAge, parents) => {
+	// Create a new Sibling object
 	const sibling = new Sibling();
+
+	// Determine sibling birth order and fate
 	sibling.birthOrder = randomInRange(1, 12) % 2 ? "younger" : "older";
 	sibling.fate = generateSiblingFate();
+
+	// Set sibling's parents
 	sibling.parents = parents;
 
 	// Determine sibling age based on main character's age and birth order
@@ -24,13 +30,19 @@ export const generateSibling = (mainCharacterAge, parents) => {
 		sibling.age = mainCharacterAge + ageDifference;
 	}
 
+	// Return the generated sibling
 	return sibling;
 };
 
+// Generate an array of siblings for the main character
 export const generateSiblings = (mainCharacter) => {
+	// Determine how many siblings to generate
 	const siblingsCount = randomInRange(1, 6) !== 6 ? randomInRange(1, 6) : 0;
+
+	// Create an array to hold the generated siblings
 	const siblingsArr = [];
 
+	// Generate each sibling
 	for (let i = 0; i < siblingsCount; i++) {
 		siblingsArr.push(generateSibling(mainCharacter.age, mainCharacter.parents));
 	}
@@ -40,14 +52,11 @@ export const generateSiblings = (mainCharacter) => {
 		sibling.siblings = [mainCharacter, ...siblingsArr.filter((s) => s !== sibling)];
 	}
 
+	// Return the generated siblings
 	return siblingsArr;
 };
 
-// The generateSiblingFate function determines fate based on a random roll
-export const generateSiblingFate = () => {
-	return getRandomItemFromArray(siblingFates)
-}
-
+// Object that defines different fate scenarios for a sibling
 const siblingFates = [
 	{
 		title: "Lost Touch",
@@ -81,5 +90,9 @@ const siblingFates = [
 		description: "This sibling has died.",
 		death: generateDeath()
 	},
-]
+];
 
+// Function that randomly selects a fate scenario for a sibling
+export const generateSiblingFate = () => {
+	return getRandomItemFromArray(siblingFates)
+};

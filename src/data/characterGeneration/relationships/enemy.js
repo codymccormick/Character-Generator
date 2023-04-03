@@ -2,10 +2,12 @@ import { BaseCharacter } from "../BaseCharacter";
 import { generateHeft } from "../misc/heft";
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Define the Enemy class that extends the BaseCharacter class
 export class Enemy extends BaseCharacter {
 	constructor() {
 		super();
 
+		// Initialize enemy properties
 		this.heft = generateHeft();
 		this.animosity = generateAnimosity();
 		this.whoHatesWhom = whoHatesWhom();
@@ -13,6 +15,7 @@ export class Enemy extends BaseCharacter {
 	}
 }
 
+// Function to generate a new Enemy instance with specific details
 export const generateEnemy = () => {
 	let enemy = new Enemy();
 	let randomEnemy = getRandomItemFromArray(enemies);
@@ -23,6 +26,7 @@ export const generateEnemy = () => {
 	return enemy;
 };
 
+// Array of potential enemies
 export const enemies = [
 	{
 		title: "Ex-Friend",

@@ -1,9 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generates a random childhood environment from the childhoodEnvironment array
 export const generateChildhoodEnvironment = () => {
 	return getRandomItemFromArray(childhoodEnvironments);
 };
 
+// Array of potential childhood environments
 export const childhoodEnvironments = [
 	{
 		title: "No Adult Supervision",

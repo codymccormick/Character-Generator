@@ -1,9 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generates a random death from the death array
 export const generateDeath = () => {
 	return getRandomItemFromArray(deaths);
 };
 
+// Array of potential deaths
 export const deaths = [
 	{
 		title: "Raid or Siege",

@@ -1,14 +1,19 @@
 // import { generateDisability } from './disability.js';
 // import { generateEnemy } from "./enemy";
 
+// Function to generate a random integer between min and max (inclusive)
 function randomInRange(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Function to generate a random tragedy event based on a roll value
 export function generateTragedy() {
-	const tragedyRoll = randomInRange(5, 6);
+	// Generate a random roll value between 1 and 12
+	const tragedyRoll = randomInRange(1, 12);
 
+	// Determine the tragedy event based on the roll value
 	switch (true) {
+		// Roll 1-2: Crippling Event
 		case tragedyRoll >= 1 && tragedyRoll <= 2:
 			return {
 				title: "Crippling Event",
@@ -17,6 +22,7 @@ export function generateTragedy() {
 				// disability: generateDisability(),
 			};
 
+		// Roll 3-4: Financial blow
 		case tragedyRoll >= 3 && tragedyRoll <= 4:
 			return {
 				title: "Financial blow",
@@ -24,6 +30,7 @@ export function generateTragedy() {
 				description: "You manage to lose all your gold/possessions.",
 			};
 
+		// Roll 5-6: Debt
 		case tragedyRoll >= 5 && tragedyRoll <= 6:
 			return {
 				title: "Debt",
@@ -32,6 +39,7 @@ export function generateTragedy() {
 				// enemy: generateEnemy(),
 			};
 
+		// Roll 7-8: Infamy
 		case tragedyRoll >= 7 && tragedyRoll <= 8:
 			return {
 				title: "Infamy",
@@ -40,6 +48,7 @@ export function generateTragedy() {
 					"You are known, and reviled, in connection with some sort of disastrous event. You may, or may not, be innocent, but most anyone who knows of the event will treat you with disdain at best.",
 			};
 
+		// Roll 9-10: Crisis
 		case tragedyRoll >= 9 && tragedyRoll <= 10:
 			return {
 				title: "Crisis",
@@ -48,6 +57,7 @@ export function generateTragedy() {
 				months: randomInRange(1, 12),
 			};
 
+		// Roll 11-12: Lose a Loved One
 		case tragedyRoll >= 11 && tragedyRoll <= 12:
 			const lovedOneStatus = randomInRange(1, 6);
 			let statusDescription = "";
@@ -64,6 +74,7 @@ export function generateTragedy() {
 				description: `Someone very close to you ${statusDescription}.`,
 			};
 
+		// If no matching case, return null
 		default:
 			return null;
 	}
