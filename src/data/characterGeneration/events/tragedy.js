@@ -53,8 +53,7 @@ export function generateTragedy() {
 			return {
 				title: "Crisis",
 				type: "Tragedy",
-				description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${months} months.`,
-				months: randomInRange(1, 12),
+				description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${randomInRange(1, 12)} months.`,
 			};
 
 		// Roll 11-12: Lose a Loved One
