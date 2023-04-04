@@ -17,4 +17,8 @@ export const rollStat = () => {
 	return rolls.slice(1).reduce((a, b) => a + b);
 };
 
+export const generateEvent = (event) => {
+	return getRandomItemFromArray(event)
+ }
+
 
