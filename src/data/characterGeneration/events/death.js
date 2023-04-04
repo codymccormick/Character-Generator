@@ -15,7 +15,7 @@ export const deaths = [
 	{
 		title: "Illness",
 		type: "Death",
-		description: "Anything from a simple cold to a Pox caused death",
+		description: "Anything from a simple cold to a plauge caused death",
 	},
 	{
 		title: "Random Event",
@@ -43,14 +43,14 @@ export const deaths = [
 		description: "Murdered by You",
 	},
 	{
-		title: "Occupational Accident" ,
+		title: "Occupational Accident",
 		type: "Death",
-		description: "Accident related to class or occupation",
+		description: "Accident related to occupation",
 	},
 	{
 		title: "Killed in battle",
 		type: "Death",
-		description: "Killed in battle",
+		description: "Death caused by injuries sustained in battle",
 	},
 	{
 		title: "Natural causes",
@@ -60,6 +60,41 @@ export const deaths = [
 	{
 		title: "Executed for a crime",
 		type: "Death",
-		description: "Executed for a crime",
+		description: "Death by execution as punishment for a crime",
+	},
+	{
+		title: "Wild Animal Attack",
+		type: "Death",
+		description: "Death caused by an attack from a wild animal",
+	},
+	{
+		title: "Magical Mishap",
+		type: "Death",
+		description: "Death caused by a magical experiment gone awry or a cursed item",
+	},
+	{
+		title: "Falling Accident",
+		type: "Death",
+		description: "Death caused by a fall from a great height",
+	},
+	{
+		title: "Drowning",
+		type: "Death",
+		description: "Death caused by drowning in water or another liquid",
+	},
+	{
+		title: "Poisoning",
+		type: "Death",
+		description: "Death caused by the ingestion, inhalation, or contact with a poisonous substance",
+	},
+	{
+		title: "Divine Retribution",
+		type: "Death",
+		description: "Death caused by the wrath of a deity or divine force",
+	},
+	{
+		title: "Natural Disaster",
+		type: "Death",
+		description: "Death caused by a natural disaster, such as a flood, earthquake, or storm",
 	},
 ];

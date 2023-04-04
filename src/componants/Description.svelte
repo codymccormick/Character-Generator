@@ -16,9 +16,9 @@
 	<Card color="primary" variant="outlined" class="mdc-theme--primary">
 		<div class="characterDescription">
 			{#if character}
+			<Family />
 				<BasicInfo />
 				<Origin />
-				<Family />
 				<SignificantEvents />
 			{/if}
 		</div>
