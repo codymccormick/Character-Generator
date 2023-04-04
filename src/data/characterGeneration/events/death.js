@@ -42,4 +42,24 @@ export const deaths = [
 		type: "Death",
 		description: "Murdered by You",
 	},
+	{
+		title: "Occupational Accident" ,
+		type: "Death",
+		description: "Accident related to class or occupation",
+	},
+	{
+		title: "Killed in battle",
+		type: "Death",
+		description: "Killed in battle",
+	},
+	{
+		title: "Natural causes",
+		type: "Death",
+		description: "Natural causes, such as disease or old age",
+	},
+	{
+		title: "Executed for a crime",
+		type: "Death",
+		description: "Executed for a crime",
+	},
 ];
