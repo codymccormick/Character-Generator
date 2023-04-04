@@ -1,9 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generates a random crime from the crime array
 export const generateCrime = () => {
-	getRandomItemFromArray(crimes);
+	return getRandomItemFromArray(crimes);
 };
 
+// Array of potential crimes
 export const crimes = [
 	{
 		title: "Murder",
