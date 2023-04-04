@@ -1,10 +1,6 @@
+import { randomInRange } from "../../../helpers/random";
 // import { generateDisability } from './disability.js';
 // import { generateEnemy } from "./enemy";
-
-// Function to generate a random integer between min and max (inclusive)
-function randomInRange(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 // Function to generate a random tragedy event based on a roll value
 export function generateTragedy() {
@@ -53,7 +49,10 @@ export function generateTragedy() {
 			return {
 				title: "Crisis",
 				type: "Tragedy",
-				description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${randomInRange(1, 12)} months.`,
+				description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${randomInRange(
+					1,
+					12
+				)} months.`,
 			};
 
 		// Roll 11-12: Lose a Loved One
