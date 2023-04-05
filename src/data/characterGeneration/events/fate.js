@@ -5,19 +5,18 @@ import { generateEnemy } from "../relationships/enemy.js";
 import { generateLoveEvents } from "./love";
 // import { generateImprovement } from './personalImprovement.js';
 
-// Function to generate fate events based on eventful years
-export function generateFateEvents() {
-	// Determine the number of eventful years (randomly between 4 and 7)
-	const eventfulYears = Math.floor(Math.random() * 4) + 4;
+// Function to generate life events
+export function generateLifeEvents() {
+	// Determine the number of life events to generate
+	const lifeEvents = Math.floor(Math.random() * 4) + 4;
 	const events = [];
 
-	// Iterate over each eventful year
-	for (let i = 0; i < eventfulYears; i++) {
+	for (let i = 0; i < lifeEvents; i++) {
 		// Generate a random fate roll value between 1 and 12
 		const fateRoll = Math.floor(Math.random() * 12) + 1;
 		let event;
 
-		// Determine the fate event based on the roll value
+		// Determine the life event based on the roll value
 		switch (fateRoll) {
 			case 1:
 			case 2:

@@ -1,5 +1,4 @@
 import { getRandomItemFromArray, randomInRange } from "../../../helpers/random";
-import { generateSibling } from "../family/siblings";
 
 // Function to generate a random windfall from the windfalls array
 export function generateWindfall() {
@@ -24,10 +23,10 @@ export const windfalls = [
 		description: "Through your deeds, you manage to make a name for yourself locally",
 	},
 	{	
-		// const sibling = generateSibling(),
 		title: "Long Lost Someone",
 		type: "Found a long lost sibling",
-	    description: `You find a sibling you never knew you had.`, // ${sibling.birthOrder} ${sibling.gender}`,
+	    description: `You find a sibling you never knew you had.`,
+		// Should generate a sibling and add it to the mainCharcters sibling array
 	},
 	{
 		title: "Title",

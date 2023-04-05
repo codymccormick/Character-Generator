@@ -12,7 +12,7 @@ export const tragedies = [
 	{
 		title: "Crippling Event",
 		type: "Tragedy",
-		description: "You suffer major harm that has a permanent effect.", //Roll on the Disability Table.,
+		description: "You suffer major harm that has a permanent effect.",
 		// disability: generateDisability(),
 	},
 	{

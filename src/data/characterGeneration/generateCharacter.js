@@ -5,7 +5,7 @@ import { generateChildhoodEnvironment } from "./origins/childhoodEnvironment";
 import { generateRaisedBy } from "./family/raisedBy";
 import { generateFamilyBackground } from "./family/familyBackground";
 import { generateSiblings } from "./family/siblings";
-import { generateFateEvents } from "./events/fate";
+import { generateLifeEvents } from "./events/fate";
 import { generateParents } from "./family/caretaker";
 import { getSiblingsAges } from "./misc/age";
 
@@ -39,7 +39,7 @@ export class MainCharacter extends BaseCharacter {
 		this.familyBackground = generateFamilyBackground();
 
 		// Generate character's fate events
-		this.fateEvents = generateFateEvents();
+		this.fateEvents = generateLifeEvents();
 
 		// Generate siblings after initializing all other properties
 		const siblingsData = generateSiblings(this);
