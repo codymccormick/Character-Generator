@@ -1,12 +1,13 @@
 import { getRandomItemFromArray, randomInRange } from "../../../helpers/random";
 import { generateSibling } from "../family/siblings";
 
-// Function to generate a random windfall event based on a roll value
+// Function to generate a random windfall from the windfalls array
 export function generateWindfall() {
 	return getRandomItemFromArray(windfalls)
 }
 
-const windfalls = [
+// Array of potential windfalls
+export const windfalls = [
 	{
 		title: "Financial Boon",
 		type: "Windfall",
@@ -26,7 +27,7 @@ const windfalls = [
 		// const sibling = generateSibling(),
 		title: "Long Lost Someone",
 		type: "Found a long lost sibling",
-		// description: `You find a sibling you never knew you had. ${sibling.birthOrder} ${sibling.gender}`,
+	    description: `You find a sibling you never knew you had.`, // ${sibling.birthOrder} ${sibling.gender}`,
 	},
 	{
 		title: "Title",

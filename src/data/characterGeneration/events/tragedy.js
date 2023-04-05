@@ -2,11 +2,12 @@ import { randomInRange, getRandomItemFromArray } from "../../../helpers/random";
 // import { generateDisability } from './disability.js';
 // import { generateEnemy } from "./enemy";
 
-// Function to generate a random tragedy event based on a roll value
+// Function to generate a random tragedy from the tragedies array
 export function generateTragedy() {
 	return getRandomItemFromArray(tragedies);
 }
 
+// Array of potential tragedies
 export const tragedies = [
 	{
 		title: "Crippling Event",

@@ -1,8 +1,11 @@
 import { getRandomItemFromArray } from "../../../helpers/random";
 
+// Generate a random punishment from the punishments array
 export const generatePunishment = () => {
 	return getRandomItemFromArray(punishments);
 };
+
+// Array of potential punishments
 export const punishments = [
 	{
 		title: "Exonerated",
