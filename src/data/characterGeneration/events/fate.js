@@ -1,8 +1,8 @@
-import { generateTragedy } from "./tragedy.js";
 import { generateWindfall } from "./windfall.js";
 import { generateFriend } from "../relationships/friend.js";
 import { generateEnemy } from "../relationships/enemy.js";
 import { generateLoveEvents } from "./love";
+import { generateMisfortune } from "./misfortune.js";
 // import { generateImprovement } from './personalImprovement.js';
 
 // Function to generate life events
@@ -20,7 +20,7 @@ export function generateLifeEvents() {
 		switch (fateRoll) {
 			case 1:
 			case 2:
-				event = generateTragedy();
+				event = generateMisfortune();
 				break;
 			case 3:
 			case 4:

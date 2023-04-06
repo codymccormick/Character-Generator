@@ -60,6 +60,6 @@ export class MainCharacter extends BaseCharacter {
 export const generateCharacter = () => {
 	const character = new MainCharacter();
 	characterStore.set(character);
-	console.dir(character);
+	console.log(character);
 	return character;
 };

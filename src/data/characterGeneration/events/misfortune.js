@@ -1,4 +1,4 @@
-import { getRandomItemFromArray } from "../../../helpers/random";
+import { getRandomItemFromArray, randomInRange } from "../../../helpers/random";
 
 // Generates a random misfortune from the misfortune array
 export const generateMisfortune = () => {
@@ -100,5 +100,41 @@ export const misfortunes = [
 		title: "Life-altering Injury",
 		type: "Misfortune",
 		description: "Suffered a life-altering injury or illness that changed their path forever",
+	},
+	{
+		title: "Crippling Event",
+		type: "Misfortune",
+		description: "You suffer major harm that has a permanent effect.",
+		// disability: generateDisability(),
+	},
+	{
+		title: "Financial blow",
+		type: "Misfortune",
+		description: "You manage to lose all your gold/possessions.",
+	},
+	{
+		title: "Debt",
+		type: "Misfortune",
+		description: "Financial or otherwise, you make yourself indebted to someone or some group.",
+		// enemy: generateEnemy(),
+	},
+	{
+		title: "Infamy",
+		type: "Misfortune",
+		description:
+			"You are known, and reviled, in connection with some sort of disastrous event. You may, or may not, be innocent, but most anyone who knows of the event will treat you with disdain at best.",
+	},
+	{
+		title: "Crisis",
+		type: "Misfortune",
+		description: `You suffer a personal crisis (injury, addiction, arrest, etc.) that effectively incapacitates you for ${randomInRange(
+			1,
+			12
+		)} months.`,
+	},
+	{
+		title: "Lose a Loved One",
+		type: "Misfortune",
+		description: `Someone very close to you `, //${statusDescription}.`,
 	},
 ];
