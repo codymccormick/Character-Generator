@@ -5,7 +5,7 @@ import { generateChildhoodEnvironment } from "./origins/childhoodEnvironment";
 import { generateRaisedBy } from "./family/raisedBy";
 import { generateFamilyBackground } from "./family/familyBackground";
 import { generateSiblings } from "./family/siblings";
-import { generateLifeEvents } from "./events/fate";
+import { generateLifeEvents } from "./events/generateEvent.js";
 import { generateParents } from "./family/caretaker";
 import { getSiblingsAges } from "./misc/age";
 

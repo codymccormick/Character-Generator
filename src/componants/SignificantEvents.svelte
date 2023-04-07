@@ -13,8 +13,8 @@
 			{#each character.fateEvents as event, index}
 				<Panel>
 					<Header>
-						<b>{event.title}:</b>
-						{event.type}
+						<b>{event.type}:</b>
+						{event.title}
 					</Header>
 					<AccordionContent>
 						<div>

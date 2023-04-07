@@ -6,6 +6,15 @@ import { generateMisfortune } from "./misfortune.js";
 import { generateCrime } from "./crime.js";
 // import { generateImprovement } from './personalImprovement.js';
 
+const eventFunctions = [
+	generateMisfortune,
+	generateWindfall,
+	generateFriend,
+	generateEnemy,
+	generateLoveEvents,
+	generateCrime,
+];
+
 // Function to generate life events
 export function generateLifeEvents() {
 	// Determine the number of life events to generate
@@ -13,37 +22,12 @@ export function generateLifeEvents() {
 	const events = [];
 
 	for (let i = 0; i < lifeEvents; i++) {
-		// Generate a random fate roll value between 1 and 12
-		const fateRoll = Math.floor(Math.random() * 12) + 1;
-		let event;
+		// Generate a random index to choose an event function
+		const index = Math.floor(Math.random() * eventFunctions.length);
+		const eventFunction = eventFunctions[index];
 
-		// Determine the life event based on the roll value
-		switch (fateRoll) {
-			case 1:
-			case 2:
-				event = generateMisfortune();
-				break;
-			case 3:
-			case 4:
-				event = generateWindfall();
-				break;
-			case 5:
-			case 6:
-				event = generateFriend();
-				break;
-			case 7:
-			case 8:
-				event = generateEnemy();
-				break;
-			case 9:
-			case 10:
-				event = generateLoveEvents();
-				break;
-			case 11:
-			case 12:
-				event = generateCrime();
-				break;
-		}
+		// Call the chosen event function to generate the event
+		const event = eventFunction();
 
 		// Add the generated event to the events array
 		events.push(event);
