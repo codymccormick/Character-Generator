@@ -3,6 +3,7 @@ import { generateFriend } from "../relationships/friend.js";
 import { generateEnemy } from "../relationships/enemy.js";
 import { generateLoveEvents } from "./love";
 import { generateMisfortune } from "./misfortune.js";
+import { generateCrime } from "./crime.js";
 // import { generateImprovement } from './personalImprovement.js';
 
 // Function to generate life events
@@ -40,8 +41,7 @@ export function generateLifeEvents() {
 				break;
 			case 11:
 			case 12:
-				event = generateFriend(); // This is a placeholder until i implement generateImprovment()
-				// event = "Improvment" //generateImprovement();
+				event = generateCrime();
 				break;
 		}
 
